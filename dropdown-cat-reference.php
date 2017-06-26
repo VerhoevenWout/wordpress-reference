@@ -1,29 +1,17 @@
-<script>
-  $newsDropdown = $('#news-archive-dropdown');
-  $newsDropdown.on('change', function(){
-  var cat = $(this).val();
-  if(cat == 'all'){
-    window.location.href = '/news';
-  }else{
-    window.location.href = '/category/' + cat;
-  }
-  });
-</script>
-
-  <?php
-  $current_cat = get_the_category();
-  wp_dropdown_categories( array(
-    'hide_empty'       => 0,
-    'name'             => 'category_parent',
-    'orderby'          => 'name',
-    'selected'         => $current_cat[0]->slug ,
-    'hierarchical'     => true,
-    'show_option_none' => __('Categories'),
-    'option_none_value' => 'all',
-  //	  'child_of' => 37,
-    'id' => 'news-archive-dropdown',
-    'value_field' => 'slug'
-  ) ); ?>
+<?php
+$current_cat = get_the_category();
+wp_dropdown_categories( array(
+  'hide_empty'       => 0,
+  'name'             => 'category_parent',
+  'orderby'          => 'name',
+  'selected'         => $current_cat[0]->slug ,
+  'hierarchical'     => true,
+  'show_option_none' => __('Categories'),
+  'option_none_value' => 'all',
+//	  'child_of' => 37,
+  'id' => 'news-archive-dropdown',
+  'value_field' => 'slug'
+) ); ?>
 
 
 <!-- GET CATEGORY ITEMS IN ARCHIVE -->
@@ -60,3 +48,15 @@ endforeach; ?>
 <?php $category = get_the_category();
 $firstCategory = $category[0]->cat_name;
 ?>
+
+<script>
+  $newsDropdown = $('#news-archive-dropdown');
+  $newsDropdown.on('change', function(){
+  var cat = $(this).val();
+  if(cat == 'all'){
+    window.location.href = '/news';
+  }else{
+    window.location.href = '/category/' + cat;
+  }
+  });
+</script>

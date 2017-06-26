@@ -1,5 +1,4 @@
 <?php
-
 	require_once ('lib/load-jquery.php');
 	require_once ('lib/load-js.php');
 	require_once ('lib/remove-header-junk.php');

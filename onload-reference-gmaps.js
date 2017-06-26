@@ -1,37 +1,28 @@
 function on_load_functions(){
-
-
  $count = 2;
+	$('.fade-in').waitForImages({
+    finished:function(){$('.fade-in').css('opacity',1);},
+    waitForAll:true
+  });
 
+  $( '.off-screen' ).each(function( index ) {
+    if ($(this).isOnScreen()) {
+      $(this).removeClass('off-screen');
+    }
+  });
 
 	$('.fade-in').waitForImages({
     finished:function(){$('.fade-in').css('opacity',1);},
     waitForAll:true
-});
-
-$( '.off-screen' ).each(function( index ) {
-     if ($(this).isOnScreen()) {
-            $(this).removeClass('off-screen');
-        }
-
-});
-
-
-	$('.fade-in').waitForImages({
-    finished:function(){$('.fade-in').css('opacity',1);},
-    waitForAll:true
-});
-
-
-
-	  $('a[href*="#"]:not([href="#"])').click(function() {
+  });
+  $('a[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
       target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
-		var offset = 60;
-		if($(window).width() < 1100){
-			offset = 70;
-		}
+  	var offset = 60;
+  	if($(window).width() < 1100){
+  		offset = 70;
+  	}
       if (target.length) {
         $('html, body').animate({
           scrollTop: target.offset().top - offset
@@ -42,12 +33,11 @@ $( '.off-screen' ).each(function( index ) {
   });
 
 	if($('.twitter-carousel .tweets').length){
-	$('.twitter-carousel .tweets').slick({
-	arrows: false,
-		dots: true
-	});
+  	$('.twitter-carousel .tweets').slick({
+  	arrows: false,
+  		dots: true
+  	});
 	}
-
 	if(typeof google !== 'undefined' && $(".map-contain")[0]){
 		function initialize() {
 
@@ -78,7 +68,5 @@ $( '.off-screen' ).each(function( index ) {
 		initialize();
 	}
 }
-
-
 
 on_load_functions();
