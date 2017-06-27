@@ -7,6 +7,8 @@
 		<div class="">
 			<div class="banner-img-overlay"></div>
 			<div class="banner-img" style="background:transparent url('<?php echo $photo; ?>') center top no-repeat; background-size:cover;"></div>
+      <!-- OR -->
+      <div class="banner-img" style="background:transparent url('<?php echo $photo['sizes']['thumbnail']; ?>') center top no-repeat; background-size:cover;"></div>
 		</div>
 		<?php endif; ?>
 	<?php endwhile; ?>
