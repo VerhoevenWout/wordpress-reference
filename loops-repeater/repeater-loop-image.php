@@ -1,4 +1,4 @@
-// REPEATER LOOP IMAGE
+<!-- REPEATER LOOP IMAGE -->
 <?php if( have_rows('banner_images') ): ?>
 <div class="banner-slider">
   <?php while( have_rows('banner_images') ): the_row(); ?>
