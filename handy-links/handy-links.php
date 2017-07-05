@@ -2,6 +2,8 @@
   https://smallpdf.com/
 <!-- Check Internet Speed -->
   https://fast.com/
+<!-- Closing Tag Checker -->
+  https://www.aliciaramirez.com/closing-tags-checker/
 
 <!-- Wordpress Dashboard Icons -->
   https://developer.wordpress.org/resource/dashicons/
