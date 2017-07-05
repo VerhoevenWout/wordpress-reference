@@ -5,6 +5,9 @@
 <!-- Closing Tag Checker -->
   https://www.aliciaramirez.com/closing-tags-checker/
 
+<!-- Scroll Jacking Plugin -->
+  https://github.com/d4nyll/smartscroll
+
 <!-- Wordpress Dashboard Icons -->
   https://developer.wordpress.org/resource/dashicons/
 <!-- Create Placeholder Images -->

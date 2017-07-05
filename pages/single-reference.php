@@ -1,4 +1,4 @@
-<!-- Check which single it is -->
+<!-- Check which single cpt it is -->
 <?php if ( is_singular( 'case-studies' ) ):?>
 	<div class="case-images">
 	<?php while(have_rows('flexible_content')): the_row('flexible_content');?>
@@ -19,8 +19,15 @@
 	</div>
 <?php endif; ?>
 
+<!-- Check which single cpt it is -->
 <?php if ( is_singular( 'categories' ) ):?>
 	<div class="case-images">
 
 	</div>
+<?php endif; ?>
+
+<!-- OR -->
+
+<?php if( 'videos' == get_post_type() ): ?>
+	<!-- single videos -->
 <?php endif; ?>
