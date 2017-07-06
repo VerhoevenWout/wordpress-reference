@@ -1,3 +1,5 @@
+<!-- Alternating loop up/down -->
+
 <div class="content-big">
 	<div class="row">
 		<div class="col-md-12">

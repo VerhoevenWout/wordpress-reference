@@ -18,8 +18,9 @@
 	}
 	add_action( 'init', 'create_posttype' );
 ?>
-<!-- Template Name: Media Centre Photos
--->
+
+<!-- PAGE -->
+<!-- Template Name: Media Centre Photos -->
 <?php get_header(); ?>
 <?php get_template_part( 'tpl/parts/section-page-header' ); ?>
 	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
@@ -66,5 +67,39 @@
 	    </div>
     </div>
 
+	<?php endwhile; endif; ?>
+<?php get_footer(); ?>
+
+<!-- SINGLE -->
+<?php get_header(); ?>
+	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+		<!-- VIDEOS -->
+		<?php if( 'videos' == get_post_type() ): ?>
+			<div class="row">
+				<?php if( have_rows('multiple_videos_repeater') ): ?>
+				  <?php while( have_rows('multiple_videos_repeater') ): the_row(); ?>
+						<div class="col-sm-4 no-padding">
+							<a class="popup-youtube" href="<?php the_sub_field('video_url')?>">
+					      <div class="news-box-link <?php if($i % 2 == 0){ echo 'dark';}else{echo 'light';}?>">
+					        <div class="image-crop">
+										<?php $image_url = get_sub_field('video_image') ?>
+					          <?php if($image_url){?>
+					          <div class="image" style="background-image:url('<?php echo $image_url; ?>');"></div>
+					            <?php }else{ ?>
+					              <div class="image" style="background-image:url('<?php echo get_template_directory_uri(); ?>/assets/img/article-default.jpg');"></div>
+					            <?php } ?>
+					          <div class="overlay"><h6>Watch Video</h6></div>
+					        </div>
+					        <div class="text">
+										<span class="title"><?php echo the_sub_field('video_title');?></span>
+					        </div>
+					      </div>
+					    </a>
+						</div>
+				  <?php endwhile ?>
+				<?php endif; ?>
+			</div>
+		<?php endif; ?>
+		<!-- END VIDEOS -->
 	<?php endwhile; endif; ?>
 <?php get_footer(); ?>

@@ -11,8 +11,8 @@
   add_filter('post_password_expires', '__return_zero');
 
   // UPDATE SITE URL
-  update_option('siteurl','http://fergus.clients.twkmedia.eu');
-  update_option('home','http://fergus.clients.twkmedia.eu');
+  // update_option('siteurl','http://fergus.clients.twkmedia.eu');
+  // update_option('home','http://fergus.clients.twkmedia.eu');
 
   // GFORM SCROLL TO ERROR
   add_filter( 'gform_confirmation_anchor', '__return_true' );

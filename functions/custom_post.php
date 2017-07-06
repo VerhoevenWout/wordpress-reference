@@ -12,8 +12,8 @@ function create_posttype() {
 			'has_archive' => true,
 			'rewrite' => array('slug' => 'case-studies'),
 			'menu_icon' => 'dashicons-format-status',
-			'supports' => array( 'editor','title', 'thumbnail', ),
-            'taxonomies' => array('post_tag'),
+			'supports' => array( 'editor','title', 'thumbnail', 'author'),
+      'taxonomies' => array('post_tag'),
 		)
 	);
 	register_post_type( 'case-studies-2',
@@ -28,7 +28,7 @@ function create_posttype() {
 			'rewrite' => array('slug' => 'case-studies'),
 			'menu_icon' => 'dashicons-format-status',
 			'supports' => array( 'editor','title', 'thumbnail', ),
-						'taxonomies' => array('post_tag'),
+			'taxonomies' => array('post_tag'),
 		)
 	);
 }
