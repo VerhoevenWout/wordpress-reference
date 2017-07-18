@@ -1,6 +1,8 @@
 <style media="screen">
   .box{
     padding-bottom: calc(50% + 20px);
+    /*OR*/
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   }
   .box-image{
     position: absolute;

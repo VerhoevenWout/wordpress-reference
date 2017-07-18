@@ -12,6 +12,8 @@
   background: -ms-linear-gradient(0deg, rgba(0, 0, 0, 0.39) 0%, transparent 60%, transparent 84%);
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.39) 0%, transparent 60%, transparent 84%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 );
+  pointer-events: none;
+  z-index: 9999;
 }
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 /* - - - - - - - - - - - - - - - - - - - COMMON STYLES - - - - - - - - - - - - - - - - */

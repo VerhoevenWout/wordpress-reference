@@ -111,3 +111,17 @@
 		</header>
 
 		<div id="content-wrap">
+
+		<!-- OR -->
+
+		<div class="container-fluid nav-bar fixed-top" id="top-nav-bar">
+			<div class="container">
+				<header id="header">
+				  <nav class="navbar yamm">
+		    		<a class="navbar-brand" href="<?php echo home_url(); ?>"><img src="<?php echo get_template_directory_uri(); ?>/assets/img/logo.png"/></a>
+						<?php wp_nav_menu( array('menu' => 'main-menu', 'menu_class' => 'nav navbar-nav navbar-right')); ?>
+						<a class="log-in button shine-hover" href="<?php echo home_url().'/research/documents/'?> "><span>Research Library</span></a>
+					</nav>
+				</header>
+		  </div>
+	  </div><!-- /.container-fluid -->
