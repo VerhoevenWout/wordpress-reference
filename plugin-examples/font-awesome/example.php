@@ -1,3 +1,6 @@
+
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome.min.css">
+
 <style media="screen">
   i{
     font-size: 22px;

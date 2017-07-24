@@ -9,6 +9,11 @@ jQuery(document).ready(function($){
     toggleMobileMenu();
   });
 
+  // Scroll fadout
+  $(window).scroll(function(){
+    $("#intro-wrapper h1").css("opacity", 1 - $(window).scrollTop() / 250);
+  });
+
   // MENU SCROLL FUNCTION
   var headerheight = 80;
   if($(window).width() < 500){
