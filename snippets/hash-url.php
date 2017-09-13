@@ -8,7 +8,7 @@
 		global $wpdb;
 		$querystr = "
 		    SELECT hash
-		    FROM wp_hash_table 
+		    FROM wp_url_hash_table 
 		    WHERE url LIKE '%$url_params'
 		";
 		$hash_result_array = $wpdb->get_row($querystr);
@@ -19,7 +19,7 @@
 			// Create hash and store
 			$new_hash = md5($url_params);
 			$querystr = "
-			    INSERT INTO `wp_hash_table`
+			    INSERT INTO `wp_url_hash_table`
 	          	(`url`,`hash`) 
 	   			values ('$url_params', '$new_hash')
 			";
@@ -61,7 +61,7 @@
 	// READ
 	$querystr = "
 	    SELECT hash
-	    FROM wp_hash_table 
+	    FROM wp_url_hash_table 
 	    WHERE url LIKE '%$url_params'
 	";
 	$querystr = "
@@ -89,13 +89,13 @@
 	// INSERT
 	$new_hash = md5($url_params);
 	$querystr = "
-	    INSERT INTO `wp_hash_table`
+	    INSERT INTO `wp_url_hash_table`
       	(`url`,`hash`) 
 			values ('$url_params', '$new_hash')
 	";
 	$wpdb->query($querystr);
 
-	$wpdb->insert('wp_hash_table', array(
+	$wpdb->insert('wp_url_hash_table', array(
 	    'id' => 'test',
 	    'url' => 'test',
 	    'hash' => 'test@gmail.com',
@@ -105,7 +105,7 @@
 	// ------------------------------------------------------------
 	// ------------------------------------------------------------
 	// UPDATE
-	$wpdb->update('wp_hash_table', array(
+	$wpdb->update('wp_url_hash_table', array(
 	    'hash' => $rand_str,
 	    'date' => 'test',
 	    'hits' => 'test'
@@ -138,21 +138,12 @@
 
 
 <!-- Setup Table -->
-CREATE TABLE `wp_hash_table` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `url` varchar(620) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `hash` varchar(14) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `date` datetime NOT NULL,
-  `hits` bigint(20) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
-
-
-
-CREATE TABLE `wp_hash_table` (
+CREATE TABLE `wp_url_hash_table` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `url_params` varchar(620) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `hash` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+

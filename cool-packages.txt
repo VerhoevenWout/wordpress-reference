@@ -1,0 +1,2 @@
+https://packagecontrol.io/packages/SublimeTmpl
+https://github.com/JohnCoates/Aerial
