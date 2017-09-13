@@ -1,0 +1,16 @@
+Run this command in terminal to allow https on localhost in Chrome and Safari
+
+openssl req \
+    -newkey rsa:2048 \
+    -x509 \
+    -nodes \
+    -keyout muller.key \
+    -new \
+    -out muller.crt \
+    -subj /CN=muller.loc \
+    -reqexts SAN \
+    -extensions SAN \
+    -config <(cat /System/Library/OpenSSL/openssl.cnf \
+        <(printf '[SAN]\nsubjectAltName=DNS:muller.loc')) \
+    -sha256 \
+    -days 3650
