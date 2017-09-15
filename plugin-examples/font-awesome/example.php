@@ -1,3 +1,9 @@
+<?php
+  function enqueue_required_assets() {
+    wp_enqueue_style( 'prefix-font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+  }
+  add_action( 'wp_enqueue_scripts', 'enqueue_required_assets' );
+?>
 
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/font-awesome.min.css">
 
