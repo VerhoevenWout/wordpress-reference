@@ -1,0 +1,2 @@
+shift + cmd + r => convert to rem
+shift + cmd + x => convert to px
