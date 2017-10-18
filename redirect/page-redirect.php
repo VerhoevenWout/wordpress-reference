@@ -3,3 +3,4 @@
   $url = 'portal.investit.com/intelligence';
   wp_redirect($url);
 ?>
+

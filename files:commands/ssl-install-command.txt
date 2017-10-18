@@ -1,4 +1,5 @@
 Run this command in terminal to allow https on localhost in Chrome and Safari
+(change muller to correct name)
 
 openssl req \
     -newkey rsa:2048 \
