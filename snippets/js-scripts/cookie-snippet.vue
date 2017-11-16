@@ -25,6 +25,7 @@
 	    createCookie(name,"",-1);
 	};
 
+// EXAMPLE USE
 	var x = readCookie('ppkcookie')
 	if (x) {
 	    [do something with x]

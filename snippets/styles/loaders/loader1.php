@@ -1,3 +1,5 @@
+<!-- As on venues-online -->
+
 <style type="text/css" media="screen">
 	.loading-overlay{
 		position: fixed;
