@@ -1,0 +1,5 @@
+Sublime text make paste and indent default
+preferences/key-bindings -> user
+
+{ "keys": ["super+v"], "command": "paste_and_indent" },
+{ "keys": ["super+shift+v"], "command": "paste" }
