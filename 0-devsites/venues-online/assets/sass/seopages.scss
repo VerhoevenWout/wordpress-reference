@@ -1,0 +1,185 @@
+$cPrimary: 			#0085ba;
+$cDefault: 			#ffffff;
+$cError: 			#c0392b;
+
+@keyframes fa-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+.column-showinresults, .column-featured, .column-icl_translations {
+	width: 10%;
+}
+
+body {
+	.overlay-loading {
+		opacity: 0;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		text-align: center;
+
+		transition: all .3s ease;
+
+		i.fa {
+			font-size: 10em;
+			color: $cPrimary;
+			position: fixed;
+			top: 0%;
+			opacity: 0;
+			z-index: -1;
+
+			transition: all .3s ease;
+		}
+	}
+
+	&.loading .overlay-loading {
+		opacity: 1;
+		z-index: 99999;
+		background-color: rgba(0,0,0,0.2);
+
+		i.fa {
+			top: 10%;
+			opacity: 1;
+			z-index: 100;
+		}
+	}
+}
+
+table.meta-table {
+	i#loading {
+		z-index: -1;
+		opacity: 0;
+		transform: scale(0);
+		font-size: 18px;
+		margin-left: 10px;
+		display: inline-block;
+		transition: all .3s ease;
+
+		animation: fa-spin 1s infinite steps(8);
+	}
+	&.loading {
+		i#loading {
+			z-index: 9999;
+			opacity: 1;
+			transform: scale(1);
+		}
+
+		.result-meta {
+			opacity: .5;
+		}
+	}
+
+	span.lang {
+		color: #888;
+		display: inline-block;
+		margin-left: 10px;
+		text-transform: uppercase;
+	}
+
+	.results-container {
+		position: relative;
+		min-height: 30px;
+
+		i#loading {
+			position: absolute;
+			top: 10px;
+			left: 10px;
+			display: block;
+		}
+
+		ul, li {
+			margin: 0;
+			padding: 0;
+		}
+
+		li {
+			padding: 3px 5px;
+		}
+
+		ul {
+			max-height: 240px;
+			overflow-y: scroll;
+		}
+	}
+
+	.result-meta {
+		border: 1px solid #ddd;
+		box-shadow: inset 0 1px 2px rgba(0,0,0,.07);
+		background-color: #fff;
+		color: #32373c;
+		outline: 0;
+		width: 25em;
+
+		li {
+			cursor: pointer;
+
+			&:hover {
+				background-color: #0085ba;
+				color: $cDefault;
+
+				span.lang {
+					color: $cDefault;
+				}
+			}
+
+			span.lang {
+				float:right;
+			}
+		}
+	}
+
+	.owned-meta {
+		ul, li {
+			margin: 0;
+			padding: 0;
+			display: block;
+		}
+
+		ul {
+			width: 25em;
+		}
+
+		li {
+			border-bottom: 1px solid #ccc;
+			padding: 5px 0;
+
+			&:last-child {
+				border-bottom: 0;
+			}
+
+			span, button {
+				font-size: 14px;
+				display: inline-block;
+			}	
+
+			button {
+				background-color: transparent;
+				border: 0;
+				box-shadow: none;
+				cursor: pointer;
+				color: $cError;
+				float: right;
+				position: absolute;
+    			margin: -0.17em .5em;
+			}
+		}
+	}
+
+	.regions-container {
+		ul.categorychecklist {
+			margin-top: 3px;
+		}
+
+		ul.children {
+			margin-left: 18px;
+		}
+	}
+}

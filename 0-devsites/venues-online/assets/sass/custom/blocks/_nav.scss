@@ -1,0 +1,124 @@
+/* -------------------------------------------------------------------------
+ Navigation
+---------------------------------------------------------------------------- */
+
+nav{
+    top: 0;
+    height: 75px;
+    position: relative;
+    z-index: 99999;
+	a{
+	  	color: $white;
+	  	@include hover($green);
+	}
+	.hamburger{
+		position: absolute;
+		width: 3em;
+    	top: 0.7em;
+    	right: 0;
+    	z-index: 9999;
+	    transform: translateX(5px);
+    	&:hover{
+			opacity: 1;
+		}
+    	@include xmd{
+    		display: none;
+		}
+		.hamburger-inner, .hamburger-inner:before, .hamburger-inner:after{
+			background: $white;
+			border-radius: 0;
+			height: 2px;
+			width: 35px;
+		}
+	}
+
+	.full-main-menu-container{
+		position: fixed;
+		overflow: hidden;
+		top: 0;
+		right: 0;
+		height: 0%;
+		width: 100%;
+		background: rgba(0, 4, 64, 0.86);
+	    text-align: center;
+	    z-index: 999;
+		@include transition(.2s);
+		@include xmd{
+			position: absolute;
+			overflow: visible;
+			height: auto;
+			width: auto;
+			background: none;
+		    padding: 0em 1.5rem 0 0;
+		}
+	}
+
+	.menu-main-menu-container{
+		margin-top: 1em;
+		overflow: visible;
+    	@include transition(.2s);
+		li{
+			padding: 0.5em 0;
+		}
+    	@include xmd{
+			margin-top: 0;
+    		height: auto;
+			background: none;
+			li{
+				display: inline-block;
+				padding: 0 .5em;
+			  	&:last-child{
+					border-right: none;
+					margin-right: 0;
+				  	border-bottom: 0;
+				}
+			}
+		}
+		ul{
+			padding: 0;
+			margin: 0;
+			@include transition(.2s);
+		}
+	}
+	.myFavourites{
+		background: $white;
+		color: $light-blue;
+		max-width: 200px;
+	}
+	.myFavourites, .menu-main-menu-container{
+		position: relative;
+		z-index: 999;
+    	@include xmd{
+			font-size: 1.8rem;
+		}
+	}
+
+	.menu-main-menu-container, .myFavourites{
+		display: block;
+		@include xmd{
+			display: inline-block;
+			position: relative;
+		}
+	}
+}
+
+.secondary-menu-state{
+    background: $white;
+    .full-main-menu-container{padding-top: 0;}
+    .logo.main-logo{
+        height: 100%;
+        width: auto;
+        margin: 0;
+        padding: 0.7em;
+    }
+
+    .venue-search{
+    	input, span{
+    		color: $white;
+	    	@include xmd{
+	    		color: $darkest-blue;
+	    	}
+	    }
+    }
+    
+}

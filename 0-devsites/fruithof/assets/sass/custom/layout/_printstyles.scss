@@ -1,0 +1,9 @@
+@media print {
+    header#site-header,
+    footer#site-footer,
+    aside.sidebar,
+    .btn,
+    .block.print-block .single-contact-block:first-child {
+      display: none;
+    }
+}

@@ -1,0 +1,188 @@
+aside.column.sidebar-contactbeheer {
+	background-color: rgba($shade1, .03);
+	padding: 1.5em 2em;
+
+	@include xm {
+		padding: 3em 2em;
+	}
+
+	h2 {
+		font-weight: 800;
+		text-transform: uppercase;
+		letter-spacing: 2px;
+	}
+
+	.icon-arrow-left {
+		font-size: .7em;
+		display: inline-block;
+		padding-right: .3em;
+	}
+
+	ul.list-contact-groepen {
+		margin: 0;
+		padding: 1em 1.5em;
+
+		@include xm {
+			padding: 0;
+		}
+
+		li {
+			font-size: 1.6rem;
+			padding: .5em 0;
+
+			@include xm {
+				font-size: 1.4rem;
+				padding: 0;
+			}
+
+			&.active-term {
+
+				> a {
+					color: $red;
+				}
+			}
+
+			a {
+				font-weight: 600;
+			}
+
+			label { 
+			  display: inline-block;
+			  cursor: pointer;
+
+			  &:after {
+			  	content: "+";
+			  	display: inline-block;
+			  	font-weight: 600;
+			  	font-size: 1em;
+			  }
+			}
+
+			input[type=checkbox] {
+			   position: absolute;
+			   top: -9999px;
+			   left: -9999px;
+			}
+
+			ul {
+				display: none;
+				margin-left: 2em;
+
+				ul {
+					display: block;
+				}
+			}
+
+			input[type=checkbox] {
+
+				&:checked ~ ul {
+					display: block;
+
+					li {
+
+						a {
+							// font-weight: bold;
+						}
+					}
+				}
+
+				&:checked ~ label:after {
+					content: "–";
+					font-size: 1.4em;
+					line-height: 1;
+				}
+
+				&:checked ~ a {
+					// font-weight: bold;
+				}
+			}
+		}
+	}
+
+	.filter-block {
+
+		.show-filters {
+			display: block;
+			cursor: pointer;
+
+			@include xm {
+				display: none;
+			}
+
+			i {
+				font-size: .8em;
+				position: relative;
+				top: .1em;
+				padding-right: 1em;
+			}
+
+			strong {
+				font-weight: 700;
+			}
+		}
+
+		ul {
+			display: none;
+
+			&.show {
+				display: block;
+			}
+
+			@include xm {
+				display: block;
+			}
+		}
+	}
+
+	#sidebar-search-form {
+		display: flex;
+		justify-content: center;
+		padding: 1em 0;
+		margin: 0 auto;
+		
+		.search-field-label {
+			flex-grow: 1;
+			overflow: hidden;
+
+			@include md {
+				width: 150px;
+			}
+
+
+			input.search-field {
+				width: 100%;
+				background-color: $white;
+				padding: 1em 1.5em;
+				border: 0;
+			}
+		}
+
+		.search-submit {
+			flex-grow: 0;
+			width: 45px;
+			height: 45px;
+			position: relative;
+			z-index: 1;
+			background-color: #e6e6e6;
+
+			input {
+				width: 100%;
+				height: 45px;
+				position:relative;
+				z-index: 1;
+				background: transparent;
+				padding: .5em;
+			}
+
+			i {
+				position: absolute;
+				top: .4em;
+				left: .65em;
+				z-index: 0;
+				font-size: 2rem;
+			}
+
+		}
+
+	}
+}

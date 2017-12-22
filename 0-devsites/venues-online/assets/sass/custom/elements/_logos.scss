@@ -1,0 +1,82 @@
+.logo{
+    position: relative;
+    &.main-logo{
+	    left: 0;
+    	right: 0;
+		padding: 3em 0 0;
+        margin: auto;
+		max-width: 300px;
+		@include transition(.2s);
+    	@include md{
+            // padding: 0;
+			max-width: 400px;
+    	}
+    	@include xmd{
+            display: auto;
+	    	width: 300px;
+    		margin: 1em 1.5rem;
+	    }
+        &.main-logo-normal{
+            display: block;
+            @include xmd{
+                display: auto;
+                padding: 0;
+            }
+        }
+        &.main-logo-invert{
+            display: none;
+    	}
+    }
+    &.single-logo{
+        @include selectDisable;
+    	display: none;
+    	position: absolute;
+		transition: all 1s;
+		transition-timing-function: ease-out;
+		transition-timing-function: cubic-bezier(0,.02,.02,.98);
+        opacity: .5;
+    	@include xmd{
+    		display: block;
+    	    width: 400px;
+            top: -5em;
+    		right: -14em;
+    	}
+    }
+}
+
+.search-active{
+    nav{
+        background: $white;
+    }
+    .main-logo{
+        position: relative;
+        margin: auto;
+        padding: 5em 0;
+    }
+    .logo.main-logo.main-logo-normal{
+        display: none;
+    }
+    .logo.main-logo.main-logo-invert{
+        display: inline-block;
+    }
+}
+
+.page-template-tpl_home .search-active{
+    .main-logo-normal{
+        display: none;
+    }
+}
+
+.question-block{
+    .logo.main-logo{
+        display: block;
+        width: 100%;
+        margin: 0 auto 4em;
+        padding: 0;
+        padding-top: 5em;
+        @include md{
+            margin: 8em auto;
+            padding-top: 0;
+        }
+    }
+}

@@ -1,0 +1,96 @@
+@import 'custom/vars/*';
+
+#login {
+	padding: 2em 0 0;
+}
+
+body.login {
+	background: $white;
+	border-top: 5px solid $shade1;
+
+	form {
+		background: $shade1;
+		padding: 26px 24px 26px;
+		box-shadow: none;
+	}
+
+	label {
+		color: $white;
+	}
+
+	h1 a {
+		background-image: url('../../includes/svg/logo.svg');
+		background-size: 270px 72px;
+		width: 270px;
+		height: 72px;
+	}
+
+	a {
+		color: $red;
+		text-decoration: underline;
+
+		&:hover {
+			color: $black;
+			text-decoration: none;
+		}
+	}
+
+	#nav {
+		a {
+			color: $red;
+			text-decoration: underline;
+
+			&:hover {
+				color: $black;
+				text-decoration: none;
+			}
+		}
+	}
+
+	.button-primary {
+		float: right;
+		color: $black;
+		background-color: $white;
+		box-shadow: 0px 0px 10px $black50;
+		text-shadow: none;
+		border: none;
+		border-radius: 0;
+		margin-top: 15px;
+		outline: none;
+
+		&:hover, &:active, &:focus {
+			box-shadow: 0px 0px 10px $black;
+			outline: none;
+			background-color: $white;
+			color: $black;
+			cursor: pointer;
+		}
+	}
+
+	.message {
+		border-left: none;
+		background-color: $black;
+		color: $white;
+	}
+
+	#backtoblog {
+		display: none;
+	}
+
+	#login_error{
+		box-shadow: 0px 0px 10px $black50;
+	}
+}
+
+input[type=checkbox]:checked:before {
+	color: $red;
+}
+
+input[type=text],
+input[type=password],
+input[type=checkbox], {
+	&:focus {
+		border-color: $red;
+	}
+}
+

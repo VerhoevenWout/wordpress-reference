@@ -1,0 +1,174 @@
+$mobile-width: 1100px;
+$small-width: 0;
+$medium-width: 700px;
+$xmedium-width: 1100px;
+$large-width: 1380px;
+$xlarge-width: 1500px;
+$xxlarge-width: 1800px;
+
+
+$breakpoints: (
+  mobile: $mobile-width,
+  small: $small-width,
+  medium: $medium-width,
+  xmedium: $xmedium-width,
+  large: $large-width,
+  xlarge: $xlarge-width,
+  xxlarge: $xxlarge-width
+);
+
+$breakpoint-classes: (small medium xmedium large xlarge xxlarge);
+
+
+@mixin mobile {
+  @media (max-width: #{$mobile-width}) {
+    @content;
+  }
+}
+
+@mixin sm {
+  @media (min-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin xm {
+  @media (min-width: #{$xmedium-width}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$xlarge-width}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+
+
+@mixin only-sm {
+  @media (min-width: #{$small-width}) and (max-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin only-md {
+  @media (min-width: #{$medium-width}) and (max-width: #{$xmedium-width}) {
+    @content;
+  }
+}
+
+@mixin only-xm {
+  @media (min-width: #{$xmedium-width}) and (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin only-lg {
+  @media (min-width: #{$large-width}) and (max-width: #{$xlarge-width}) {
+    @content;
+  }
+}
+
+@mixin only-xl {
+  @media (min-width: #{$xlarge-width}) and (max-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+@mixin only-xxl {
+  @media (min-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+@include sm {
+  body {
+    margin: 0;
+  }
+}
+
+@include md {
+  body {
+    margin: 0;
+  }
+}
+
+@include xm {
+  body {
+    margin: 0;
+  }
+}
+
+@include lg {
+  body {
+    margin: 0;
+  }
+}
+
+@include xl {
+  body {
+    margin: 0;
+  }
+}
+
+@include xxl {
+  body {
+    margin: 0;
+  }
+}
+
+
+body:after {
+  display: none;
+  background-color: rgba(0,0,0, .5);
+  color: white;
+  padding: .3em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  pointer-events: none;
+
+  @include sm {
+    content: "Small";
+  }
+
+  @include md {
+    content: "Medium";
+  }
+
+  @include xm {
+    content: "XMedium";
+  }
+
+  @include lg {
+    content: "Large";
+  }
+
+  @include xl {
+    content: "Xlarge";
+  }
+
+  @include xxl {
+    content: "XXlarge";
+  }
+}

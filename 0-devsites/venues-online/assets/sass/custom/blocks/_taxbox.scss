@@ -1,0 +1,19 @@
+.tax-box{
+	background: lighten($lightest-gray, 12%);
+	border-top: 1px solid $lightest-gray;
+	border-bottom: 1px solid $lightest-gray;
+	margin-bottom: 1em;
+	padding: 1em 2em 2em;
+	.heading{
+		color: $light-blue;
+	}
+	ul{
+		columns: 3;
+		-webkit-columns: 3;
+		-moz-columns: 3;
+		margin-top: 0.5em;
+		li{
+			line-height: 2rem;
+		}
+	}
+}

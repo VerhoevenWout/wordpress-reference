@@ -1,0 +1,60 @@
+.selected-fiche{
+	padding-bottom: 5em;
+	.top{
+		padding: 1em 0;
+		.heading{
+			padding: 0 0 0.5em 0;
+		}
+		.tax-container{
+			border-bottom: 1px solid $lightest-gray;
+			color: $light-gray;
+		    padding: 0 0 .8em 0;
+		    margin: 0 0 0.7em;
+		    .icon-container{
+		    	padding-right: 3em;
+		    }
+		}
+		.icon{
+			color: $green;
+			padding-right: .5em;
+		}
+	}
+	.sub-description{
+		h3{
+			@extend .heading;
+		}
+		p{
+			margin-bottom: 1em;
+			line-height: 1.6;
+		}
+	}
+	td{
+		padding: .2em;
+	}
+	.tax-box-container{
+		margin: 5em 0;
+		ul{
+			color: $gray;
+		}
+	}
+	.button-container{
+		margin-top: 1em;
+		.btn{
+			margin: .3em 0;
+		}
+		.requested-offer{
+			display: block;
+			max-width: 230px;
+		}
+	}
+	.sidebar{
+		@include md{
+		    transform: translateY(-110px);
+		}
+	    @include xl{
+	    	.heading, .sub-heading{
+			    width: 280px;
+	    	}
+	    }
+	}
+}

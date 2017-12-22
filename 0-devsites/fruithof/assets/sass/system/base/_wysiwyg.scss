@@ -1,0 +1,102 @@
+/* -------------------------------------------------------------------------
+ WYSIWYG
+---------------------------------------------------------------------------- */
+
+@mixin wysiwyg {
+
+  .wysiwyg {
+    max-width: $wysiwyg-max-width;
+
+    ul,
+    ol,
+    table {
+      color: $wysiwyg-font-color;
+      font-size: $wysiwyg-font-size;
+      line-height: $wysiwyg-lineheight;
+
+      ol,
+      ul {
+        margin: $wysiwyg-list-in-list-margin;
+      }
+    }
+
+    ul,
+    ol {
+      margin: $wysiwyg-list-margin;
+      padding-left: $wysiwyg-list-padding-left;
+    }
+
+    ul li{
+      list-style-type: $wysiwyg-ul-list-style-type;
+    }
+
+    ol li{
+      list-style-type: $wysiwyg-ol-list-style-type;
+    }
+
+    blockquote {
+      padding: $wysiwyg-blockquote-padding;
+      background-color: $wysiwyg-blockquote-background-color;
+      margin: $wysiwyg-blockquote-margin;
+      color: $wysiwyg-blockquote-color;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin: $wysiwyg-table-margin;
+      padding-left: $wysiwyg-table-padding-left;
+    }
+
+    td {
+      border: $wysiwyg-table-border-width solid $wysiwyg-table-border-color;
+      padding: $wysiwyg-td-padding;
+      vertical-align: $wysiwyg-td-vertical-align;
+    }
+
+    img { 
+      margin: $wysiwyg-image-margin;
+      width: $wysiwyg-image-width;
+    }
+
+    p {
+      margin: $wysiwyg-paragraph-margin;
+      line-height: $wysiwyg-lineheight;
+    }
+
+    b,
+    strong {
+      font-weight: $global-weight-bold;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    date {
+      font-weight: $global-weight-bold;
+      letter-spacing: $global-letterspacing;
+      font-size: 1.1em;
+    }
+
+    .btn {
+      margin-right: 3em;
+      text-decoration: none;
+      
+      &.btn-secretariaat,
+      &.btn-vanwacht {
+        background-color: $white !important;
+        color: $shade1 !important;
+        padding: 0;
+        padding: .5em 0;
+        font-size: 1.8rem;
+        line-height: 1.25;
+        font-weight: 700;
+
+        &:hover {
+          color: $shade1;
+        }
+      }
+    }
+   
+  }
+}

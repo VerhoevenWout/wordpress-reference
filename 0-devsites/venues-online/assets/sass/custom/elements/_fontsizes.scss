@@ -1,0 +1,190 @@
+.page{
+	h3{
+		font-size: 1.6rem;
+		@include xmd{
+			font-size: 2rem;
+		}
+	}
+	p{
+		font-size: 1.6rem;
+	}
+	a{
+		font-size: 1.6rem;
+	}
+}
+li{
+	font-size: 1.6rem;
+}
+.page-content{
+	.heading{
+		font-size: 5rem;
+	}
+}
+.sidebar{
+	a{
+		font-size: 1.6rem;
+		i{
+			font-size: 2rem;
+		}
+	}
+	.view-link{
+		font-size: 1.4rem;
+	}
+	.heading{
+		font-size: 3rem;
+	}
+	h4{
+		font-size: 1.6rem;
+	}
+	.address, .phonenumber{
+		font-size: 1.6rem;
+	}
+}
+
+.btn{
+	font-size: 1.8rem;
+	.myFavourites{
+		font-size: 2.2rem;
+	}
+}
+nav{
+	font-size: 2.4rem;
+	a{
+		font-size: 2.4rem!important;
+		@include xmd{
+			font-size: 1.8rem!important;
+		}
+	}
+	@include xmd{
+		font-size: 1.8rem;
+	}
+}
+a.myFavourites{
+	font-size: 1.8rem;
+}
+.lang-select, .lang-select li{
+	font-size: 2.4rem;
+}
+
+.top-banner{
+	.heading, .sub-heading{
+		font-size: 3.2rem;
+	}
+}
+.heading{
+	font-size: 2.2rem;
+}
+.sub-heading{
+	font-size: 1.6rem;
+	@include xmd{
+		font-size: 1.5rem;
+	}
+}
+input, select, button, a.popup-button{
+	font-size: 1.8rem;
+	@include xmd{
+		font-size: 1.8rem;
+	}
+}
+footer{
+    font-size: 1.4rem;
+}
+
+.search-container{
+	font-size: 2.2rem;
+	.select-container .openSearchDropdown{
+		font-size: 1.8rem;
+	}
+}
+.fiche, .selected-fiche{
+	.title{
+		font-size: 1.8rem;
+	}
+	.city, .description, .tax-container{
+		font-size: 1.4rem;
+	}
+	.top .heading{
+		font-size: 3.5rem;
+	}
+}
+.view-link{
+	font-size: 1.6rem;
+}
+.selected-fiche{
+	.description p{
+		font-size: 1.6rem;
+	}
+	.sub-description{
+		table{
+		    font-size: 2.2em;
+		}
+		.odd{
+			background: $lightest-gray;
+		}
+	}
+}
+.select-container{
+	ul, .dropdownButton{
+		font-size: 1.8rem;
+	}
+}
+
+.login{
+	font-size: 1.6rem;
+}
+
+.no-venues-message{
+	font-size: 2.2rem;
+}
+.cookies-message{
+	.primary{
+		font-size: 2rem;
+	}
+	.learn-more{
+		font-size: 2.2em;
+	}
+}
+
+.seoblock-text{
+    .seo-text-lead{
+		font-size: 2.8rem;
+    }
+    .seo-text-sublead{
+		font-size: 1.8rem;
+    }
+    .seo-text-paragraph{
+		font-size: 1.4rem;
+    }
+}
+
+.tag{
+	font-size: 2rem;
+}
+a.showparams{
+	font-size: 1.8rem;
+	.fa{
+		font-size: 1.8rem;
+	}
+}
+
+.venuecount{
+	font-size: 1.6rem;
+}
+
+.bottom-part{
+	.btn{
+		font-size: 2rem;
+	}
+}
+
+
+.page .new-seo-block-home{
+	h3{
+		font-size: 2.2rem;
+	}
+	ul li a{
+		font-size: 1.8rem;
+	}
+}
+
+

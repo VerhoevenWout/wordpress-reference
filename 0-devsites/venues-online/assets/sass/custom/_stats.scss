@@ -1,0 +1,285 @@
+.login{
+	padding: 0 1.5rem;
+	margin:auto;
+
+	input[type=text],input[type=password]{
+		border: 1px solid $lightest-gray;
+		margin: 0 0 1em 0;
+	}
+	input[type=submit]{
+		max-width: auto!important;
+	}
+	input[type=checkbox]{
+		// width: auto;
+		// height: auto;
+	    margin: 0 1em 0 0;
+		display: inline-block;
+	}
+
+	.content{
+		margin: 4em auto 0;
+		padding: 0;
+	}
+	.whitespace{
+		display: none;
+		@include sm{
+			display: block;
+		}
+	}
+
+}
+
+.login .btn.primary{
+	display: block;
+	margin: 1em auto 0;
+	float: right;
+}
+
+.login form .input, .login input[type=text]{
+
+}
+
+.login .message,
+.login #login_error,
+.interim-login #login_error, .interim-login.login .message {
+
+}
+
+.page-template-tpl_stats {
+	h1{
+		font-size: 2.8rem;
+		padding: 0 1.5rem;
+		@include xmd{
+			padding: 0;
+		}
+	}
+	.stats{
+		section:first-of-type{
+	    	padding: 0 1.5rem;
+		}
+	}
+	#loginform {
+		margin-top: 4rem;
+
+		#wp-submit {
+
+		}
+
+		.row.login-submit {
+			margin: 0;
+			display: flex;
+		}
+	}
+
+	.stats-loading {
+		h3, a {
+			display: none !important;
+		}
+
+		background: url('../img/cms/loading.gif') no-repeat;
+		background-position: center center;
+	}
+
+	.button-container{
+		margin: 3em 0;
+		.primary, .secondary{
+			width: 100%;
+			display: block;
+			text-align: center;
+			margin: 1em 0;
+			@include xmd{
+				width: 170px;
+			    display: inline-block;
+			}
+		}
+		.secondary{
+			color: $darkest-blue;
+		}
+	}
+
+	label{
+		font-size: 2.2rem;
+	}
+	small{
+		font-size: 1.8rem;
+	}
+
+	section {
+		.row {
+			.stats-period {
+				order: 2;
+			}
+
+			.stats-title {
+				order: 1;
+			}
+
+			img{
+				object-fit: cover;
+				width: 100%;
+				height: 300px;
+			}
+
+			div.period {
+				display: flex;
+				flex-wrap: wrap;
+				flex-direction: row;
+				margin-bottom: .5em;
+				align-items: flex-end;
+				flex-direction: column;
+
+				.period-from,
+				.period-to {
+					width: 100%;
+					flex-direction: row;
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					align-items: center;
+
+					.period-option {
+						width: 30%;
+
+						@include sm {						
+							width: 21%;
+							margin: .5em 2%;
+						}
+
+						sm {
+							display: block;
+							margin: .5em 0 -0.3em;
+							font-size: .7em;
+
+							@include sm {
+								text-align: center;
+							}
+						}
+					}
+
+					select {
+						font-size: 1.4rem;
+						padding: .3em .3em;
+						margin: 0.5em 0 0;
+					}
+
+					label {
+						margin-top: 1em;
+						display: block;
+						width: 100%;
+
+						@include sm {
+							width: 5rem;
+							text-align: right;
+							margin-top: 1.5em;
+						}
+					}
+				}
+
+				button {
+					margin: 10px 0;
+					width: 100%;
+
+					@include sm {
+						display: block;
+						margin: .5em 2% .5em 0%;
+						width: 48%;
+					}
+				}
+
+				
+			}
+
+			&.featured {
+				min-height: auto;
+				background: lighten($lightest-gray, 5%);
+				// border-top: 1px solid $lightest-gray;
+				&:nth-child(even) {
+					background: lighten($lightest-gray, 10%);
+				}
+
+				// &:after {
+				// 	content: "";
+				// 	display: block;
+				// 	width: 50%;
+				// 	height: 1px;
+				// 	background: $light-gray;
+				// 	margin: 0 auto;
+				// }
+			}
+
+			.graph h3, .companies h3 {
+				padding: 0 1.5rem;
+				@include xmd{
+					padding: 0;
+				}
+				display: inline-block;
+				color: $dark-blue;
+			}
+
+			.graph, .companies {
+				position: relative;
+				padding: 1.5em 0;
+			}
+
+			a.download {
+				margin-left: 7px;
+
+				color: $lightest-gray;
+
+				&:hover {
+					color: $light-blue;
+				}
+			}
+
+			a.previous, a.next {
+				font-size: 3rem;
+				position: absolute;
+				top: 50%;
+				z-index: 9;
+				color: $light-gray;
+
+				&:hover {
+					color: $green;
+				}
+			}
+
+			a.next {
+				right: 1rem;
+			}
+
+			a.previous {
+				left: 1rem;
+			}
+
+			.companies {
+				// float: right;
+				display: none;
+				@include xmd{
+					display: block;
+				}
+
+				.table {
+					height: 31rem;
+					overflow-y: scroll;
+					border-left: Solid 1px $light-gray;
+					padding-left: 1.2rem;
+
+					.table-row {
+
+
+
+						.table-cell {
+							font-size: 1.4rem;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	.heading{
+		text-align: left;
+		color: $dark-blue;
+	}
+
+}

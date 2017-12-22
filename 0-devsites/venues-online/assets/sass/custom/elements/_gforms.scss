@@ -1,0 +1,73 @@
+.gform_body{
+	width: 100%!important;
+	@include md{
+		width: calc(100% + 16px)!important;
+	}
+	.medium{
+		width: 100%!important;
+	}
+	input, textarea{
+		border: 1px solid $lightest-gray;
+	}
+	input[type=checkbox]{
+		display: inline-block;
+		margin: 0 1em 0 0;
+	}
+
+	.ginput_container_checkbox{
+		margin: 0;
+	}
+
+	.no-label{
+		.gfield_label{
+			display: none!important;
+		}
+	}
+
+	.gfield_visibility_visible{
+		margin: 1em 0;
+	}
+}
+.gform_footer{
+	input[type='submit']{
+		padding: .2em .7em!important;
+		text-align: center!important;
+		font-size: 1.8rem!important;
+	   	background: $dark-blue;
+	   	color: $white;
+
+		@include hover($green);
+		max-width: 170px!important;
+		@include xmd{
+			display: inline-block;
+		}
+	}
+}
+
+.validation_message, .validation_error{
+	color: $green!important;
+    border: none!important;
+}
+
+.gfield_visibility_hidden{
+	display: none;
+}
+
+.gform_wrapper{
+	margin: 0!important;
+	label.gfield_label{
+		font-weight: 300!important;
+	}
+}
+
+html body div#ui-datepicker-div[style]{
+	z-index: 9999999999!important;
+}
+
+.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file]){
+	line-height: 0!important;
+}
+
+.ui-datepicker{
+	margin: 0!important;
+}

@@ -1,0 +1,166 @@
+.btn{
+	padding: .2em .7em;
+	text-align: center;
+	display: inline-block;
+}
+.primary{
+	font-size: 1.8rem;
+   	background: $dark-blue;
+   	color: $white;
+   	padding: 0;
+	@include hover($green);
+	.icon-arrow-right, .icon-arrow-left{
+		font-size: 1.12rem;
+		color: $green;
+		display: inline-block;
+		@include transition(.2s);
+	}
+	.icon-arrow-right{
+		padding-left: .5em
+	}
+	.icon-arrow-left{
+		padding-right: .5em;
+	}
+	&:hover > .icon-arrow-right{
+		transform: translateX(.3em);
+	}
+	&:hover > .icon-arrow-left{
+		transform: translateX(-.3em);
+	}
+}
+
+.button-container{
+	margin-top: auto;
+	.favourite{
+		display: block;
+		
+		padding: .2em .7em .2em .5em;
+		color: $light-gray;
+		border: 1px solid $light-gray;
+		margin: 0 1em 0 0;
+		max-width: 150px;
+		@include transition(.2s);
+    	&:hover{
+    		color: $darkest-blue;
+			border: 1px solid $darkest-blue;
+    	}
+    	&:hover > span{
+    		@include animation('shake');
+    	}
+		.icon-favourite{
+			vertical-align: middle;
+    		display: inline-block;
+    		padding: 0px .3em;
+    		color: $light-blue;
+			@include transition(.2s);
+		}
+	}
+	.request-offer{
+		padding: .2em 0.9em .4em 1.1em;
+		background: $light-blue;
+		color: $white;
+		.icon-arrow-right, .icon-arrow-left{
+			font-size: 1.12rem;
+			color: $green;
+			display: inline-block;
+			@include transition(.2s);
+		}
+		.icon-arrow-right{
+			padding-left: .5em
+		}
+		.icon-arrow-left{
+			padding-right: .5em;
+		}
+		&:hover > .icon-arrow-right{
+			transform: translateX(5px);
+		}
+		&:hover > .icon-arrow-left{
+			transform: translateX(-5px);
+		}
+	}
+}
+
+
+.clear-selection{
+	// position: absolute;
+    // bottom: 0;
+    // right: 0;
+    padding: 0 1.5rem;
+
+    background: none;
+    color: $darkest-blue;
+    line-height: 80px;
+    z-index: 999;
+
+	@include xmd{
+		position: relative;
+	    padding: 0;
+		float: right;
+
+	}
+}
+.dropdownButton{
+	margin-top: 1em;
+}
+.closeDropdown{
+	float: left;
+	color: $light-gray;
+	&:focus, &:hover{
+		color: $light-gray;
+	}
+}
+.submitDropdown{
+	float: right;
+	color: $light-blue;
+	&:focus, &:hover{
+		color: $light-blue;
+	}
+}
+
+.myFavourites{
+	background: $light-blue;
+	color: $white;
+	margin: auto;
+	@include xmd{
+
+	}
+	&:hover > span{
+		@include animation('shake');
+	}
+	span{
+		vertical-align: middle;
+		display: inline-block;
+		padding: 0px .3em;
+		color: $green;
+	}
+}
+
+.showparams{
+	color: $white;
+	float: right;
+	padding: 1em 1.5rem;
+	height: 70px;
+	@include mobile{
+		display: block;
+		width: 100%;
+	}
+	&:focus, &:hover{
+		color: $white;
+	}
+	@include xmd{
+		display: none;
+	}
+	.fa-sliders{
+		margin-top: .5em;
+		@include mobile{
+			padding: 0;
+		}
+	}
+	span{
+	    line-height: 35px;
+	    padding: 0 1em 0 0;
+		@include mobile{
+			color: $darkest-blue;
+		}
+	}
+}

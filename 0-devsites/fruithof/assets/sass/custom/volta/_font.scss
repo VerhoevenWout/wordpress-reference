@@ -1,0 +1,150 @@
+@font-face {
+  font-family: "fruithoffont";
+  src: url('../fonts/fruithoffont.eot');
+  src: url('../fonts/fruithoffont.eot?#iefix') format('eot'),
+    url('../fonts/fruithoffont.ttf') format('truetype'),
+    url('../fonts/fruithoffont.svg#fruithoffont') format('svg');
+}
+
+@mixin icon-styles {
+  font-family: "fruithoffont";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+  // speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+  text-decoration: none;
+  text-transform: none;
+}
+
+%icon {
+  @include icon-styles;
+}
+
+@function icon-char($filename) {
+  $char: "";
+
+  @if $filename == arrow-down {
+    $char: "\E001";
+  }
+  @if $filename == arrow-left {
+    $char: "\E002";
+  }
+  @if $filename == arrow-right {
+    $char: "\E003";
+  }
+  @if $filename == arrow-up {
+    $char: "\E004";
+  }
+  @if $filename == chairs {
+    $char: "\E005";
+  }
+  @if $filename == close {
+    $char: "\E006";
+  }
+  @if $filename == doc-download {
+    $char: "\E007";
+  }
+  @if $filename == doc-link {
+    $char: "\E008";
+  }
+  @if $filename == doc-text {
+    $char: "\E009";
+  }
+  @if $filename == document {
+    $char: "\E00A";
+  }
+  @if $filename == download {
+    $char: "\E00B";
+  }
+  @if $filename == edit {
+    $char: "\E00C";
+  }
+  @if $filename == info {
+    $char: "\E00D";
+  }
+  @if $filename == link {
+    $char: "\E00E";
+  }
+  @if $filename == menu {
+    $char: "\E00F";
+  }
+  @if $filename == plus {
+    $char: "\E010";
+  }
+  @if $filename == search {
+    $char: "\E011";
+  }
+  @if $filename == star {
+    $char: "\E012";
+  }
+
+  @return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+  &:#{$insert} {
+    @if $extend {
+      @extend %icon;
+    } @else {
+      @include icon-styles;
+    }
+    content: icon-char($filename);
+  }
+}
+
+.icon-arrow-down {
+  @include icon(arrow-down);
+}
+.icon-arrow-left {
+  @include icon(arrow-left);
+}
+.icon-arrow-right {
+  @include icon(arrow-right);
+}
+.icon-arrow-up {
+  @include icon(arrow-up);
+}
+.icon-chairs {
+  @include icon(chairs);
+}
+.icon-close {
+  @include icon(close);
+}
+.icon-doc-download {
+  @include icon(doc-download);
+}
+.icon-doc-link {
+  @include icon(doc-link);
+}
+.icon-doc-text {
+  @include icon(doc-text);
+}
+.icon-document {
+  @include icon(document);
+}
+.icon-download {
+  @include icon(download);
+}
+.icon-edit {
+  @include icon(edit);
+}
+.icon-info {
+  @include icon(info);
+}
+.icon-link {
+  @include icon(link);
+}
+.icon-menu {
+  @include icon(menu);
+}
+.icon-plus {
+  @include icon(plus);
+}
+.icon-search {
+  @include icon(search);
+}
+.icon-star {
+  @include icon(star);
+}

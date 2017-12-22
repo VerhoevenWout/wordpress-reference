@@ -1,0 +1,116 @@
+
+//Any vue js file
+nextNL(citiesNL, index){
+	if (index < citiesNL.length) {
+		var cityNL = citiesNL[index];
+		console.log(cityNL);
+		var lat = null;
+		var lng = null;
+		this.$http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+cityNL+'&key=AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto').then(response => {
+			var data = response.body;
+			lat = data.results[0].geometry.location.lat;
+			lng = data.results[0].geometry.location.lng;
+			
+			var formData = new FormData();
+			formData.append('action', 'fillZipcodes');
+			formData.append('city', cityNL);
+			formData.append('lat', lat);
+			formData.append('lng', lng);
+			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
+				index++;
+				this.nextNL(citiesNL, index);
+			});
+		});
+		
+	}
+},
+nextFR(citiesFR, index){
+	if (index < citiesFR.length) {
+		var cityFR = citiesFR[index];
+		var lat = null;
+		var lng = null;
+		this.$http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+cityFR+'&key=AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto').then(response => {
+			var data = response.body;
+			lat = data.results[0].geometry.location.lat;
+			lng = data.results[0].geometry.location.lng;
+			
+			var formData = new FormData();
+			formData.append('action', 'fillZipcodes');
+			formData.append('city', cityFR);
+			formData.append('lat', lat);
+			formData.append('lng', lng);
+			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
+				index++;
+				this.nextFR(citiesFR, index);
+			});
+		});
+	}
+},
+nextEN(citiesEN, index){
+	if (index < citiesEN.length) {
+		var cityEN = citiesEN[index];
+		var lat = null;
+		var lng = null;
+		this.$http.get('https://maps.googleapis.com/maps/api/geocode/json?address='+cityEN+'&key=AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto').then(response => {
+			var data = response.body;
+			lat = data.results[0].geometry.location.lat;
+			lng = data.results[0].geometry.location.lng;
+			
+			var formData = new FormData();
+			formData.append('action', 'fillZipcodes');
+			formData.append('city', cityEN);
+			formData.append('lat', lat);
+			formData.append('lng', lng);
+			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
+				index++;
+				this.nextEN(citiesEN, index);
+			});
+		});
+	}
+},
+fillZipCodes(){
+	var citiesNL = ["Antwerpen", "Gent", "Charleroi", "Luik", "Brussel", "Brugge", "Namen", "Leuven", "Bergen", "Mechelen", "Aalst", "La", "Hasselt", "Kortrijk", "Sint", "Oostende", "Doornik", "Genk", "Seraing", "Roeselare", "Moeskroen", "Verviers", "Dendermonde", "Beringen", "Turnhout", "Vilvoorde", "Lokeren", "Sint-Truiden", "Herstal", "Geel", "Ninove", "Halle", "Waregem", "Châtelet", "Ieper", "Lier", "Lommel", "Waver", "Tienen", "Binche", "Geraardsbergen", "Menen", "Bilzen", "Ottignies", "Tongeren", "Oudenaarde", "Deinze", "Aarschot", "Aarlen", "Aat", "Herentals", "Izegem", "Nijvel", "Harelbeke", "Zinnik", "Andenne", "Zottegem", "Ronse", "Mortsel", "Maaseik", "Gembloers", "Diest", "Saint", "Fleurus", "Scherpenheuvel", "'s-Gravenbrakel", "Hoei", "Hoogstraten", "Eeklo", "Torhout"];
+	var citiesFR = ["Anvers","Gand","Charleroi","Liege","Bruxelles","Bruges","Namur","Louvain","Mons","Malines","Alost","La","Courtrai","Hasselt","Saint-Nicolas","Ostende","Tournai","Genk","Seraing","Roulers","Verviers","Mouscron","Termonde","Beringen","Turnhout","Vilvorde","Saint-Trond","Lokeren","Herstal","Geel","Ninove","Hal","Waregem","Chatelet","Ypres","Lierre","Lommel","Wavre","Tirlemont","Menin","Binche","Grammont","Bilzen","Ottignies-Louvain-La-Neuve","Tongres","Audenarde","Deinze","Aarschot","Ath","Arlon","Herentals","Izegem","Harelbeke","Nivelles","Soignies","Andenne","Renaix","Zottegem","Mortsel","Maaseik","Gembloux","Tubize","Diest","Saint-Ghislain","Fleurus","Montaigu-Zichem","Braine-le-Comte","Huy","Eeklo","Hoogstraten","Torhout"];
+	var citiesEN = ["Antwerp","Ghent","Charleroi","Liège","Brussel","Bruges","Namur","Mons","Leuven","Mechelen","Aalst","La","Kortrijk","Hasselt","Sint-Niklaas","Ostend","Tournai","Genk","Seraing","Roeselare","Verviers","Mouscron","Dendermonde","Beringen","Turnhout","Sint-Truiden","Lokeren","Vilvoorde","Waregem","Ninove","Châtelet","Geel","Ypres","Halle","Lier","Menen","Binche","Wavre","Lommel","Tienen","Geraardsbergen","Bilzen","Tongeren","Ottignies-Louvain-La-Neuve","Oudenaarde","Deinze","Aarschot","Ath","Izegem","Arlon","Harelbeke","Herentals","Soignies","Zottegem","Mortsel","Andenne","Nivelles","Ronse","Maaseik","Diest","Saint-Ghislain","Fleurus","Scherpenheuvel-Zichem","Gembloux","Braine-le-Comte","Huy","Poperinge","Eeklo","Torhout"];
+
+	var index = 0;
+	this.nextNL(citiesNL, index);
+	var index = 0;
+	this.nextFR(citiesFR, index);
+	var index = 0;
+	this.nextEN(citiesEN, index);
+},
+
+
+//Ajax.php
+function ajax_getZipcodes(){
+	$city = $_POST['city'];
+
+	global $wpdb;
+	$sql = "
+	    SELECT * FROM wp_zipcodes WHERE city = '".$city."'
+	";
+    $result = $wpdb->get_results($sql);
+	wp_send_json($result);
+}
+add_action( 'wp_ajax_getZipcodes', 'ajax_getZipcodes' );
+add_action( 'wp_ajax_nopriv_getZipcodes', 'ajax_getZipcodes' );
+
+
+function ajax_fillZipcodes(){
+	$zip = $_POST['zip'];
+	$city = $_POST['city'];
+	$lat = $_POST['lat'];
+	$lng = $_POST['lng'];
+
+	global $wpdb;
+
+	$sqlinsert = "
+	    INSERT INTO wp_zipcodes (city, lat, lng ) 
+		values ('".$city."','".$lat."','".$lng."')
+	";
+	error_log($sqlinsert);
+    $result = $wpdb->query($sqlinsert);
+}
+add_action( 'wp_ajax_fillZipcodes', 'ajax_fillZipcodes' );
+add_action( 'wp_ajax_nopriv_fillZipcodes', 'ajax_fillZipcodes' );

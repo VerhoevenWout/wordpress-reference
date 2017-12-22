@@ -1,0 +1,49 @@
+.top-banner-background{
+	background: linear-gradient(to bottom,rgba(255,255,255,0) 20%,rgba(0, 9, 56, 0.78));
+	background-size: cover;
+    background-position-y: 100%;
+
+	position: absolute;
+	top: 0;
+	z-index: -1;
+	width: 100%;
+	height: 390px;
+	@include md{
+		height: 375px;
+	}
+	@include xmd{
+		height: 565px;
+	}
+	object-fit: cover;
+
+	img{
+		object-fit: cover;
+	}
+}
+.top-banner{
+    position: relative;
+    z-index: 9999;
+	height: 220px;
+    @include transition(.2s);
+	@include sm{
+		height: 385px - 75px;
+	}
+	@include md{
+		height: 375px - 75px;
+	}
+	@include xmd{
+		height: 545px - 75px;
+	}
+	padding: 0 3em;
+	@include xmd{
+	}
+	.heading{
+    	display: none;
+    	@include xmd{
+    		display: block;
+			top: 6em;
+			color: $white;
+		}
+	}
+}
+

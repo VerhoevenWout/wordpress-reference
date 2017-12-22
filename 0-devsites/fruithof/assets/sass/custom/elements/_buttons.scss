@@ -1,0 +1,113 @@
+.btn {
+	background-color: $shade1;
+	color: $white;	
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.1;
+	text-decoration: none;
+	padding: .5em 1.5em;
+	display: inline-block;
+	text-decoration: none;
+
+	&:hover {
+		color: $white;
+	}
+
+	&.btn-revert {
+		background-color: $white !important;
+		color: $shade1 !important;		
+		padding: 0;
+		padding: .5em 0;
+		line-height: 1.25;
+		font-weight: 700;
+
+		&:hover {
+			color: $shade1;
+		}
+	}
+
+	&.btn-green {
+		background-color: green !important;	
+	}
+
+	&.btn-boekonline {
+
+		i.icon-chairs {
+			font-size: 2em;
+			float: left;
+			padding: 5px 0 0;
+    		line-height: 1;
+		}
+
+		span {
+			float: left;
+			padding-left: 10px;
+			margin-top: 1px;
+			display: block;
+
+			small {
+
+			}
+
+			strong {
+				font-size: 1.3em;
+				font-weight: 800;
+				display: block;
+			}
+		}
+
+			
+	}
+
+	&.btn-secretariaat,
+	&.btn-vanwacht {
+
+		strong {
+			font-size: 1.2em;
+			font-weight: 800;
+			display: block;
+		}
+
+		small {
+			font-size: .8em;
+			font-weight: 400;
+			display: block;
+		}
+	}
+
+	&.btn-download {
+		text-transform: uppercase;
+		font-weight: 700;
+		padding: 1em 2em;
+		letter-spacing: 1px;
+		margin: 1em 0;
+
+		.icon-download {
+			padding-right: 1em;
+		}
+	}
+}
+
+.print-btns {
+	display: flex;
+	float: right;
+
+	div {
+		padding-left:1rem;
+
+		.btn {
+			width: 17rem;
+		}
+
+		small {
+			display: block;
+			padding: .5rem 0;
+		}
+	}
+
+	&.print-btns-top {
+		position: relative;
+		top: -6rem;
+		margin-bottom: -4rem;
+	}
+}

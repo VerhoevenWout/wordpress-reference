@@ -1,0 +1,63 @@
+.loading-overlay{
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background: white;
+	z-index: 99999999;
+
+	opacity: 1;
+	transition: all .3s;
+	.loading{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 3em;
+  		width: 3em;
+		margin: auto;
+    	animation: rotate 3s cubic-bezier(.36,.07,.19,.97) infinite;
+
+    	border: 1px solid rgba(0, 0, 0, 0.2);
+		border-top-color: rgba(0, 0, 0, 0.7);
+		border-radius: 50%;
+	}
+	img{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		width: 100%;
+		max-width: 400px;
+		margin: auto;
+		padding: 5em;
+		-webkit-transform: translateY(-10em);
+		-ms-transform: translateY(-10em);
+		transform: translateY(-10em);
+	}
+}
+
+@keyframes rotate {
+	0%{
+	transform: rotate(0deg);
+	}
+	100%{
+	transform: rotate(2160deg);
+	}
+}
+
+.loading-overlay-hide{
+	opacity: 0;
+    @include selectDisable;
+}
+
+
+.page-template-tpl_stats{
+	.loading-overlay{
+		opacity: 0;
+	    @include selectDisable;
+	}
+}
