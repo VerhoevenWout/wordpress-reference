@@ -1,4 +1,5 @@
 Documents/code/sr2/srdb.cli.php -h localhost -n ID123339_ -u root -p root -s search -r replace
+Documents/code/sr2/srdb.cli.php -h localhost -n localicious -u root -p root -s localiciousbe.webhosting.be -r localicious.loc
 
 
 Documents/code/sr2/srdb.cli.php -h localhost -n venues-online -u root -p root -s venues-online.com -r venues-online.loc

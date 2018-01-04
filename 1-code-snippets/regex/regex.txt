@@ -1,0 +1,15 @@
+Remove http, https, and www: String(window.location.host).replace(/^(https?:\/\/)?(www\.)?/,'')
+
+Regex is really worth learning. Really.
+
+Explanation of regex:
+
+^ means at the start of the input (either line, or string depending on the m modifier). And $ means at the end.
+? means optional, or if used with * or + means least
+* means zero or more
++ means one or more
+. means any character, so if you want jut a dot, then use \. as it must be escaped.
+[a-z0-9_] means any a to z, 0 to 9, and a underscore character.
+[^a-z] means anything that is not a to z character.
+() surrounds a group
+$1 references the first group
