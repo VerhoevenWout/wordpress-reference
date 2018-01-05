@@ -325,7 +325,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 												</tr>
 												<tr>
 													<td align="left" valign="top">
-														<p style="font-size: 16px; line-height: 18px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
+														<p style="font-size: 16px; line-height: 16px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
 															Volgende offerte aanvraag is zonet ontvangen. Zie de bijlage voor meer details.
 														</p>
 													</td>
@@ -347,9 +347,9 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 				<tr>
 					<td align="center" class="container" valign="top" style="background-color: #ffffff;">
 						<table  class="full-width" style="margin: 0px auto; width: 600px; max-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
-							<tbody style="line-height: 18px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
+							<tbody style="line-height: 16px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
 								
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										ID:
 									</td>
@@ -357,7 +357,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										firstname:
 									</td>
@@ -365,7 +365,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										lastname:
 									</td>
@@ -373,7 +373,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										email:
 									</td>
@@ -381,7 +381,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										bedrijf:
 									</td>
@@ -389,7 +389,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										functie:
 									</td>
@@ -397,7 +397,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										telefoon:
 									</td>
@@ -405,7 +405,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										mobiel:
 									</td>
@@ -413,7 +413,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										adres:
 									</td>
@@ -421,7 +421,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										postcode:
 									</td>
@@ -429,7 +429,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										gemeente:
 									</td>
@@ -437,7 +437,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 										Lorem ipsum dolor sit amet
 									</td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										geslacht:
 									</td>
@@ -463,7 +463,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 				<tr>
 					<td align="center" class="container" valign="top" style="background-color: #ffffff;">
 						<table  class="full-width" style="margin: 0px auto; width: 600px; max-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
-							<tbody style="line-height: 18px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
+							<tbody style="line-height: 16px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
 								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										Artikelnummer
@@ -480,7 +480,7 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 									<td valign="top" height="20" style="line-height: 1px; margin: 0px auto;"></td>
 									<td valign="top" height="20" style="line-height: 1px; margin: 0px auto;"></td>
 								</tr>
-								<tr style="font-size: 18px;">
+								<tr style="font-size: 16px;">
 									<td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;">
 										12-1345-12
 									</td>
@@ -493,17 +493,17 @@ img{height: auto !important; line-height: 100%; outline: none; text-decoration: 
 								</tr>
 
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
-								<tr style="font-size: 18px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
+								<tr style="font-size: 16px;"> <td valign="top" style="margin: 0px auto; width: 150px; min-width: 150px;"> 12-1345-12 </td> <td valign="top" style="margin: 0px auto; width: 400px; min-width: 400px;"> Lorem ipsum dolor sit amet </td> <td valign="top" style="margin: 0px auto; width: 50px; min-width: 50px;">12</td> </tr>
 								<tr> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> <td valign="top" height="5" style="line-height: 1px; margin: 0px auto;"></td> </tr>
 								
 								<tr>
