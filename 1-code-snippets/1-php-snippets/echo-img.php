@@ -1,0 +1,1 @@
+<img class="popup-container-2-close" src="<?php echo get_bloginfo('template_url') ?>/dist/img/close-button.png" alt="close">

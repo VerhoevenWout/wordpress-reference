@@ -149,6 +149,40 @@ $body = $template;
 $headers = array('Content-Type: text/html; charset=UTF-8');
 wp_mail( $to, $subject, $body, $headers );
 
+// or
+
+$to = 'wout@volta.be';
+$subject = 'Offerteaanvraag';
+
+$mail_attachment = file_get_contents($uploadDir);
+$mail_attachment = base64_encode($mail_attachment);
+
+require_once('lib/Mandrill.php');
+$mandrill = new \Mandrill('SbRlFIIAlLZ4Lm8nBwlSyA');
+$template_name = 'Muller-NV';
+$template_content = array(
+    array(
+        'name' => 'main',
+        'content' => $template
+    )
+);
+$params = array(
+    "from_email" => 'web@volta.be',
+    "from_name" => 'Muller-NV',
+    "subject" => $subject,
+    "to" => array(array('email' => $to)),
+    "track_opens" => false,
+    "track_clicks" => false,
+    "auto_text" => false,
+    "attachments" => array(
+        array(
+            'content' => $mail_attachment,
+            'type' => 'application/vnd-xls',
+            'name' => $uploadName,
+        )
+    )
+);
+$mandrill->messages->sendTemplate($template_name, $template_content, $params, true);
 ?>
 
 

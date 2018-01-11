@@ -1,4 +1,14 @@
-Sublime text make paste and indent default
+[
+	{ "keys": ["super+v"], "command": "paste_and_indent" },
+	{ "keys": ["super+shift+v"], "command": "paste" },
 
-{ "keys": ["super+v"], "command": "paste_and_indent" },
-{ "keys": ["super+shift+v"], "command": "paste" }
+	{ "keys": ["super+shift+l"],
+      "command": "insert_snippet",
+      "args": {
+        "contents": "console.log('%c' + '${1:}$SELECTION', 'color: blue; font-size: 18px;');${0}"
+      }, "context":
+      [
+        { "key": "selector", "operator": "equal", "operand": "source.js", "match_all": true }
+      ]
+    },
+]
