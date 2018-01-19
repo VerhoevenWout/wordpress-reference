@@ -5,8 +5,8 @@
 		<div class="col-md-12">
 			<?php
 			$args = array('order' => 'DESC', 'posts_per_page'=>-1);
-			$postslist = get_posts($args);
-			$i = 0;foreach ($postslist as $post): setup_postdata($post); ?>
+			$postslist = get_posts($args); $i = 0;
+			foreach ($postslist as $post): setup_postdata($post); ?>
 				<?php if($i % 2 === 0): ?>
 					<!-- even projects -->
 					<?php get_template_part( 'partials/loop-content' ); ?>

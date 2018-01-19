@@ -17,4 +17,21 @@ getUrlParameter(name) {
     var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
     var results = regex.exec(location.search);
     return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+
+    // REMOVE TRAILING SLASH
+    // results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    // results = results[1].replace(/\/$/, "");
+    // return results;
+},
+
+getUrlParameter: function(name) {
+    name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+    var results = regex.exec(location.search);
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+
+    // REMOVE TRAILING SLASH
+    // results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    // results = results[1].replace(/\/$/, "");
+    // return results;
 },

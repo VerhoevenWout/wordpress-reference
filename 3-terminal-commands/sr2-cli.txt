@@ -7,7 +7,7 @@ Documents/code/sr2/srdb.cli.php -h localhost -n venues-online -u root -p root -s
 
 
 Documents/code/sr2/srdb.cli.php -h localhost -n venues-online-live -u root -p root -s https://venues.lancering.be -r //venues.lancering.be
-
+Documents/code/sr2/srdb.cli.php -h localhost -n muller -u root -p root -s http://muller.loc -r https://muller.loc
 
 
 

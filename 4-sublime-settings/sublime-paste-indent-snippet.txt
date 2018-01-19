@@ -1,14 +1,23 @@
 [
-	{ "keys": ["super+v"], "command": "paste_and_indent" },
-	{ "keys": ["super+shift+v"], "command": "paste" },
+  { "keys": ["super+v"], "command": "paste_and_indent" },
+  { "keys": ["super+shift+v"], "command": "paste" },
 
-	{ "keys": ["super+shift+l"],
-      "command": "insert_snippet",
-      "args": {
-        "contents": "console.log('%c' + '${1:}$SELECTION', 'color: blue; font-size: 18px;');${0}"
-      }, "context":
-      [
-        { "key": "selector", "operator": "equal", "operand": "source.js", "match_all": true }
-      ]
-    },
+  { "keys": ["super+shift+l"],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "console.log('%c' + '${1:}$SELECTION', 'color: white; font-size: 18px;');${0}"
+    }, "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.js", "match_all": true }
+    ]
+  },
+  { "keys": ["super+shift+l"],
+    "command": "insert_snippet",
+    "args": {
+      "contents": "echo '<pre>';\nvar_dump('${1:}$SELECTION');\n${0}echo '</pre>';"
+    }, "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "source.php", "match_all": true }
+    ]
+  },
 ]
