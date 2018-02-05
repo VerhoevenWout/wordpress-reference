@@ -4,8 +4,16 @@ function textfield_counter(){
     if ('page' != get_post_type()) {
         $element    = '#acf-field_5a61b9a1c1041';
         $str_limit  = 200;
+        $post_type  = 'nieuws';
+
+        global $current_screen;
+        if ($current_screen->post_type != $post_type) {
+            return;
+        }
+
         echo '
-            <script>jQuery(document).ready(function(){
+            <script>
+            jQuery(document).ready(function(){
                 jQuery("'.$element.'").after("<div style=\"position:absolute;top:-2em;right:0px;color:#666;\"><span>Excerpt length: </span><span id=\"textfield_counter\"></span><span style=\"padding-left:.5em;\">/ '.$str_limit.'</span><span><span style=\"padding-left:.5em;\">character(s).</span></span></div>");
                     jQuery("span#textfield_counter").text(jQuery("'.$element.'").val().length);
                     jQuery("'.$element.'").keyup( function() {
@@ -14,7 +22,8 @@ function textfield_counter(){
                         }
                     jQuery("span#textfield_counter").text(jQuery("'.$element.'").val().length);
                 });
-            });</script>
+            });
+            </script>
         ';
     }
 }

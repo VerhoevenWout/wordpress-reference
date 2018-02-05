@@ -1,0 +1,510 @@
+Registration message
+
+Thank you for your request for an account on our site. We will review your details and send you an email letting you know whether your application has been successful or not.
+
+Bedankt voor uw aanvraag voor een account op onze site. We zullen uw aanvraag zo spoedig mogelijk behandelen. U krijgt hiervan bericht per e-mail.
+
+Merci pour votre demande de compte sur notre site. Nous allons examiner vos détails et vous envoyer un mail pour vous informer de la suite donnée à votre demande.
+
+
+Account Deletion Custom Text
+
+Are you sure you want to delete your account? This will erase all of your account data from the site. To delete your account enter your password below
+
+Bent u zeker dat u uw account wil verwijderen? Al uw gegevens zullen dan verwijderd worden van {site_name}. Geef hieronder uw wachtwoord in om uw account te verwijderen.
+
+Êtes-vous sûr de vouloir supprimer votre compte? Cela effacera toutes les données de votre compte sur le site. Pour supprimer votre compte, entrez votre mot de passe ci-dessous
+
+
+New User Notification
+
+[{site_name}] New user account
+
+{display_name} has just created an account on {site_name}. To view their profile click here:
+
+{user_profile_link}
+
+Here is the submitted registration form:
+{submitted_registration}
+
+
+[{site_name}] Nieuwe account aanvraag
+
+{display_name} heeft zonet een aanvraag voor een account gedaan op {site_name}. Het profiel kunt u hier bekijken:
+
+{user_profile_link}
+
+Hier zijn de ingestuurde registratiegegevens:
+
+{submitted_registration}
+
+
+[{site_name}] Nouveau compte d'utilisateur
+
+{display_name} vient de créer un compte sur {site_name}. Pour voir leur profil, cliquez ici:
+
+{user_profile_link}
+
+Voici le formulaire d'inscription soumis:
+{submitted_registration}
+
+
+
+[{site_name}] New user awaiting review
+
+{display_name} has just applied for an account on {site_name} and is waiting to be reviewed.
+
+To review this member please click the following link:
+
+{user_profile_link}
+
+Here is the submitted registration form:
+
+{submitted_registration}
+
+
+[{site_name}] Nieuwe aanvraag in behandeling
+
+{display_name} heeft net een account aangevraagd en wacht op behandling.
+
+Klik op onderstaande link om de aanvraag te bekijken:
+
+{user_profile_link}
+
+De gegevens van de aanvraag:
+
+{submitted_registration}
+
+
+[{site_name}] Nouvel utilisateur en attente de vérification
+
+{display_name} vient de postuler pour un compte sur {site_name} et attend d'être revu.
+
+Pour voir ce membre, veuillez cliquer sur le lien suivant:
+
+{user_profile_link}
+
+Voici le formulaire d'inscription soumis:
+
+{submitted_registration}
+
+
+[{site_name}] Account deleted
+
+{display_name} has just deleted their {site_name} account.
+
+[{site_name}] Account verwijderd
+
+{display_name} heeft hun account verwijderd.
+
+[{site_name}] Compte supprimé
+
+{display_name} vient de supprimer son compte {site_name}.
+
+
+MAILS
+------------------------------------------------------------------------------------
+
+Account Welcome Email
+---------------------
+
+Welcome to {site_name}!
+
+Hi {display_name},
+
+Thank you for signing up with {site_name}! Your account is now active.
+
+To login please visit the following url:
+
+{login_url}
+
+Your account e-mail: {email}
+Your account username: {username}
+
+If you have any problems, please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Welkom bij {site_name}!
+
+Beste {display_name},
+
+Bedankt voor uw registratie op {site_name}! Uw account is nu actief.
+
+U kunt inloggen via deze  url:
+
+{login_url}
+
+Uw account e-mail: {email}
+Uw account gebruikersnaam: {username}
+
+Indien u problemen of vragen hebt, kan u ons contacteren via {admin_email}
+
+Alvast bedankt,
+Het Muller team
+{site_name}
+
+
+Bienvenue à {site_name}!
+
+Bonjour {display_name},
+
+Merci de vous être inscrit à {site_name}! Votre compte est maintenant actif.
+
+Pour vous connecter s'il vous plaît visitez l'adresse suivante:
+
+{login_url}
+
+Votre adresse e-mail de votre compte: {email}
+Nom d'utilisateur de votre compte: {nom d'utilisateur}
+
+Si vous avez des problèmes, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Account Activation Email
+---------------------
+
+Please activate your account
+
+Hi {display_name},
+
+Thank you for signing up with {site_name}! To activate your account, please click the link below to confirm your email address:
+
+{account_activation_link}
+
+If you have any problems, please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Gelieve uw account te activeren
+
+Beste {display_name},
+
+Bedankt voor uw registratie op {site_name}! Om uw account te activeren klikt u op de link hieronder om uw e-mail adres te bevestigen:
+
+{account_activation_link}
+
+Indien u problemen of vragen hebt, kan u ons contacteren via {admin_email}
+
+Bedankt,
+Het Muller team
+{site_name}
+
+
+Veuillez activer votre compte
+
+Bonjour {display_name},
+
+Merci de vous être inscrit à {site_name}! Pour activer votre compte, veuillez cliquer sur le lien ci-dessous pour confirmer votre adresse e-mail:
+
+{account_activation_link}
+
+Si vous avez des problèmes, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Pending Review Email
+--------------------
+
+Your account is pending review
+
+Hi {display_name},
+
+Thank you for signing up with {site_name}! Your account is currently being reviewed by a member of our team.
+
+If you have any problems, please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Uw aanvraag is in behandeling
+
+Beste {display_name},
+
+Bedankt voor uw registratie op {site_name}! Uw aanvraag voor een account is in behandeling.
+
+Indien u problemen of vragen hebt, kan u ons contacteren via {admin_email}
+
+Bedankt,
+Het Muller team
+{site_name}
+
+
+Votre compte est en attente d'examen
+
+Bonjour {display_name},
+
+Merci de vous être inscrit à {site_name}! Votre compte est actuellement examiné par un membre de notre équipe.
+
+Si vous avez des problèmes, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Account Approved Email
+----------------------
+
+Your account at {site_name} is now active
+
+
+Hi {display_name},
+
+Thank you for signing up with {site_name}! Your account has been approved and is now active.
+
+To login please visit the following url:
+
+Set your account password:
+{password_reset_link}
+
+If you have any problems, please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Beste {display_name},
+
+Bedankt voor uw registratie op {site_name}! Uw aanvraag is goedgekeurd en is nu actief.
+
+Inloggen kunt u via de volgende url:
+
+Stel uw paswoord in:
+{password_reset_link}
+
+Bij problemen kan u ons contacteren via {admin_email}
+
+Bedankt,
+{site_name}
+
+
+Votre compte sur {site_name} est maintenant actif
+
+Bonjour {display_name},
+
+Merci de vous être inscrit à {site_name}! Votre compte a été approuvé et est maintenant actif.
+
+Pour vous connecter s'il vous plaît visitez l'adresse suivante:
+
+Définissez le mot de passe de votre compte:
+{password_reset_link}
+
+Si vous avez des problèmes, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Account Rejected Email
+----------------------
+
+Your account has been rejected
+
+Hi {display_name},
+
+Thank you for your request for an account on {site_name}! We have reviewed your information and unfortunately we are unable to accept your request at this moment.
+
+Please feel free to apply again at a future date.
+
+Thanks,
+{site_name}
+
+
+Uw aanvraag is geweigerd
+
+Beste {display_name},
+
+Bedankt voor uw registratie op {site_name}! Het is echter niet mogelijk om een account te activeren op onze site. 
+
+U kan ons contacteren via {admin_email} indien u hier vragen bij heeft.
+
+Bedankt,
+{site_name}
+
+
+Votre compte a été rejeté
+
+Bonjour {display_name},
+
+Merci de votre demande de compte sur {site_name}! Nous avons examiné vos informations et nous ne pouvons malheureusement pas accepter votre demande pour le moment.
+
+N'hésitez pas à postuler à une date ultérieure.
+
+Merci,
+{nom du site}
+
+
+
+Account Deactivated Email
+----------------------------------
+
+Your account has been deactivated
+
+Hi {display_name},
+
+This is an automated email to let you know your {site_name} account has been deactivated.
+
+If you would like your account to be reactivated please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Uw account is tijdelijk gedeactiveerd
+
+Beste {display_name},
+
+Dit is een automatische mail om u op de hoogte te brengen dat uw account op {site_name} tijdelijk gedeactiveerd is.
+
+Indien u uw account opnieuw wil laten activeren, kan u ons mailen op {admin_email}
+
+Bedankt,
+{site_name}
+
+
+Votre compte a été désactivé
+
+Bonjour {display_name},
+
+Ceci est un email automatisé pour vous informer que votre compte {site_name} a été désactivé.
+
+Si vous souhaitez réactiver votre compte, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Account Deleted Email
+---------------------
+
+Your account has been deleted
+
+Hi {display_name},
+
+This is an automated email to let you know your {site_name} account has been deleted. All of your personal information has been permanently deleted and you will no longer be able to login to {site_name}.
+
+If your account has been deleted by accident please contact us at {admin_email}
+
+Thanks,
+{site_name}
+
+
+Uw account is verwijderd
+
+Beste {display_name},
+
+Dit is een automatische mail om u op de hoogte te brengen dat uw account op {site_name} verwijderd is. Al uw persoonlijke gegevens op de site zijn verwijderd en u kan niet langer inloggen op {site_name}.
+
+Mocht dit een vergissing zijn, of indien u hier vragen bij heeft, kan u ons contacteren op {admin_email}
+
+Bedankt,
+{site_name}
+
+
+Votre compte a été supprimé
+
+Bonjour {display_name},
+
+Ceci est un email automatisé pour vous informer que votre compte {site_name} a été supprimé. Toutes vos informations personnelles ont été définitivement supprimées et vous ne pourrez plus vous connecter à {site_name}.
+
+Si votre compte a été supprimé par accident, contactez-nous à l'adresse {admin_email}
+
+Merci,
+{nom du site}
+
+
+Password Reset Email
+--------------------
+
+Reset your password
+
+Hi {display_name},
+
+We received a request to reset the password for your account. If you made this request, click the link below to change your password:
+
+{password_reset_link}
+
+If you didn't make this request, you can ignore this email
+
+Thanks,
+{site_name}
+
+
+Uw wachtwoord opnieuw instellen
+
+Beste {display_name},
+
+We hebben een aanvraag ontvangen om uw wachtwoord opnieuw in te stellen. Indien u dit aangevraagd heeft, kan u uw wachtwoord instellen via:
+
+{password_reset_link}
+
+Indien u deze aanvraag niet gedaan hebt, kan u deze mail negeren.
+
+Bedankt,
+{site_name}
+
+
+Réinitialisez votre mot de passe
+
+Bonjour {display_name},
+
+Nous avons reçu une demande de réinitialisation du mot de passe pour votre compte. Si vous avez fait cette demande, cliquez sur le lien ci-dessous pour changer votre mot de passe:
+
+{password_reset_link}
+
+Si vous n'avez pas fait cette demande, vous pouvez ignorer cet e-mail
+
+Merci,
+{nom du site}
+
+
+Password Changed Email
+----------------------
+
+Your {site_name} password has been changed
+
+
+Hi {display_name},
+
+You recently changed the password associated with your {site_name} account.
+
+If you did not make this change and believe your {site_name} account has been compromised, please contact us at the following email address: {admin_email}
+
+Thanks,
+{site_name}
+
+
+Uw wachtwoord op {site_name} is gewijzigd
+
+
+Beste {display_name},
+
+U hebt recent uw wachtwoord op {site_name} opnieuw ingesteld.
+
+Indien u uw wachtwoord niet opnieuw heeft ingesteld is uw account mogelijk niet meer veilig en kan u ons best contacteren via: {admin_email}
+
+Bedankt,
+{site_name}
+
+
+Votre mot de passe {site_name} a été modifié
+
+
+Bonjour {display_name},
+
+Vous avez récemment modifié le mot de passe associé à votre compte {site_name}.
+
+Si vous n'avez pas effectué cette modification et pensez que votre compte {site_name} a été compromis, veuillez nous contacter à l'adresse e-mail suivante: {admin_email}
+
+Merci,
+{nom du site}
