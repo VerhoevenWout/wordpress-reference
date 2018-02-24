@@ -87,7 +87,16 @@ get_header();
 	if ( $postslist->have_posts()) :
 	while ( $postslist->have_posts() ) : $postslist->the_post(); ?>
 		<?php $thumb = get_field('news_thumbnail'); ?>
-		<?php $excerpt = get_field('news_excerpt');$excerpt = preg_replace(" ([.*?])",'',$excerpt);$excerpt = strip_shortcodes($excerpt);$excerpt = strip_tags($excerpt);$excerpt = substr($excerpt, 0, 200);$excerpt = substr($excerpt, 0, strripos($excerpt, " "));$excerpt = trim(preg_replace( '/s+/', ' ', $excerpt));$excerpt = $excerpt.'...';?>
+		<?php 
+			$excerpt = get_field('news_excerpt');
+			$excerpt = preg_replace(" ([.*?])",'',$excerpt);
+			$excerpt = strip_shortcodes($excerpt);
+			$excerpt = strip_tags($excerpt);
+			$excerpt = substr($excerpt, 0, 200);
+			// $excerpt = substr($excerpt, 0, strripos($excerpt, " "));
+			// $excerpt = trim(preg_replace( '/s+/', ' ', $excerpt));
+			// $excerpt = $excerpt.'...';
+		?>
 		<?php $post_date = get_the_date( 'j F Y' ); ?>
 
 		<a href="<?= the_permalink() ?>" title="<?php the_title(); ?>">
