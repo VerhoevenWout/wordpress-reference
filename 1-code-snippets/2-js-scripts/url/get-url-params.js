@@ -2,8 +2,12 @@
 // REDIRECT URL (with params)
 window.location.href = '/' + lang + '/external-link/?id='+parent_post_id+'&url='+url+'&title='+short_title+'';
 
+// SIMPLE
+var param = window.location.search;
+param = param.replace('?','');
+console.log('%c' + param, 'color: white; font-size: 18px;');
 
-
+// OTHER EXAMPLE
 getExternalLinkData(){
 	var url = location.href;
 	console.log(this.getUrlParameter('url'));

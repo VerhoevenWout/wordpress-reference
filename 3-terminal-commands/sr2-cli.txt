@@ -15,5 +15,11 @@ Documents/code/sr2/srdb.cli.php -h localhost -n muller -u root -p root -s http:/
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 Example:
-Desktop/sr/srdb.cli.php -h localhost -n venues-online-live -u root -p root -s venues-online.loc -r staging.venues-online.com
-Desktop/sr/srdb.cli.php -h localhost -n venues-online-live -u root -p root -s venues-online.loc -r venues.lancering.be
+Documents/code/sr2/srdb.cli.php -h localhost -n venues-online-live -u root -p root -s venues-online.loc -r staging.venues-online.com
+Documents/code/sr2/srdb.cli.php -h localhost -n venues-online-live -u root -p root -s venues-online.loc -r venues.lancering.be
+
+
+
+
+
+

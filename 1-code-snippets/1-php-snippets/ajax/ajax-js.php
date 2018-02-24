@@ -40,6 +40,6 @@
 		this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
 			console.log(response);
         });
-
     },
 </script>
+
