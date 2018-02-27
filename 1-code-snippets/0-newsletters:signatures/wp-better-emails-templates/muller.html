@@ -1,3 +1,18 @@
+<?php
+
+add_filter('wpbe_tags', array($this, 'add_my_tags'));
+public function add_my_tags( $tags ) {
+
+  $cookielink = get_page_link(apply_filters( 'wpml_object_id', 61416, 'page' ));
+  $privacylink = get_page_link(apply_filters( 'wpml_object_id', 61401, 'page' ));
+
+  $tags['privacylinks'] = '<td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Muller-NV</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="'.$privacylink.'">Privacy Policy</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="'.$cookielink.'">Cookie Policy</a> </span></td>';
+
+    return $tags;
+}
+
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" >
   <head>
@@ -5,161 +20,144 @@
     <meta name="viewport" content="initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no"/>
     <title>Muller-NV</title>
-    <!--[if mso]>
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-wp-preserve="%3Cstyle%20type%3D%22text%2Fcss%22%3E%0Atd%2Cspan%2Ca%7Bfont-family%3A%20Arial%2C%20sans-serif%20!important%3B%7D%0A%3C%2Fstyle%3E" data-mce-resize="false" data-mce-placeholder="1" class="mce-object" width="20" height="20" alt="&lt;style&gt;" title="&lt;style&gt;" />
-    <![endif]-->
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-wp-preserve="%3Cstyle%20type%3D%22text%2Fcss%22%3E%0A%0A%0A%2F*%20Resets%3A%20see%20reset.css%20for%20details%20*%2F%0A.ReadMsgBody%20%7B%20width%3A%20100%25%3B%20background-color%3A%20%23ffffff%3B%7D%0A.ExternalClass%20%7Bwidth%3A%20100%25%3B%20background-color%3A%20%23ffffff%3B%7D%0A.ExternalClass%2C%20.ExternalClass%20p%2C%20.ExternalClass%20span%2C%0A.ExternalClass%20font%2C%20.ExternalClass%20td%2C%20.ExternalClass%20div%20%7Bline-height%3A100%25%3B%7D%0A%23outlook%20a%7B%20padding%3A0%3B%7D%0Abody%7Bwidth%3A%20100%25%3B%20height%3A%20100%25%3B%20background-color%3A%20%23ffffff%3B%20margin%3A0%3B%20padding%3A0%3B%7D%0Abody%7B%20-webkit-text-size-adjust%3Anone%3B%20-ms-text-size-adjust%3Anone%3B%20%7D%0Ahtml%7Bwidth%3A100%25%3B%7D%0Atable%20%7Bmso-table-lspace%3A0pt%3B%20mso-table-rspace%3A0pt%3B%20border-spacing%3A0%3B%7D%0Atable%20td%20%7Bborder-collapse%3Acollapse%3B%7D%0Atable%20p%7Bmargin%3A0%3B%7D%0Abr%2C%20strong%20br%2C%20b%20br%2C%20em%20br%2C%20i%20br%20%7B%20line-height%3A100%25%3B%20%7D%0Adiv%2C%20p%2C%20a%2C%20li%2C%20td%20%7B%20-webkit-text-size-adjust%3Anone%3B%20-ms-text-size-adjust%3Anone%3B%7D%0Ah1%2C%20h2%2C%20h3%2C%20h4%2C%20h5%2C%20h6%20%7B%20line-height%3A%20100%25%20!important%3B%20-webkit-font-smoothing%3A%20antialiased%3B%20%7D%0Aspan%20a%20%7B%20text-decoration%3A%20none%20!important%3B%7D%0Aa%7B%20text-decoration%3A%20none%20!important%3B%20%7D%0Aimg%7Bheight%3A%20auto%20!important%3B%20line-height%3A%20100%25%3B%20outline%3A%20none%3B%20text-decoration%3A%20none%3B%20display%3Ablock%20!important%3B%20-ms-interpolation-mode%3Abicubic%3B%7D%0A.yshortcuts%2C%20.yshortcuts%20a%2C%20.yshortcuts%20a%3Alink%2C.yshortcuts%20a%3Avisited%2C%0A.yshortcuts%20a%3Ahover%2C%20.yshortcuts%20a%20span%20%7B%20text-decoration%3A%20none%20!important%3B%20border-bottom%3A%20none%20!important%3B%7D%0A%2F*mailChimp%20class*%2F%0A.default-edit-image%7B%0A%09height%3A20px%3B%0A%7D%0A.tpl-repeatblock%20%7B%0A%09padding%3A%200px%20!important%3B%0A%09border%3A%201px%20dotted%20rgba(0%2C0%2C0%2C0.2)%3B%0A%7D%0A%0A%40media%20only%20screen%20and%20(max-width%3A%20640px)%7B%0A%0A%09table%5Bclass%3D%22container%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25!important%3B%0A%09%09padding-left%3A20px!important%3B%20padding-right%3A20px!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%7D%0A%09%09td%5Bclass%3D%22container%22%5D%7Bwidth%3A100%25!important%3B%20padding-left%3A20px!important%3B%20padding-right%3A20px!important%3B%20clear%3A%20both%3B%7D%0A%09%09table%5Bclass%3D%22full-width%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25!important%3B%20clear%3A%20both%3B%7D%0A%09%09table%5Bclass%3D%22full-width-center%22%5D%20%7Bwidth%3A%20100%25!important%3B%20max-width%3A100%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09table%5Bclass%3D%22auto-center%22%5D%20%7Bwidth%3A%20auto!important%3B%20max-width%3A100%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09*%5Bclass%3D%22auto-center-all%22%5D%7Bwidth%3A%20auto!important%3B%20max-width%3A75%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09*%5Bclass%3D%22auto-center-all%22%5D%20*%20%7Bwidth%3A%20auto!important%3B%20max-width%3A100%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09table%5Bclass%3D%22col-3%22%5D%2Ctable%5Bclass%3D%22col-3-not-full%22%5D%7Bwidth%3A30.35%25!important%3B%20max-width%3A100%25!important%3B%7D%0A%09%09table%5Bclass%3D%22col-2%22%5D%7Bwidth%3A47%25!important%3B%20max-width%3A100%25!important%3B%7D%0A%09%09td%5Bclass%3D%22col-top%22%5D%7Bdisplay%3Atable-header-group%20!important%3B%7D%0A%09%09td%5Bclass%3D%22col-bottom%22%5D%7Bdisplay%3Atable-footer-group%20!important%3B%7D%0A%09%09*%5Bclass%3D%22full-block%22%5D%7Bwidth%3A100%25%20!important%3B%20display%3Ablock%20!important%3B%20%7D%0A%09%09%2F*%20image%20*%2F%0A%09%09td%5Bclass%3D%22image-full-width%22%5D%20img%7Bwidth%3A100%25%20!important%3B%20height%3Aauto%20!important%3B%20max-width%3A100%25%20!important%3B%7D%0A%09%09%2F*%20helper%20*%2F%0A%09%09table%5Bclass%3D%22space-w-20%22%5D%7Bwidth%3A3.5%25!important%3B%20max-width%3A20px!important%3B%20min-width%3A3.5%25%20!important%3B%7D%0A%09%09table%5Bclass%3D%22space-w-20%22%5D%20td%3Afirst-child%7Bwidth%3A3.5%25!important%3B%20max-width%3A20px!important%3B%20min-width%3A3.5%25%20!important%3B%7D%0A%09%09table%5Bclass%3D%22space-w-25%22%5D%7Bwidth%3A4.45%25!important%3B%20max-width%3A25px!important%3B%20min-width%3A4.45%25%20!important%3B%7D%0A%09%09table%5Bclass%3D%22space-w-25%22%5D%20td%3Afirst-child%7Bwidth%3A4.45%25!important%3B%20max-width%3A25px!important%3B%20min-width%3A4.4%25%20!important%3B%7D%0A%09%09table%5Bclass%3D%22fix-w-20%22%5D%7Bwidth%3A20px!important%3B%20max-width%3A20px!important%3B%20min-width%3A20px!important%3B%7D%0A%09%09table%5Bclass%3D%22fix-w-20%22%5D%20td%3Afirst-child%7Bwidth%3A20px!important%3B%20max-width%3A20px!important%3B%20min-width%3A20px%20!important%3B%7D%0A%09%09*%5Bclass%3D%22h-10%22%5D%7Bdisplay%3Ablock%20!important%3B%20%20height%3A10px%3B%7D%0A%09%09*%5Bclass%3D%22h-20%22%5D%7Bdisplay%3Ablock%20!important%3B%20%20height%3A20px%3B%7D%0A%09%09*%5Bclass%3D%22h-30%22%5D%7Bdisplay%3Ablock%20!important%3B%20height%3A30px%3B%7D%0A%09%09*%5Bclass%3D%22h-40%22%5D%7Bdisplay%3Ablock%20!important%3B%20%20height%3A40px%3B%7D%0A%09%09*%5Bclass%3D%22remove-640%22%5D%7Bdisplay%3Anone%20!important%3B%7D%0A%09%09*%5Bclass%3D%22text-left%22%5D%7Btext-align%3Aleft%20!important%3B%7D%0A%09%09*%5Bclass%3D%22clear-pad%22%5D%7Bpadding%3A0%20!important%3B%7D%0A%09%7D%0A%09%40media%20only%20screen%20and%20(max-width%3A%20479px)%7B%0A%0A%09%09table%5Bclass%3D%22container%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A124px!important%3B%0A%09%09%09padding-left%3A15px!important%3B%20padding-right%3A15px!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%7D%0A%09%09%09td%5Bclass%3D%22container%22%5D%7Bwidth%3A100%25!important%3B%20padding-left%3A15px!important%3B%20padding-right%3A15px!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%7D%0A%09%09%09table%5Bclass%3D%22full-width%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A124px!important%3B%20clear%3A%20both%3B%7D%0A%09%09%09table%5Bclass%3D%22full-width-center%22%5D%20%7Bwidth%3A%20100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A124px!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09%09*%5Bclass%3D%22auto-center-all%22%5D%7Bwidth%3A%20100%25!important%3B%20max-width%3A100%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09%09*%5Bclass%3D%22auto-center-all%22%5D%20*%20%7Bwidth%3A%20auto!important%3B%20max-width%3A100%25!important%3B%20%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20margin%3A0%20auto%3B%20float%3Anone%3B%7D%0A%09%09%09table%5Bclass%3D%22col-3%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%7D%0A%09%09%09table%5Bclass%3D%22col-3-not-full%22%5D%7Bwidth%3A30.35%25!important%3B%20max-width%3A100%25!important%3B%20%7D%0A%09%09%09table%5Bclass%3D%22col-2%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%7D%0A%09%09%09*%5Bclass%3D%22full-block-479%22%5D%7Bdisplay%3Ablock%20!important%3B%20width%3A100%25%20!important%3B%20text-align%3A%20center!important%3B%20clear%3A%20both%3B%20%7D%0A%0A%09%09%09td%5Bclass%3D%22image-full-width%22%5D%20img%7Bwidth%3A100%25%20!important%3B%20height%3Aauto%20!important%3B%20max-width%3A100%25%20!important%3B%20min-width%3A124px%20!important%3B%7D%0A%09%09%09td%5Bclass%3D%22image-min-80%22%5D%20img%7Bwidth%3A100%25%20!important%3B%20height%3Aauto%20!important%3B%20max-width%3A100%25%20!important%3B%20min-width%3A80px%20!important%3B%7D%0A%09%09%09td%5Bclass%3D%22image-min-100%22%5D%20img%7Bwidth%3A100%25%20!important%3B%20height%3Aauto%20!important%3B%20max-width%3A100%25%20!important%3B%20min-width%3A100px%20!important%3B%7D%0A%0A%09%09%09table%5Bclass%3D%22space-w-20%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25%20!important%3B%7D%0A%09%09%09table%5Bclass%3D%22space-w-20%22%5D%20td%3Afirst-child%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25%20!important%3B%7D%0A%09%09%09table%5Bclass%3D%22space-w-25%22%5D%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25%20!important%3B%7D%0A%09%09%09table%5Bclass%3D%22space-w-25%22%5D%20td%3Afirst-child%7Bwidth%3A100%25!important%3B%20max-width%3A100%25!important%3B%20min-width%3A100%25%20!important%3B%7D%0A%09%09%09*%5Bclass%3D%22remove-479%22%5D%7Bdisplay%3Anone%20!important%3B%7D%0A%0A%09%09%7D%0A%09%09td%20ul%7Blist-style%3A%20initial%3B%20margin%3A0%3B%20padding-left%3A20px%3B%7D.default-edit-image%7Bheight%3A20px%3B%7D%20tr.tpl-repeatblock%20%2C%20tr.tpl-repeatblock%20%3E%20td%7B%20display%3Ablock%20!important%3B%7D%20.tpl-repeatblock%20%7Bpadding%3A%200px%20!important%3Bborder%3A%201px%20dotted%20rgba(0%2C0%2C0%2C0.2)%3B%7D%3C%2Fstyle%3E" data-mce-resize="false" data-mce-placeholder="1" class="mce-object" width="20" height="20" alt="&lt;style&gt;" title="&lt;style&gt;" />
   </head>
-    <body  style="font-size:12px; width:100%; height:100%;">
-      <table id="mainStructure" style="width: 100%; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0">
-        <tbody>
-          <tr>
-            <td class="container" style="background-color: #eaeaf1;" align="center" valign="top">
-              <table class="full-width" style="margin: 0px auto; width: 600px; min-width: 600px; background-color: #eaeaf1;" border="0" cellspacing="0" cellpadding="0" align="center">
-                <tbody>
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="15"> </td>
-                  </tr>
-                  <tr>
-                    <td valign="middle">
-                      <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
-                        <tbody>
-                          <tr>
-                            <td valign="top">
-                              <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody>
-                                  <tr>
-                                    <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <!-- [if (gte mso 9)|(IE)]></td><td valign="top"><![endif]-->
-                              <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody>
-                                  <tr>
-                                    <td valign="top">
-                                      <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                        <tbody>
-                                          <tr>
-                                            <td align="center" valign="top"><a style="font-size: inherit; text-decoration: none;" href="http://muller-nvbe.webhosting.be"> <img style="max-width: 150px; display: block !important;" src="http://muller-nvbe.webhosting.be/wp-content/uploads/2018/01/logo-3.jpg" alt="logo-top" width="150" border="0" hspace="0" vspace="0" /> </a></td>
-                                          </tr>
-                                        </tbody>
-                                      </table>
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="15"> </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td class="container" style="background-color: #ffffff;" align="center" valign="top">
-              <table class="full-width" style="margin: 0px auto; width: 600px; max-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
-                <tbody style="line-height: 16px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="30"> </td>
-                  </tr>
-                  <tr style="font-size: 16px;">
-                    <td style="margin: 0px auto; width: 150px; min-width: 150px;" valign="top">%content%</td>
-                  </tr>
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="30"> </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-        <tbody>
-          <tr>
-            <td class="container" style="background-color: #ffffff;" align="center" valign="top">
-              <table class="container" style="margin: 0px auto; width: 600px; min-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
-                <tbody>
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="20"> </td>
-                  </tr>
-                  <tr>
-                    <td align="center" valign="top">
-                      <table style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
-                        <tbody>
-                          <tr>
-                            <td valign="middle">
-                              <table class="full-width-center" border="0" cellspacing="0" cellpadding="0" align="center">
-                                <tbody>
-                                  <tr>
-                                    <td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Multraco NV</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Privacy Policy</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Cookie Policy</a> </span></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody>
-                                  <tr>
-                                    <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td valign="middle">
-                              <table class="full-width-center" border="0" cellspacing="0" cellpadding="0" align="center">
-                                <tbody>
-                                  <tr>
-                                    <td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">muller-nv.be</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Industrieweg 19 2320 Hoogstraten </a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">+32 3 314 72 40</a> </span></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody>
-                                  <tr>
-                                    <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td valign="middle">
-                              <table class="full-width-center" border="0" cellspacing="0" cellpadding="0" align="center">
-                                <tbody>
-                                  <tr>
-                                    <td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Copyright © Muller NV</a> </span></td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                              <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
-                                <tbody>
-                                  <tr>
-                                    <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td style="line-height: 1px; font-size: 1px;" valign="top" height="20"> </td>
-                  </tr>
-                </tbody>
-              </table>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </body>
-  </html>
+  <body  style="font-size:12px; width:100%; height:100%;">
+    <table id="mainStructure" style="width: 100%; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0">
+      <tbody>
+        <tr>
+          <td class="container" style="background-color: #eaeaf1;" align="center" valign="top">
+            <table class="full-width" style="margin: 0px auto; width: 600px; min-width: 600px; background-color: #eaeaf1;" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tbody>
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="15"> </td>
+                </tr>
+                <tr>
+                  <td valign="middle">
+                    <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="center">
+                      <tbody>
+                        <tr>
+                          <td valign="top">
+                            <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
+                              <tbody>
+                                <tr>
+                                  <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <!-- [if (gte mso 9)|(IE)]></td><td valign="top"><![endif]-->
+                            <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="left">
+                              <tbody>
+                                <tr>
+                                  <td valign="top">
+                                    <table class="full-width-center" style="width: 100%;" border="0" cellspacing="0" cellpadding="0" align="left">
+                                      <tbody>
+                                        <tr>
+                                          <td align="center" valign="top"><a style="font-size: inherit; text-decoration: none;" href="https://muller.lancering.be"> <img style="max-width: 150px; display: block !important;" src="https://muller.lancering.be/wp-content/uploads/2018/01/logo-3.jpg" alt="logo-top" width="150" border="0" hspace="0" vspace="0" /> </a></td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="15"> </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td class="container" style="background-color: #ffffff;" align="center" valign="top">
+            <table class="full-width" style="margin: 0px auto; width: 600px; max-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tbody style="line-height: 16px; color: #000; font-weight: normal; text-align: left; font-family: Arial, Helvetica, sans-serif; word-break: break-word;">
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="30"> </td>
+                </tr>
+                <tr style="font-size: 14px;">
+                  <td style="margin: 0px auto; width: 150px; min-width: 150px; line-height: 20px; color: #363636;" valign="top">%content%</td>
+                </tr>
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="30"> </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+      <tbody>
+        <tr>
+          <td class="container" style="background-color: #ffffff;" align="center" valign="top">
+            <table class="container" style="margin: 0px auto; width: 600px; min-width: 600px; background-color: #ffffff;" border="0" cellspacing="0" cellpadding="0" align="center">
+              <tbody>
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="20"> </td>
+                </tr>
+                <tr>
+                  <td align="center" valign="top">%privacylinks%
+                    <table border="0" cellspacing="0" cellpadding="0" align="center">
+                      <tbody>
+                        <tr>
+                          <td class="h-20" style="border-collapse: collapse; font-size: 1px;" height="1"> </td>
+                        </tr>
+                      </tbody>
+                      <tbody>
+                        <tr style="width: 100%; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt; text-align: center;">
+                          <td valign="middle">
+                            <table class="full-width-center" border="0" cellspacing="0" cellpadding="0" align="center">
+                              <tbody>
+                                <tr>
+                                  <td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">muller-nv.be</a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Industrieweg 19 2320 Hoogstraten </a> - <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">+32 3 314 72 40</a> </span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
+                              <tbody>
+                                <tr>
+                                  <td class="h-20" style="border-collapse: collapse; line-height: 0px; font-size: 1px;" height="1"> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td valign="middle">
+                            <table class="full-width-center" border="0" cellspacing="0" cellpadding="0" align="center">
+                              <tbody>
+                                <tr>
+                                  <td style="font-size: 14px; line-height: 24px; color: #959398; font-weight: normal; text-align: center; font-family: Arial, Helvetica, sans-serif; word-break: break-word;" align="center"><span style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;"> <a style="color: #959398; font-size: 14px; text-decoration: none; line-height: 24px;" href="#">Copyright © Muller NV</a> </span></td>
+                                </tr>
+                              </tbody>
+                            </table>
+                            <table class="full-width" style="width: 20px; height: 1px; border-spacing: 0; mso-table-lspace: 0pt; mso-table-rspace: 0pt;" border="0" cellspacing="0" cellpadding="0" align="left">
+                              <tbody>
+                                <tr>
+                                  <td class="h-20" style="border-collapse: collapse; line-height: 1px; font-size: 1px;" height="1"> </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="line-height: 1px; font-size: 1px;" valign="top" height="20"> </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
