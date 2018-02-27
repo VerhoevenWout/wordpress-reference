@@ -1,4 +1,5 @@
-<?php
+<?php 
+
 // https://developer.wordpress.org/resource/dashicons/#businessman
 function create_posttype() {
 	register_post_type( 'case-studies-1',
