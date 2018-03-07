@@ -1,0 +1,53 @@
+.productimage{
+	text-align: center;
+	width: 100%;
+	display: none;
+
+	@include md{
+		display: block;
+	}
+
+	img{	
+		width: auto;
+		max-height: 500px;
+		max-width: 80%;
+		padding: 2em 0;
+	}
+}
+
+
+.productimagegrid{
+		display: none;
+		max-width: 90%;
+		margin: auto;
+
+		@include lg{
+			display: block;
+		}
+	
+		border-left: $darkest-gray solid 1px;
+		border-right: $darkest-gray solid 1px;
+		display: inline-block;
+		width: 100%;
+		margin-top: 3rem;
+		padding: 0 2.5% 0 2.5%;
+
+
+		img{
+			width: 100%;
+			display: block;
+			padding: 2em 0;
+		}
+
+		.left, .right{
+			width: 50%;
+			float: left;
+
+		}
+
+		.full{
+			width: 100%;
+			display: block;
+
+		}
+}

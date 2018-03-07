@@ -1,0 +1,156 @@
+.single-product{
+
+	// .noSubcatmenu main,
+	// .noSubcatmenu >.breadcrumb{
+	// 	padding: 0 5%; 
+	// 	width: 90%;
+	// }
+
+	.title{
+		color: $black;
+		font-size: 1.3rem;
+		margin: 1.5rem auto;
+		text-align: left;
+		width: 100%;
+		display: inline-block;
+
+		@include md{
+			font-size: 1.8rem;
+		}
+
+		@include lg{
+			font-size: 2.8rem;
+		}
+
+	}
+
+	.left-side{
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		.productimagegrid{
+			min-height: 0.1rem;
+			order: 2;
+		}
+
+		@include md{
+			padding-right: 2rem;
+		}
+		@include lg{
+			padding-bottom: 3em;
+		}
+
+		.merklogo{
+			order: 3;
+
+			@include md{
+				order: 1;
+			}
+		}
+
+	}
+
+	.right-side{
+		border-bottom: 0.15rem solid $darker-gray;
+		padding-bottom: 3rem;
+		position: relative;
+
+		@include md{
+			border-bottom: none;
+			padding-left: 0;
+		}
+
+		.inner{
+			width: 100%;
+			text-align: center;
+
+			@include md{
+				text-align: left;
+			}
+		}
+		.xxlarge-6{
+			
+			@include xxl{
+				float: left;
+				padding-left: 3rem;
+			}
+		}
+
+
+	}
+
+
+	.merklogo{
+		text-align: center;
+
+		img{
+			margin: 2.5rem auto;
+			max-width: 20%;
+			display: inline-block;
+		}
+	}
+
+
+	.breadcrumb{
+		
+	}
+
+	.video,
+	.link{
+		a{
+			text-decoration: none;
+			background-color: $light-gray;
+			display: inline-block;
+			width: auto;
+			margin: 2rem auto;
+			line-height: 1.9;
+			height: 2.7rem;
+			padding-left: 4rem;
+			padding-right: 1.5rem;
+			text-align: left;
+			position: relative;
+			float: left;
+			margin-top: 0;
+
+			i{
+				position: absolute;
+				color: $red;
+				left: 0;
+				top: -0.2rem;
+				font-size: 3rem;
+			}
+		}
+	}
+
+	.link{
+		a{
+			padding-left: 1.5rem;
+		}
+	}
+	
+
+	.discription{
+		margin: 2rem auto;
+		display: block;
+		text-align: left;
+		font-size: 1.4rem;
+		color: $darkest2-gray;
+
+
+		@include xl{
+			margin: 2rem auto 5rem auto;
+		}
+
+		p{
+			text-align: left;
+		}
+		ul{
+			color: $darkest2-gray;
+			font-size: 1.4rem;
+		}
+	}
+
+	
+
+	
+}

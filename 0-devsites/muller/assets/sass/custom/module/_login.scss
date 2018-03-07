@@ -1,0 +1,46 @@
+#loginform{
+	max-width: 40rem;
+
+	h3{
+		font-size: 1.6rem;
+	}
+
+	input[type='submit']{
+		float: right;
+		clear: both;
+	}
+
+	input{
+		margin-bottom: 0;
+	}
+
+}
+
+.loginbar{
+	display: inline-block;
+	margin: 1rem 0 3rem 0;
+	color: $darkest-gray;
+	font-size: 1.3rem;
+
+	a{
+		color: $red;
+		text-decoration: none;
+		font-size: 1em;
+	}
+}
+
+span.confirm, span.errormain{
+	display: block;
+	width: 100%;
+	padding: 0.5rem 1rem 0 1rem;
+	margin: 1rem auto;
+	background-color: $darkest-gray;
+	color: $white;
+}
+
+span.errormain{
+	color: $red;
+	border: 1px solid $red;
+	background-color: $white;
+	// display: none;
+}

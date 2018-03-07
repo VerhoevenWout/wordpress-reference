@@ -36,7 +36,7 @@ get_header(); ?>
 				</h1>
 			</div>
 
-			<fiche v-if="fiches" v-for="(fiche, index) in fiches" :fichedataprop="fiche" :translations='<?= jsonToProp($translations_json) ?>' :favarray="favarray" :langprop="lang"></fiche>
+			<fiche :key="index" v-if="fiches" v-for="(fiche, index) in fiches" :fichedataprop="fiche" :translations='<?= jsonToProp($translations_json) ?>' :favarray="favarray" :langprop="lang"></fiche>
 			<?php get_template_part('templates/partials/pagination') ?>
 			
 		</div>
@@ -47,13 +47,14 @@ get_header(); ?>
 			style="width: 100%; height: 100%; position: absolute; left:0; top:0"
 	        :center="{lat: mapcenter.lat, lng: mapcenter.lng}"
 	        :zoom="mapcenter.zoom"
-	        :options="{styles: mapsstyle, gestureHandling: 'greedy'}"
+	        :options="mapoptions1"
 	    >	
 	    	<gmap-marker v-for="(f, index) in fiches"
 				:key="index"
 				:position="getposition(f.lat, f.lng)"
 				:clickable="true"
 				:icon="f.markerurl"
+				:z-index="f.markerzindex"
 				v-on:click="openmarker(f)">
     	    	<gmap-info-window :opened="f.markeropen">
     	    		<a v-bind:href="f.linkurl" title="f.linkurl">
@@ -77,13 +78,14 @@ get_header(); ?>
 			style="width: 100%; height: 100%; position: absolute; left:0; top:0"
 	        :center="{lat: mapcenter.lat, lng: mapcenter.lng}"
 	        :zoom="mapcenter.zoom"
-	        :options="{styles: mapsstyle}"
+	        :options="mapoptions2"
 	    >	
 	    	<gmap-marker v-for="(f, index) in fiches"
 				:key="index"
 				:position="getposition(f.lat, f.lng)"
 				:clickable="true"
 				:icon="f.markerurl"
+				:z-index="f.markerzindex"
 				v-on:click="openmarker(f)">
     	    	<gmap-info-window :opened="f.markeropen">
     	    		<a v-bind:href="f.linkurl" title="f.linkurl">

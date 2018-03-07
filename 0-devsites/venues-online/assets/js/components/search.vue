@@ -24,7 +24,7 @@
 									{{ activiteit.name }}
 								</label>
 							</li>
-							<li v-on:click.prevent="selectIndividualCheckboxValueActivity('all')" v-bind:class="{ 'activeCheckboxValue': filterdata.taxs.activiteit == 'all' }">
+							<li v-on:click.prevent="selectIndividualCheckboxValueActivity('all', 'nosubmit')" v-bind:class="{ 'activeCheckboxValue': filterdata.taxs.activiteit == 'all' }">
 								<input type="checkbox" 
 									   class="hidden" 
 								>
@@ -34,8 +34,11 @@
 							</li>
 						</ul>
 					</div>
-					<gmap-autocomplete class="gmap-autocomplete" :placeholder="locatie" @place_changed="getAddressData" :componentRestrictions="{country: ['be','nl','fr','de','it','lu','ma','es','tu']}" :types="['(regions)']" :select-first-on-enter="true"></gmap-autocomplete>
-					<button type="submit" class="btn primary small-24 medium-7 xmedium-6 semi-bold" v-on:click.prevent="submitSearchDropdown()">
+
+					<input type="text" class="autocomplete1" :placeholder="locatie">
+					<!-- <gmap-autocomplete ref="search" class="gmap-autocomplete" @keydown.native.enter.prevent :placeholder="locatie" @place_changed="getAddressData" :componentRestrictions="{country: ['be','nl','fr','de','it','lu','ma','es','tu']}" :types="['(regions)']" :select-first-on-enter="true"></gmap-autocomplete> -->
+
+					<button type="submit" class="btn primary small-24 medium-7 xmedium-6 semi-bold" v-on:click.prevent="setAddressData();">
 						{{ this.translations[0] }}
 						<span class="icon-arrow-right" ></span>
 					</button>
@@ -77,7 +80,6 @@
 						</div>
 
 						<span class="text light text2">in</span>
-
 						<div class="select-container select-container-autocomplete" v-bind:class="{ 'dropdownIsActive focus-blue': dropdownIsActive.locatieDropdown }">
 							<span class="openSearchDropdown text semi-bold" v-on:click="openSearchDropdown('locatieDropdown')">
 								<span v-if="locatie">
@@ -90,7 +92,8 @@
 							</span>
 							<ul class="light">
 								<li class="noPadding">
-									<gmap-autocomplete class="gmap-autocomplete" :placeholder="locatie" @place_changed="getAddressData" :componentRestrictions="{country: ['be','nl','fr','de','it','lu','ma','es','tu']}" :types="['(regions)']" :select-first-on-enter="true"></gmap-autocomplete>
+									<input type="text" class="autocomplete2" :placeholder="locatie">
+									<!-- <gmap-autocomplete class="gmap-autocomplete" @keydown.native.enter.prevent :placeholder="locatie" @place_changed="getAddressData" :componentRestrictions="{country: ['be','nl','fr','de','it','lu','ma','es','tu']}" :types="['(regions)']" :select-first-on-enter="true"></gmap-autocomplete> -->
 								</li>
 							</ul>
 						</div>
@@ -411,9 +414,16 @@
 
 </template>
 
+<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABxEL5TeJO7-jdW4YYveUdxIwVGLkMjH8"></script> -->
+<!-- <script src="https://apis.google.com/js/api.js" type="text/javascript"></script> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/places.js@1.4.18"></script> -->
+
+
 <script>
 var $ = jQuery.noConflict();
 
+
+var places = require('places.js');
 import { EventBus } from '../helper/event.js';
 import postcodes from '../data/zipcode-belgium.json';
 import md5 from 'md5';
@@ -440,7 +450,7 @@ export default {
 				liggingDropdown: false
 			},
 			postcodes: postcodes, 
-			vicinity: null,
+			locationdata: null,
 			locatie: 'Brussel',
 			taxs: {
 				activiteit: {},
@@ -481,15 +491,78 @@ export default {
 			var urlpath = window.location.pathname.split('/');
 			this.lang = urlpath[1];
 		}
+		this.setPlaceholder();
 		this.gettaxs();
 	},
 
 	mounted() {
 		EventBus.$on('getfiches', this.getfiches);
 		EventBus.$on('clickDocument', this.clickDocument);
+		this.initAutocomplete();
 	},
 
 	methods: {
+		initAutocomplete(){
+			var searchLanguage;
+			if (this.lang == 'fr'){
+				searchLanguage = 'fr'
+			} else if(this.lang == 'en'){
+				searchLanguage = 'en'
+			}else{
+				searchLanguage = 'nl'
+			}
+
+			var placesAutocomplete1 = places({
+				container: document.querySelector('.autocomplete1'),
+				countries: ['be','nl','fr','de','it','lu','ma','es','tu'],
+				language: searchLanguage,
+			});
+			var placesAutocomplete2 = places({
+				container: document.querySelector('.autocomplete2'),
+				countries: ['be','nl','fr','de','it','lu','ma','es','tu'],
+				language: searchLanguage,
+			});
+
+			var vm = this;
+			placesAutocomplete1.on('change', function getAddressData(e) {
+				console.log(e.suggestion);
+				vm.locationdata = e.suggestion;
+				vm.locatie = vm.locationdata.name;
+				vm.filterdata.lat = vm.locationdata.latlng.lat;
+				vm.filterdata.lng = vm.locationdata.latlng.lng;
+			});
+			placesAutocomplete2.on('change', function getAddressData(e) {
+				console.log(e.suggestion);
+				vm.locationdata = e.suggestion;
+				vm.locatie = vm.locationdata.name;
+				vm.filterdata.lat = vm.locationdata.latlng.lat;
+				vm.filterdata.lng = vm.locationdata.latlng.lng;
+			});
+
+			$('.autocomplete1, .autocomplete2').on('keyup', function (e) {
+			    if (e.keyCode == 13) {
+					vm.submitSearchDropdown();
+			    }
+			});
+		},
+		setAddressData(){
+			if (this.locationdata != null){
+			    this.locatie = this.locationdata.name;
+				this.filterdata.lat = this.locationdata.latlng.lat;
+				this.filterdata.lng = this.locationdata.latlng.lng;
+			}
+			this.submitSearchDropdown();
+		},
+
+		setPlaceholder(){
+			if (this.lang == 'fr'){
+				this.locatie = 'Bruxelles';
+			} else if(this.lang == 'en'){
+				this.locatie = 'Brussels';
+			}else{
+				this.locatie = 'Brussel';
+			}
+		},
 		clickDocument(){
 			this.resetSearchDropdown();
 		},
@@ -643,11 +716,14 @@ export default {
 		},
 		selectIndividualCheckboxValueActivity(selectedValue, submitvalue){
 			this.filterdata.taxs.activiteit = selectedValue;
-			this.activityvalue = this.taxs.activiteit[selectedValue].name;
+			if (selectedValue != 'all'){
+				this.activityvalue = this.taxs.activiteit[selectedValue].name;
+			}
 
 			if (submitvalue == undefined){
 				this.submitSearchDropdown();
 			}
+			console.log('selectIndividualCheckboxValueActivity');
 			this.resetSearchDropdown();
 		},
 		selectIndividualCheckboxValuePersons(selectedValue){
@@ -663,12 +739,6 @@ export default {
 			this.submitSearchDropdown();
 		},
 		submitSearchDropdown(){
-			// if (this.vicinity == null){
-			// 	console.log('no location');
-			// } else{
-			// 	console.log('location found');
-			// }
-
 			document.title = 'Search | Venues Online';
 	    	EventBus.$emit('enableloading');
 			this.resetSearchDropdown();
@@ -682,7 +752,9 @@ export default {
 			formData.append('action', 'get_event_fiches');
 			formData.append('language', this.lang);
 			formData.append('filterdata', JSON.stringify(this.filterdata));
-			
+			var ipaddress = sessionStorage.getItem("ipaddress");
+			formData.append('ipaddress', ipaddress);
+
 			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
 				if (response.body) {
 					EventBus.$emit('getfichecount', this.filterdata);
@@ -695,22 +767,7 @@ export default {
 				}
 	        });
 		},
-		getAddressData(location) {
-			console.log(location);
-			if (!location.vicinity){
-				this.vicinity = null;
-			    this.locatie = null;
-		    	this.filterdata.lat = null;
-		    	this.filterdata.lng = null;
-				this.submitSearchDropdown();
-			} else{
-				this.vicinity = location.vicinity;
-			    this.locatie = location.vicinity;
-		        this.filterdata.lat = location.geometry.location.lat();
-		        this.filterdata.lng = location.geometry.location.lng();
-				this.submitSearchDropdown();
-			}
-        },
+	
 		createCookie(name,value,days){
 		    var expires = "";
 		    if (days) {

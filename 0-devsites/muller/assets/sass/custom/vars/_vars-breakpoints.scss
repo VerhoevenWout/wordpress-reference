@@ -1,0 +1,145 @@
+$small-width: 0; 
+$xsmall-width: 30em; 
+$medium-width: 46.9em; 
+$large-width: 60em; 
+$xlarge-width: 70em; 
+$xxlarge-width: 100em; 
+
+
+$breakpoints: (
+  small: $small-width,
+  xsmall: $xsmall-width,
+  medium: $medium-width,
+  large: $large-width,
+  xlarge: $xlarge-width,
+  xxlarge: $xxlarge-width
+);
+
+$breakpoint-classes: (small xsmall medium large xlarge xxlarge);
+
+
+
+@mixin sm {
+  @media (min-width: #{$small-width}) {
+    @content;
+  }
+}
+
+@mixin xsm {
+  @media (min-width: #{$xsmall-width}) {
+    @content;
+  }
+}
+
+@mixin md {
+  @media (min-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin lg {
+  @media (min-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin xl {
+  @media (min-width: #{$xlarge-width}) {
+    @content;
+  }
+}
+
+@mixin xxl {
+  @media (min-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+
+
+@mixin only-sm {
+  @media (min-width: #{$small-width}) and (max-width: #{$xsmall-width}) {
+    @content;
+  }
+}
+
+
+@mixin only-xsm {
+  @media (min-width: #{$xsmall-width}) and (max-width: #{$medium-width}) {
+    @content;
+  }
+}
+
+@mixin only-md {
+  @media (min-width: #{$medium-width}) and (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin only-lg {
+  @media (min-width: #{$large-width}) and (max-width: #{$xlarge-width}) {
+    @content;
+  }
+}
+
+@mixin only-xl {
+  @media (min-width: #{$xlarge-width}) and (max-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+@mixin only-xxl {
+  @media (min-width: #{$xxlarge-width}) {
+    @content;
+  }
+}
+
+@mixin minlg {
+  @media (max-width: #{$large-width}) {
+    @content;
+  }
+}
+
+@mixin minxl {
+  @media (max-width: #{$xlarge-width}) {
+    @content;
+  }
+}
+
+@include sm {
+  body {
+    margin: 0;
+  }
+}
+
+
+@include xsm {
+  body {
+    margin: 0;
+  }
+}
+
+@include md {
+  body {
+    margin: 0;
+  }
+}
+
+
+@include lg {
+  body {
+    margin: 0;
+  }
+}
+
+@include xl {
+  body {
+    margin: 0;
+  }
+}
+
+@include xxl {
+  body {
+    margin: 0;
+  }
+}

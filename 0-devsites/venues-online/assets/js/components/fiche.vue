@@ -11,22 +11,29 @@
 					</div>
 				</div>
 
-				<div v-if="fichedata.imageArray == undefined">
+
+
+				<div v-if="images == undefined">
 					<a v-bind:href="linkurl">
 						<div class="imgplaceholder"></div>
 					</a>
 				</div>
-				<div v-if="fichedata.imageArray != undefined">
-					<div v-if="fichedata.imageArray == 0">
-						<a v-bind:href="linkurl" v-if="fichedata.imageArray.length == 0">
+				<div v-if="images != undefined">
+					<div v-if="images == 0">
+						<a v-bind:href="linkurl" v-if="images.length == 0">
 							<div class="imgplaceholder"></div>
 						</a>
 					</div>
 					<div v-else>
-					  	<slick ref="slick" :options="slickOptions">
-							<div v-for="image, index in fichedata.imageThumbArray" v-if="index < 4">
+						<!-- 	<div class="singleSlideContainer imgplaceholder">
 								<a v-bind:href="linkurl">
-									<img v-if="fichedata.imageThumbArray.length != 0" class="slide" v-bind:src="image">
+									<img v-if="images.length != 0" class="slide" v-bind:src="images[0]">
+								</a>
+							</div> -->
+					  	<slick ref="slick" :options="slickOptions">
+							<div v-for="image, index in fichedata.imageArray" v-if="index < 4">
+								<a v-bind:href="linkurl">
+									<img v-if="fichedata.imageArray.length != 0" class="slide" v-bind:src="image">
 								</a>
 							</div>
 						</slick>
@@ -84,6 +91,7 @@ export default {
 	data(){
 		return{
 			fichedata: {},
+			images: null,
 			favourites: 0,
 			isfavourite: false,
 			linkurl: null,
@@ -98,9 +106,11 @@ export default {
 		}
 	},
 
+
 	created(){
+		EventBus.$on('clearImages', this.clearImages);
 		this.getdata();
-		this.reInit();
+		// this.reInit();
 
 		this.checkiffavourite();
 		// insert in list stats if not favourites page
@@ -112,12 +122,16 @@ export default {
 
 	watch: {
 		fichedataprop: function(val){
+			this.images = null;
 			this.getdata();
-			this.reInit();
+			// this.reInit();
 		}
 	},
 
 	methods: {
+		clearImages(){
+			this.images = null;
+		},
 		reInit() {
             if (this.$refs.slick) {
                 this.$refs.slick.destroy();
@@ -159,15 +173,12 @@ export default {
 	    	if (this.fichedata == null){
 	    		this.fichedata = JSON.parse(this.fichedataprop.json_nl);
 	    	}
+	    	this.images = this.fichedata.imageArray;
 	    	this.favourites = this.fichedataprop.favourite;
 	    	this.linkurl = '/'+lang+'/venues/' + this.fichedata.slug;
 
 			this.checkiffavourite();
 			this.checklabels();
-
-			if (!document.body.classList.contains('page-template-tpl_favourites')){
-			    this.insertaction('list');
-			}
 	    },
 	    checkiffavourite(){
 			if(this.favarray.indexOf(this.fichedata.post_id) > -1){

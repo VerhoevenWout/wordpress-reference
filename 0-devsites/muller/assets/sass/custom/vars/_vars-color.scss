@@ -1,0 +1,92 @@
+$primary-color: #d61f1b;
+
+$black: #231f20;
+$white: #FFFFFF;
+
+$pruple-light: #c0c0ce;
+$purple: #e9e8ef;
+
+$lightest-gray: #f6f8f6;
+$light-gray: #F1F0F5;
+$gray: #ededed;
+$dark-gray: #e9e9f0;
+$darker-gray: #e1e0e7;
+$darkest-gray: #85878a;
+$darkest2-gray: #959398;
+
+$light-black: #231f20;
+
+$light-gray90: rgba(241, 240, 245, 0.95);
+
+$light-black10: rgba(35, 31, 32, 0.1);
+$light-black65: rgba(35, 31, 32, 0.65);
+$light-black85: rgba(35, 31, 32, 0.65);
+$black50: rgba(0, 0, 0, 0.5);
+
+$body-background: $white;
+$body-font-color: $black;
+
+$red: #da2a28;
+
+//header
+$cl-header-background: (
+	sm: #f1f0f5,
+	md: transparent
+);
+
+//breadcrum
+$cl-breadcrumb-background: (
+	sm: #e1e0e7,
+	md: #f1f0f4
+);
+$cl-breadcrumb-items: (
+	sm: $black,
+	xl: #85878a
+);
+$cl-breadcrumb-border: #e1e0e8;
+
+//Banner
+$cl-banner-caption: #85878a;
+$cl-background-intro: #f1f0f5;
+$cl-banner-intro-title: (
+	sm: $black,
+	xl: $red
+);
+$cl-banner-intro-tekst: $black;
+
+//Landing/home blokken
+$cl-lh-blokken-titel: $black;
+$cl-lh-blokken-titel-hover: $white;
+$cl-lh-blok-background: #ebeaf1;
+$cl-lh-blok-background-hover: $red;
+
+//Footer
+$cl-footer-border-top: #e6e7e7;
+
+//sidebar
+$cl-sidebar-background: #f6f8f6;
+$cl-sidebar-title: $red;
+
+//Product grid
+$cl-product-grid-title: $red;
+$cl-product-grid-item-title: $black;
+$cl-product-grid-item-border: #f1f1f1;
+
+//Filter
+$cl-product-filter: $black;
+$cl-filter-checkbox: $black;
+$cl-filter-checkbox-active: $red;
+$cl-filter-checkbox-background: $white;
+$cl-product-filter-count: #939598;
+$cl-product-filter-loader-background: rgba(255, 255, 255, 0.9);
+$cl-product-filter-title: $black;
+$cl-filter-dividers: $white;
+
+//Pagination
+$cl-pagination: $black;
+$cl-pagination-arrows: $black;
+$cl-pagination-background: #dad9e2;
+
+
+//Popup
+$popup-background-color: $light-black85;

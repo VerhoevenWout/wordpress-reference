@@ -2,10 +2,10 @@
 	<article class="selected-fiche expanded row">
 
 	  	<slick ref="slick" :options="slickOptions">
-			<div v-if="fichedata.imageThumbArray" v-for="image, index in fichedata.imageThumbArray">
+			<div v-if="fichedata.imageArray" v-for="image, index in fichedata.imageArray">
 				<img v-img:group class="slide" v-bind:src="image">
 			</div>
-			<div v-if="fichedata.imageThumbArray.length == 0" class="imgplaceholder"></div>
+			<div v-if="fichedata.imageArray.length == 0" class="imgplaceholder"></div>
 		</slick>
 
 		<div class="top small-24 columns row">
@@ -47,23 +47,52 @@
 					<a v-if="isfavourite == true" v-on:click="makefavourite()" title="" class="btn favourite semi-bold" v-bind:class="{ 'favourite-disabled': isfavourite }">
 						{{ this.translations[1] }} <span v-bind:class="{ 'icon-favourite-active': isfavourite }" class="icon-favourite"></span>
 					</a>
+				</div>
 
-					<div class="contact">
-						<p class="heading">
-							{{ this.translations[13] }}
-						</p>
-						<ul class="sub-heading light address">
-							<li>{{ fichedata.address[0] }} {{ fichedata.address[1] }}</li>
-							<li>{{ fichedata.zipcode }} {{ fichedata.city }}</li>
-						</ul>
-						<a v-if="!showphonebool" class="view-link" v-on:click="showphone()" title="" data-log="false" data-type="phone" data-post="{!! $post->ID !!}">{{ this.translations[6] }}</a>
-						<a :href="'tel:' + fichedata.phone" class="phonenumber" v-if="showphonebool">{{ fichedata.phone }}</a>
-					</div>
+				<div class="button-container contact-container">
+					<p class="heading">
+						{{ this.translations[13] }}
+					</p>
+					<ul class="sub-heading light address" v-if="fichedata.address.length == 2">
+						<li>{{ fichedata.address[0] }}</li>
+						<li>{{ fichedata.address[1] }}</li>
+					</ul>
+					<ul class="sub-heading light address" v-if="fichedata.address.length >= 3">
+						<li>{{ fichedata.address[0] }} {{ fichedata.address[1] }}</li>
+						<li>{{ fichedata.zipcode }} {{ fichedata.city }}</li>
+					</ul>
+					<a v-if="!showphonebool" class="view-link" v-on:click="showphone()" title="" data-log="false" data-type="phone" data-post="{!! $post->ID !!}">{{ this.translations[6] }}</a>
+					<a :href="'tel:' + fichedata.phone" class="phonenumber" v-if="showphonebool">{{ fichedata.phone }}</a>
+				</div>
 
-					<a v-bind:href="fichedata.external_link" target="_blank" title="" v-on:click="visitwebsite()" class="btn request-offer semi-bold">
+				<div class="button-container external-link">
+					<a v-bind:href="fichedata.external_link" target="_blank" title="" class="btn request-website semi-bold">
 						{{ this.translations[7] }} <span class="icon-arrow-right"></span>
 					</a>
+					<a v-bind:href="this.socialMediaLink" target="_blank" title="" class="btn request-fb semi-bold">
+						Facebook Link <span class="icon-arrow-right"></span>
+					</a>
 				</div>
+					<!-- <a title="" v-on:click="visitwebsite()" class="btn request-offer semi-bold">
+						{{ this.translations[7] }} <span class="icon-arrow-right"></span>
+					</a> -->
+
+				<div class="button-container share-container">
+					<span>Share</span>
+					<a v-on:click="shareCountIncrement('facebook')" v-bind:href="facebookShareLink" target="_blank" title="facebook share" class="btn share semi-bold">
+						<i class="fa fa-fw fa-facebook"></i>
+						({{ this.facebookShareCount }})
+					</a>
+					<a v-on:click="shareCountIncrement('twitter')" v-bind:href="twitterShareLink" target="_blank" title="twitter share" class="btn share semi-bold">
+						<i class="fa fa-fw fa-twitter"></i>
+						<!-- ({{ this.twitterShareCount }}) -->
+					</a>
+					<a v-on:click="shareCountIncrement('linkedin')" v-bind:href="linkedinShareLink" target="_blank" title="linkedin share" class="btn share semi-bold">
+						<i class="fa fa-fw fa-linkedin"></i>
+						<!-- ({{ this.twitterShareCount }}) -->
+					</a>
+				</div>
+
 			</div>
 		</div>
 		<div class="small-24 medium-15 xlarge-17 medium-order-0 columns">
@@ -132,7 +161,7 @@ export default {
 		'ipaddressprop',
 	],
 	components: {
-    	Slick
+    	Slick,
 	},
 
 	data(){
@@ -165,6 +194,11 @@ export default {
             },
             seopages: [],
             showcapacitybool: false,
+            pageUrl: window.location.href,
+
+            facebookShareCount: 0,
+            twitterShareCount: 0,
+            socialMediaLink: null,
 		}
 	},
 
@@ -181,6 +215,10 @@ export default {
 			}
 		}
 	    this.insertaction('view');
+
+	    this.createSocialMediaLink(); 
+	    this.createShareLink();
+	    this.getShareData();
 	},
 
 	watch: {
@@ -190,6 +228,63 @@ export default {
 	},
 
 	methods: {
+		createSocialMediaLink(){
+			var socialMediaLink = this.fichedata.social_media_link.match(/\bhttps?:\/\/\S+/gi).toString().replace(/"/g,'')
+			socialMediaLink = socialMediaLink.split(',')[0];
+
+			console.log(socialMediaLink);
+
+			this.socialMediaLink = socialMediaLink;
+		},
+		createShareLink(){
+			var vm = this;
+			var url = window.location.href;
+			url = url.replace('.loc/', '.com/');
+			url = encodeURI(url);
+			
+			this.facebookShareLink = 'https://www.facebook.com/sharer.php?u='+url;
+			this.twitterShareLink = 'https://twitter.com/intent/tweet?text=&url='+url;
+			this.linkedinShareLink = 'https://www.linkedin.com/shareArticle?mini=true&url='+url;
+		},
+		getShareData(){
+			var vm = this;
+			var url = window.location.href;
+			url = url.replace('.loc/', '.com/');
+
+			// FACEBOOK API
+			var data = {
+				//fields: 'id,share,og_object{engagement{reaction_count},likes.summary(true).limit(0),comments.limit(0).summary(true)}',
+				id: url
+			}
+	        this.$http.get('https://graph.facebook.com/', {params: data})
+	        .then(function (response){
+                console.log('%c' + 'Response Facebook', 'color: white; font-size: 18px;');
+                console.log(response);
+                var facebookShareCount = response.body.share.share_count;
+                this.facebookShareCount = facebookShareCount;
+            }, function(error){ console.log(error); });
+
+   //          // TWITTER API
+			// var data = {
+			// 	url: url
+			// }
+	  //       this.$http.get('https://public.newsharecounts.com/count.json', {params: data})
+	  //       .then(function (response){
+   //              console.log('%c' + 'Response Twitter', 'color: white; font-size: 18px;');
+   //              var twitterShareCount = response.body.count;
+   //              this.twitterShareCount = twitterShareCount;
+   //          }, function(error){ console.log(error); });
+
+		},
+		shareCountIncrement(socialService){
+			if(socialService == 'facebook'){
+				this.facebookShareCount = this.facebookShareCount + 1;
+			} else if(socialService == 'twitter'){
+				this.twitterShareCount = this.twitterShareCount + 1;
+			} else if(socialService == 'linkedin'){
+				this.linkedinShareCount = this.linkedinShareCount + 1;
+			}
+		},
 		getdata(){
 	    	this.fichedata = this.fichedataprop;
 	    	this.favourites = this.favouritesprop;
@@ -205,6 +300,8 @@ export default {
 
 	    	EventBus.$emit('setsinglemarkerlatlng', latlngvalues);
 	    	EventBus.$emit('disableloading');
+
+	    	console.log(this.fichedata.post_id);
 	    },
 	    makefavourite(){
 	    	if (this.isfavourite == true) {
@@ -254,6 +351,24 @@ export default {
 		},
 		visitwebsite(){
 	        this.insertaction('visit');
+
+	        // go to external link template and pass fichedata.external_link
+			var urlpath = window.location.pathname.split('/');
+			var lang = urlpath[1];
+
+	        var url = this.fichedata.external_link;
+	        // url = url.replace(/^(http?:\/\/)?(www\.)?/,'');
+	        // url = url.replace(/^(https?:\/\/)?(www\.)?/,'');
+	        // url = '//' + url;
+
+	        var parent_post_id = this.fichedata.parent_post_id;
+	        var short_title = this.fichedata.short_title;
+
+			// localStorage.setItem("external_link_url", url);
+			// localStorage.setItem("external_link_post_id", parent_post_id);
+			// localStorage.setItem("external_link_short_title", short_title);
+
+			window.location.href = '/' + lang + '/external-link/?id='+parent_post_id+'&url='+url+'&title='+short_title+'';
 		},
 		insertaction(action){
 			var ipaddress = sessionStorage.getItem("ipaddress");
@@ -269,3 +384,11 @@ export default {
 	}
 }
 </script>
+
+
+
+
+
+
+
+

@@ -17,6 +17,7 @@ import VueCarousel from 'vue-carousel';
 import { Carousel, Slide } from 'vue-carousel';
 
 require("babel-polyfill");
+var Promise = require('es6-promise').Promise;
 
 Vue.use(VueResource);
 
@@ -112,6 +113,32 @@ new Vue({
 		EventBus.$on('handleRememberMe', this.handleRememberMe);
 		EventBus.$on('clickofferpopup', this.clickofferpopup);
 		EventBus.$on('togglemarker', this.togglemarker);
+
+		VueGoogleMaps.loaded.then(() => {
+			this.mapoptions1 = {
+				mapTypeControl: false,
+				zoomControl: false,
+				zoomControl: false,
+				streetViewControl: false,
+				styles: mapsstyle,
+				gestureHandling: 'greedy',
+				fullscreenControl: true,
+				fullscreenControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_BOTTOM
+				}
+			}
+			this.mapoptions2 = {
+				mapTypeControl: false,
+				zoomControl: false,
+				zoomControl: false,
+				streetViewControl: false,
+				styles: mapsstyle,
+				fullscreenControl: true,
+				fullscreenControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_BOTTOM
+				}
+			}
+		});
 	},
 
 	methods: {
@@ -119,35 +146,29 @@ new Vue({
 			EventBus.$emit('clickDocument');
 		},
 		
-		submitSearchName(){
-			// this.isactive = true;
+		// submitSearchName(){
+		// 	var searchArr = new Array();
+		// 	if (this.search == null){
+		// 		console.log('submitSearchName error1');
+		// 		$('.venue-search input').addClass('venue-search-expand');
+		// 		$('.venue-search input').focus();
+		// 		return;
+		// 	}
+  //     		searchArr = this.search.split(" ");
+		// 	if (this.search == null){
+		// 		console.log('submitSearchName error2');
+		// 		$('.venue-search input').addClass('venue-search-expand');
+		// 		$('.venue-search input').focus();
+		// 		return;
+		// 	}
+		// 	$('.venue-search input').removeClass('venue-search-expand');
+		// 	$('.full-main-menu-container').removeClass('menu-is-active');
 
-			$('.venue-search input').removeClass('venue-search-expand');
-			$('.language-menu').removeClass('hideanimation');
-			$('.full-main-menu-container').removeClass('menu-is-active');
+		// 	localStorage.setItem('searchName', this.search);
 
-			var searchArr = new Array();
-      		searchArr = this.search.split(" ");
-      		// console.log(searchArr);
-			if (this.search == null || searchArr.length > 1){
-				console.log('empty');
-				return;
-			}
-
-	        var formData = new FormData();
-			formData.append('action', 'get_event_fiches_by_name');
-			formData.append('lang', this.lang);
-			formData.append('search', this.search);
-			
-			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
-				if (response.body) {
-					this.setfiches(response.body, this.filterdata, this.locatie, this.taxs);
-					// this.setspoofurl();
-				} else{
-					console.log('search.vue/getfiches error');
-				}
-	        });
-		},
+		// 	window.location = '/';
+		// },
+		
 		setLang(){
 			var urlpath = window.location.pathname.split('/');
 			this.lang = urlpath[1];
@@ -258,6 +279,7 @@ new Vue({
 
 			for (var key in this.fiches){
 				Vue.set(this.fiches[key], 'markerurl', normalMarkerUrl );
+				Vue.set(this.fiches[key], 'markerzindex', 1 );
 				Vue.set(this.fiches[key], 'markeropen', false );
 
 	    		var fichedata = JSON.parse(this.fiches[key].json_nl);
@@ -274,8 +296,10 @@ new Vue({
         		if (this.fiches[key].id == id) {
         			if (settoactive == true) {
         				this.fiches[key].markerurl = hostroot + '/wp-content/themes/venues-online/dist/img/single-logo-marker-active.png';
+						Vue.set(this.fiches[key], 'markerzindex', 5 );
         			} else{
         				this.fiches[key].markerurl = hostroot + '/wp-content/themes/venues-online/dist/img/single-logo-marker.png';
+						Vue.set(this.fiches[key], 'markerzindex', 1 );
         			}
         		}
         	}

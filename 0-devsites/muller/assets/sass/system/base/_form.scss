@@ -1,0 +1,18 @@
+/* -------------------------------------------------------------------------
+ Form elements
+---------------------------------------------------------------------------- */
+@mixin forms {
+	input[type="text"], 
+	input[type="search"], 
+	input[type="submit"], 
+	input[type="password"],
+	button,
+	textarea {
+	    appearance: none;
+	    outline: none;
+	    border: none;
+	    border-radius: 0;
+	    max-width: 100%;
+	}
+}
+

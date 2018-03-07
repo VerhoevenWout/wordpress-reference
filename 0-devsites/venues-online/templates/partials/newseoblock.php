@@ -1,6 +1,7 @@
 <?php 
 	$lang = ICL_LANGUAGE_CODE;
-	$home = get_page_by_path( 'home' );
+	$home = get_page_by_path( 'home' ); 
+	$home = get_page(icl_object_id($home->ID, 'page', true, $lang));
 	global $translations; 
 
 	$activity_terms = get_terms( array(

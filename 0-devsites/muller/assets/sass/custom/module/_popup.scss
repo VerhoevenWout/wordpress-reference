@@ -1,0 +1,101 @@
+.popup{
+	width: 100%; 
+	height: 100%;
+	display: block;
+	position: fixed;
+	background-color: $white;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	left: 0;
+	top: 0;
+	z-index: 999999999;
+	flex-direction: column;
+	display: none;
+
+	.overlay{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+	}
+		
+	.popup-inner{
+		padding: 1em;
+		background-color: $white;
+		display: block;
+		height: auto;
+		width: 70%;
+
+		#arrow-cross{
+			position: absolute;
+			right: 1.7rem;
+			top: 4.5rem;
+			width: 2rem;
+			height: 2rem;
+
+			rect{
+				fill: $black;
+			}
+		}
+
+		h3{
+			display: inline-block;
+			width: 100%;
+			font-size: 1.4rem;
+			margin: 0 auto 1rem auto;
+			background-color: $white;
+			text-align: left;
+		}
+
+		iframe{
+			max-width: 100%;
+			align-self: center;
+			margin: auto;
+		}
+
+		.logo{
+			width: 100%;
+			margin-top: 2rem;
+			text-align: center;
+
+			&.muller{
+				width: 100%;
+				left: 0;
+				top: 0;
+				position: absolute;
+			}
+
+			svg{
+				width: 10rem;
+				display: inline-block;
+			}
+		}
+		
+	}
+
+	.embed-container {
+	  position: relative;
+	  padding-bottom: 45%;
+	  margin: 10% auto;
+	  height: 0;
+	  overflow: hidden;
+	  max-width: 100%;
+	}
+
+	.embed-container iframe,
+	.embed-container object,
+	.embed-container embed {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	}
+
+}	
+
+body.openpopup .popup{
+	display: flex;
+}

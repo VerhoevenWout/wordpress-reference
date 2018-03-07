@@ -19,20 +19,47 @@ Vue.use(VueImg);
 require("babel-polyfill");
 var Promise = require('es6-promise').Promise;
 
+var SocialSharing = require('vue-social-sharing');
+Vue.use(SocialSharing);
 Vue.use(VueResource);
 
-Vue.use(VueGoogleMaps, {
-  load: {
-    key: 'AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto',
-    libraries: 'places',
-    language: 'nl',
-  }
-});
-Vue.component('gmap-autocomplete', VueGoogleMaps.Autocomplete);
-Vue.component('google-map', VueGoogleMaps.Map);
+
+var urlpath = window.location.pathname.split('/');
+var lang = urlpath[1];
+if (lang == 'fr'){
+	Vue.use(VueGoogleMaps, {
+	  load: {
+	    key: 'AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto',
+	    libraries: 'places',
+	    language: 'fr',
+	  }
+	});
+	Vue.component('gmap-autocomplete', VueGoogleMaps.Autocomplete);
+	Vue.component('google-map', VueGoogleMaps.Map);
+} else if(lang == 'en'){
+	Vue.use(VueGoogleMaps, {
+	  load: {
+	    key: 'AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto',
+	    libraries: 'places',
+	    language: 'en',
+	  }
+	});
+	Vue.component('gmap-autocomplete', VueGoogleMaps.Autocomplete);
+	Vue.component('google-map', VueGoogleMaps.Map);
+}else{
+	Vue.use(VueGoogleMaps, {
+	  load: {
+	    key: 'AIzaSyAlu17PuCOggAb8q65PiJ2RhOkIwEzUxto',
+	    libraries: 'places',
+	    language: 'nl',
+	  }
+	});
+	Vue.component('gmap-autocomplete', VueGoogleMaps.Autocomplete);
+	Vue.component('google-map', VueGoogleMaps.Map);
+}
 
 // TURN OFF VUE DEVELOPMENT MODE
-Vue.config.devtools = false;
+Vue.config.devtools = true;
 
 new Vue({
 
@@ -58,10 +85,10 @@ new Vue({
 			pageindex: 0,
 			pageindexmin: 0,
 			pageindexmax: 0,
+			postsperpage: 24,
 
 			isactive: false,
 			mapsstyle: mapsstyle,
-			postsperpage: 24,
 			mapcenter: {
 				lat: 50.8503396,
 				lng: 4.351710300000036,
@@ -104,17 +131,30 @@ new Vue({
 				],
             },
             getAddressDataError: null,
+            externalLinkUrl: null
 		}
 	},
 
 	mounted() {
 		VueGoogleMaps.loaded.then(() => {
-			this.mapoptions = {
+			this.mapoptions1 = {
 				mapTypeControl: false,
 				zoomControl: false,
 				zoomControl: false,
 				streetViewControl: false,
-				styles: mapsstyle, 
+				styles: mapsstyle,
+				gestureHandling: 'greedy',
+				fullscreenControl: true,
+				fullscreenControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_BOTTOM
+				}
+			}
+			this.mapoptions2 = {
+				mapTypeControl: false,
+				zoomControl: false,
+				zoomControl: false,
+				streetViewControl: false,
+				styles: mapsstyle,
 				fullscreenControl: true,
 				fullscreenControlOptions: {
 					position: google.maps.ControlPosition.RIGHT_BOTTOM
@@ -124,6 +164,8 @@ new Vue({
 		this.setLang();
 		this.checkurl();
 		this.getipaddress();
+
+		this.getExternalLinkData();
 
 		EventBus.$on('getfichecount', this.getfichecount);
 		EventBus.$on('setfiches', this.setfiches);
@@ -139,38 +181,81 @@ new Vue({
 
 		EventBus.$on('togglemarker', this.togglemarker);
 		EventBus.$on('setsinglemarkerlatlng', this.setsinglemarkerlatlng);
-
 	},
 
 	methods: {
 		clickDocument(){
 			EventBus.$emit('clickDocument');
 		},
-		submitSearchName(){
-			$('.venue-search input').removeClass('venue-search-expand');
-			$('.language-menu').removeClass('hideanimation');
-			$('.full-main-menu-container').removeClass('menu-is-active');
 
-			var searchArr = new Array();
-      		searchArr = this.search.split(" ");
-			if (this.search == null || searchArr.length > 1){
-				console.log('empty');
-				return;
+		checkurl(){
+			// checkSubmitName
+			if (localStorage.getItem('searchName') != null){
+				this.eraseCookie('vo-404-data');
+
+		        var formData = new FormData();
+				formData.append('action', 'get_event_fiches_by_name');
+				formData.append('lang', this.lang);
+				formData.append('search', localStorage.getItem('searchName'));
+
+				this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
+					if (response.body) {
+						console.log('search.js/checkurl response');
+						this.setfiches(response.body, this.filterdata, this.locatie, this.taxs);
+						this.search = null;
+						localStorage.removeItem('searchName');
+						this.disableloading();
+						return;
+					} else{
+						console.log('search.js/checkurl error');
+						this.disableloading();
+					}
+		        });
+			} else{
+				if (window.location.search.indexOf('venue') > -1) {
+			    	var venue = this.getParameterByName('venue');
+			    	venue = venue.replace('=true','');
+					var urlstring = window.location.href.split('?')[0];
+					window.location.href = urlstring + '/venues/' + venue;
+				}
+				var data404 = this.readCookie('vo-404-data');
+				$('body').hasClass('new-seo-page')
+				if(data404 == null && !$('body').hasClass('new-seo-page')){
+					// this.checkSubmitName();
+					this.disableloading();
+				}
 			}
 
-	        var formData = new FormData();
-			formData.append('action', 'get_event_fiches_by_name');
-			formData.append('lang', this.lang);
-			formData.append('search', this.search);
-			
-			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
-				if (response.body) {
-					this.setfiches(response.body, this.filterdata, this.locatie, this.taxs);
-				} else{
-					console.log('search.vue/getfiches error');
-				}
-	        });
+	    },
+		getParameterByName(name) {
+		    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
+		    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 		},
+		submitSearchName(){
+			var searchArr = new Array();
+			if (this.search == null){
+				console.log('submitSearchName error1');
+				$('.venue-search input').addClass('venue-search-expand');
+				$('.venue-search input').focus();
+				return;
+			}
+      		searchArr = this.search.split(" ");
+			if (this.search == null){
+				console.log('submitSearchName error2');
+				$('.venue-search input').addClass('venue-search-expand');
+				$('.venue-search input').focus();
+				return;
+			}
+			$('.venue-search input').removeClass('venue-search-expand');
+			$('.full-main-menu-container').removeClass('menu-is-active');
+
+			localStorage.setItem('searchName', this.search);
+
+			window.location = '/';
+		},
+		// checkSubmitName(){
+			
+		// },
 
 		setspoofurl(){
 			var urlstring = window.location.origin + '/'+this.lang;
@@ -213,23 +298,6 @@ new Vue({
 			marker.markeropen = marker.markeropen ? false :true;
 		},
 
-		checkurl(){
-			if (window.location.search.indexOf('venue') > -1) {
-		    	var venue = this.getParameterByName('venue');
-		    	venue = venue.replace('=true','');
-				var urlstring = window.location.href.split('?')[0];
-				window.location.href = urlstring + '/venues/' + venue;
-			}
-			var data404 = this.readCookie('vo-404-data');
-			$('body').hasClass('new-seo-page')
-			if(data404 == null && !$('body').hasClass('new-seo-page')){
-				this.disableloading();
-			}
-	    },
-		getParameterByName(name) {
-		    var match = RegExp('[?&]' + name + '=([^&]*)').exec(window.location.search);
-		    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-		},
 
 		buildNewSeoLinks(filterdata, locatie, taxs){
 			var lang 					= this.lang;
@@ -418,8 +486,14 @@ new Vue({
 		},
 
 		clickofferpopup(post_id, title){
+			console.log('post_id');
+			console.log(post_id);
+			console.log('title');
+			console.log(title);
+			
 			this.offertitle = title;
 			$('.offerpopup').addClass('popup-container-enable');
+			$('div.page-wrap').addClass('displaynoneMobile');
 			if(this.lang == 'fr'){
 				var formCode = '6';
 			} else if(this.lang == 'en'){
@@ -473,25 +547,28 @@ new Vue({
 
 		// HAPPENS ON SEARCH
 		setfiches(fiches, filterdata, locatie, taxs, translations){
+
 			this.filterdata = filterdata;
 			this.isactive = true;
 
 			//Rerender map
 			Vue.$gmapDefaultResizeBus.$emit('resize');
 
+			// console.log('setfiches');
+			// console.log(fiches);
 			if (fiches.length == 0){
 				this.fiches = null;
 				this.paginatedfiches = null;
 			} else{
 				this.fiches = fiches;
 				this.getAddressDataError = false;
-				this.fichescount = 1;
+				this.fichescount = this.fiches.length;
 
 				this.readfavourite();
 				this.calculateMapCenter();
 				this.disableloading();
 				this.setMarkers();
-				return
+				return;
 			}
 
 			if (filterdata.lat == null){
@@ -500,14 +577,18 @@ new Vue({
 
 			// If url is the same, go to the previous selected page
 			var sessionStorageUrl = sessionStorage.getItem('url');
-			if (sessionStorageUrl == window.location.href) {
-				this.currentpage = parseInt(sessionStorage.getItem('page'));
-				// this.paginatefiches(fiches);
-				this.gotopage(this.currentpage);
-			} else{
-				this.currentpage = 0;
-				// this.paginatefiches(fiches, 0, this.currentpage);
-				this.gotopage(this.currentpage);
+
+			if (localStorage.getItem('searchName') == null){
+				if (sessionStorageUrl == window.location.href) {
+					this.currentpage = parseInt(sessionStorage.getItem('page'));
+					// this.paginatefiches(fiches);
+
+					this.gotopage(this.currentpage);
+				} else{
+					this.currentpage = 0;
+					// this.paginatefiches(fiches, 0, this.currentpage);
+					this.gotopage(this.currentpage);
+				}
 			}
 
 			this.readfavourite();
@@ -518,19 +599,22 @@ new Vue({
 		},
 
 		gotopage(page){
+			EventBus.$emit('clearImages');
 	   		$("html, body").animate({ scrollTop: 0}, "slow");
 			var oldpage = this.pageindex;
 			this.pageindex = page;
 			sessionStorage.setItem('url', window.location.href);
 			sessionStorage.setItem('page', page);
+
 			var hostroot = location.protocol + '//' + location.host;
 
 			var formData = new FormData();
 			formData.append('action', 'get_event_fiches');
-			formData.append('language',  this.lang);
-			formData.append('filterdata',  JSON.stringify(this.filterdata));
-			formData.append('old_offset',  oldpage);
-			formData.append('offset',  page);
+			formData.append('language', this.lang);
+			formData.append('filterdata', JSON.stringify(this.filterdata));
+			formData.append('old_offset', oldpage);
+			formData.append('offset', page);
+			formData.append('ipaddress', this.ipaddress);
 
 			this.$http.post('/wp-admin/admin-ajax.php', formData).then((response) => {
 				if (response.body) {
@@ -565,6 +649,7 @@ new Vue({
 
 			for (var key in this.fiches){
 				Vue.set(this.fiches[key], 'markerurl', normalMarkerUrl );
+				Vue.set(this.fiches[key], 'markerzindex', 1 );
 				Vue.set(this.fiches[key], 'markeropen', false );
 
 	    		var fichedata = JSON.parse(this.fiches[key].json_nl);
@@ -584,11 +669,31 @@ new Vue({
 	    		if (this.fiches[key].id_nl == id) {
 	    			if (settoactive == true) {
 						Vue.set(this.fiches[key], 'markerurl', activeMarkerUrl );
+						Vue.set(this.fiches[key], 'markerzindex', 5 );
 	    			} else{
 	    				this.fiches[key].markerurl = normalMarkerUrl;
+						Vue.set(this.fiches[key], 'markerzindex', 1 );
 	    			}
 	    		}
 	    	}
+	    },
+
+	    getExternalLinkData(){
+			// this.externalLinkUrl = localStorage.getItem("external_link_url");
+			// this.externalLinkPostId = localStorage.getItem("external_link_post_id");
+			// this.externalLinkShortTitle = localStorage.getItem("external_link_short_title");
+
+			var url = location.href;
+			console.log(this.getUrlParameter('url'));
+			this.externalLinkUrl = this.getUrlParameter('url');
+			this.externalLinkPostId = this.getUrlParameter('id');
+			this.externalLinkShortTitle = this.getUrlParameter('title');
+	    },
+	    getUrlParameter(name) {
+	        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+	        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+	        var results = regex.exec(location.search);
+	        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 	    },
 	}
 });

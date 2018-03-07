@@ -1,7 +1,7 @@
 <?php
 
 class SeoPageMeta {
-	const LANG = 'exclusivewellness';
+	const LANG = 'venuesonline';
   const POST_TYPE = 'seopage';
 
 	public function __construct() {

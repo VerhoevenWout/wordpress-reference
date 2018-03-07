@@ -13,18 +13,27 @@ function get_fiches($meta_key, $meta_value) {
     global $wpdb;
  
     // FOR SEOPAGES WORKS
-    $prepared_query = $wpdb->prepare('
+    $sql = '
         SELECT DISTINCT pm.post_id, p.*, t.language_code 
         FROM ' . $wpdb->prefix . 'posts AS p 
         JOIN ' . $wpdb->prefix . 'icl_translations AS t on p.ID=t.element_id 
         JOIN ' . $wpdb->prefix . 'postmeta AS pm ON p.ID=pm.post_id 
         WHERE t.element_type = "post_venues" 
-        AND pm.meta_value = %d
-        ORDER BY p.post_title ASC, t.language_code DESC', $meta_value);
-
-    error_log($prepared_query);
-
-    $result = $wpdb->get_results($prepared_query);
+        AND pm.meta_value = '.$meta_value.'
+        ORDER BY p.post_title ASC, t.language_code DESC';
+    // error_log($sql);
+    $result = $wpdb->get_results($sql);
+    return $result;
+}
+function get_all_fiches() {
+    global $wpdb;
+ 
+    $query = '
+        SELECT DISTINCT p.*
+        FROM ' . $wpdb->prefix . 'posts AS p 
+        WHERE p.post_type = "venues" AND p.post_status = "publish"
+        ORDER BY p.post_title ASC';
+    $result = $wpdb->get_results($query);
     return $result;
 }
 
@@ -132,23 +141,23 @@ function get_fiches_exclude($meta_key, $meta_value, $data, $lang = NULL) {
  * @param $post_id                          the ID of the fiche
  *
  */
-// function get_seopages_by_fiche($post_id) {
-//     global $wpdb;
+function get_seopages_by_fiche($post_id) {
+    global $wpdb;
 
-//     $order = "p.post_title ASC, t.language_code DESC";
+    $order = "p.post_title ASC, t.language_code DESC";
 
-//     $prepared_query = $wpdb->prepare('
-//         SELECT DISTINCT pm.post_id, p.*, t.language_code 
-//         FROM ' . $wpdb->prefix . 'posts AS p 
-//         JOIN ' . $wpdb->prefix . 'icl_translations AS t on p.ID=t.element_id 
-//         JOIN ' . $wpdb->prefix . 'postmeta AS pm ON p.ID=pm.meta_value 
-//         WHERE pm.meta_key = "_fiche_seopage" AND pm.post_id = %d
-//         ORDER BY ' . $order . ';', $post_id);
+    $prepared_query = $wpdb->prepare('
+        SELECT DISTINCT pm.post_id, p.*, t.language_code 
+        FROM ' . $wpdb->prefix . 'posts AS p 
+        JOIN ' . $wpdb->prefix . 'icl_translations AS t on p.ID=t.element_id 
+        JOIN ' . $wpdb->prefix . 'postmeta AS pm ON p.ID=pm.meta_value 
+        WHERE pm.meta_key = "_fiche_seopage" AND pm.post_id = %d
+        ORDER BY ' . $order . ';', $post_id);
 
-//     $result = $wpdb->get_results($prepared_query);
+    $result = $wpdb->get_results($prepared_query);
  
-//     return $result;
-// }
+    return $result;
+}
 
 
 /**
@@ -162,32 +171,32 @@ function get_fiches_exclude($meta_key, $meta_value, $data, $lang = NULL) {
  *
  */
 function get_seopages_exclude_fiche($data, $post_id, $lang = NULL) {
-    // global $wpdb;
-    // $search = '%' . $wpdb->esc_like($data) . '%';
+    global $wpdb;
+    $search = '%' . $wpdb->esc_like($data) . '%';
 
-    // if (isset($lang)) {
-    //     $prepared_query = $wpdb->prepare('
-    //         SELECT p.*, t.language_code 
-    //         FROM ' . $wpdb->prefix . 'posts p
-    //         JOIN ' . $wpdb->prefix . 'icl_translations t on p.ID=t.element_id
-    //         WHERE t.element_type = "post_seopage" AND t.language_code = "%s" AND p.post_type = "seopage" AND p.post_title LIKE %s AND p.ID NOT IN (
-    //             SELECT meta_value FROM ' . $wpdb->prefix . 'postmeta WHERE meta_key = "_fiche_seopage" AND post_id = %d
-    //         )
-    //         ORDER BY p.post_title ASC, t.language_code DESC', $lang, $search, $post_id);
-    // } else {
-    //     $prepared_query = $wpdb->prepare('
-    //         SELECT p.*, t.language_code 
-    //         FROM ' . $wpdb->prefix . 'posts p
-    //         JOIN ' . $wpdb->prefix . 'icl_translations t on p.ID=t.element_id
-    //         WHERE t.element_type = "post_seopage" AND p.post_type = "seopage" AND p.post_title LIKE %s AND p.ID NOT IN (
-    //             SELECT meta_value FROM ' . $wpdb->prefix . 'postmeta WHERE meta_key = "_fiche_seopage" AND post_id = %d
-    //         )
-    //         ORDER BY p.post_title ASC, t.language_code DESC', $search, $post_id);
-    // }
+    if (isset($lang)) {
+        $prepared_query = $wpdb->prepare('
+            SELECT p.*, t.language_code 
+            FROM ' . $wpdb->prefix . 'posts p
+            JOIN ' . $wpdb->prefix . 'icl_translations t on p.ID=t.element_id
+            WHERE t.element_type = "post_seopage" AND t.language_code = "%s" AND p.post_type = "seopage" AND p.post_title LIKE %s AND p.ID NOT IN (
+                SELECT meta_value FROM ' . $wpdb->prefix . 'postmeta WHERE meta_key = "_fiche_seopage" AND post_id = %d
+            )
+            ORDER BY p.post_title ASC, t.language_code DESC', $lang, $search, $post_id);
+    } else {
+        $prepared_query = $wpdb->prepare('
+            SELECT p.*, t.language_code 
+            FROM ' . $wpdb->prefix . 'posts p
+            JOIN ' . $wpdb->prefix . 'icl_translations t on p.ID=t.element_id
+            WHERE t.element_type = "post_seopage" AND p.post_type = "seopage" AND p.post_title LIKE %s AND p.ID NOT IN (
+                SELECT meta_value FROM ' . $wpdb->prefix . 'postmeta WHERE meta_key = "_fiche_seopage" AND post_id = %d
+            )
+            ORDER BY p.post_title ASC, t.language_code DESC', $search, $post_id);
+    }
 
-    // $result = $wpdb->get_results($prepared_query);
+    $result = $wpdb->get_results($prepared_query);
  
-    // return $result;
+    return $result;
 }
 
 

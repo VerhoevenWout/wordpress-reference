@@ -1,5 +1,8 @@
 <?php global $translations; ?>
-<?php $home = get_page_by_path( 'home' ); ?>
+<?php 
+	$home = get_page_by_path( 'home' ); 
+	$home = get_page(icl_object_id($home->ID, 'page', true, $lang));
+?>
 
 <div class="popup-container-2 popup-container-2-hide">
 

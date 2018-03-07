@@ -10,20 +10,19 @@
 	.sub-heading{
 	    margin: auto 0;
 	}
-	.contact{
-	    margin: 2em 0 0 0;
-	}
 	a {
-	    padding: 0 1em 0 0;
 	    color: $dark-blue;
 	}
 	.fa{
 	    color: $light-blue;
 	}
-	.address{
-		padding: 0.5em 0;
-	}
 	.sidebar-icons{
 		margin-top: 2em;
+	}
+	.button-container{
+	    margin: 0 0 3em 0;
+	}
+	.contact-container{
+		margin: 0;
 	}
 }

@@ -11,6 +11,7 @@ $today = getdate();
 
 get_header();
 
+$user = wp_get_current_user();
 $user_id = get_current_user_id();
 
 if (!$user_id)
@@ -63,7 +64,13 @@ else
     $columns = 4;
 
     // get_stat_fiches in controller.php
-    $fiches = get_fiches('_fiche_user', $user_id);
+    if ( in_array( 'administrator', (array) $user->roles ) ) {
+        $fiches = get_all_fiches();
+    }else{
+        $fiches = get_fiches('_fiche_user', $user_id);
+    }
+
+
 
     $used_fiches = [];
 
@@ -156,61 +163,72 @@ else
             echo '</div>';
         echo '</div>';
 
-        echo '<div class="small-24 columns button-container"><button class="btn primary initStats">' . __('Select','captions') . '</button><button class="btn-clearstats clearStats btn secondary">' . __('Clear','captions') . '</button><a href="';
+        // 1 = Volta
+        // 142 = Olivier
+        // 146 = Misha
+        // Beheerder Venues Online
+        // Beheerder
+        if ( in_array('administrator', (array) $user->roles) || in_array('beheerder venues online', (array) $user->roles) ) {
+            echo "
+            <div class='small-24 columns selected-venue-container'>
+                <small>Select a venue to view statistics</small>
+                <div class='venue-selector'>
+                    <select size='1' id='selectedVenue' name='selectedVenue'>";
+                    foreach ($fiches as $key => $fiche) {
+                        $venue_key = $_GET['venue_key'];
+                        if ($venue_key == $key) {
+                            echo "<option value='".$key."' selected>";
+                        } else{
+                            echo "<option value='".$key."'>";
+                        }
+                        echo $fiche->post_title;
+                        echo "</option>";
+                    }
+                echo "
+                    </select>
+                </div>
+            </div>";
+
+            if(isset($_GET['venue_key'])){
+                $venue_key = $_GET['venue_key'];
+                $selectedfiche = $fiches[$venue_key];
+            } else{
+                $selectedfiche = null;
+            }
+            $fiches = null;
+        }
+
+        echo '<div class="small-24 columns button-container">';
+        echo '<button class="btn primary initStats">' . __('Select','captions') . '</button>';
+        echo '<button class="btn-clearstats clearStats btn secondary">' . __('Clear','captions') . '</button><a href="';
         echo wp_logout_url( '/' ) . '" class="btn-logout logOut btn secondary">' . __('Logout','captions') . '</a></div>';
-
     echo '</div></div>';
-
     echo '</div></section>';
+
+
 
     echo '<section id="fichesanchor" class="fiches" data-types="' . implode(",", $actions) . '" data-companies_title="' . __('Companies','captions') . '">';
 
-    // first loop for fiches with linked fiches
-    foreach ($fiches as $fiche)
-    {
-        $linked_fiches = get_post_meta($fiche->post_id, '_fiche_fiche');
-        $used_fiches = array_merge($used_fiches, $linked_fiches);
-
-        if(count($linked_fiches)>0)
-        {
-            array_push($used_fiches, $fiche->post_id);
-
-            echo '<div class="row expanded featured" data-post_id="' . $fiche->post_id . ',' . implode (',', $linked_fiches) . '">';
-
+    if ($selectedfiche != null) {
+        echo '<div class="row featured" data-post_id="' . $selectedfiche->ID . '">';
+        $p = $selectedfiche;
+        include(locate_template('templates/partials/fiche-loop.php'));
+        echo '<div class="xmedium-6 small-24 columns companies"></div>';
+        echo '<div class="xmedium-12 small-24 columns graph"></div>';
+        echo '</div>';
+    } else{
+        foreach ($fiches as $fiche){
+            echo '<div class="row featured" data-post_id="' . $fiche->ID . '">';
             $p = $fiche;
-
-            include(locate_template('templates/partials/fiche-loop.php')); 
-
-            echo '<div class="xmedium-6 small-24 columns companies"></div>';
-            echo '<div class="xmedium-12 small-24 columns graph"></div>';
-            echo '</div>';
-        }
-    }
-
-    // second loop for fiches without linked fiches and not linked to fiches in previous loop
-    foreach ($fiches as $fiche)
-    {
-        $linked_fiches = get_post_meta($fiche->post_id, '_fiche_fiche');
-
-        if((count($linked_fiches)==0)&&(!in_array($fiche->post_id, $used_fiches)))
-        {
-            echo '<div class="row featured" data-post_id="' . $fiche->post_id . '">';
-
-            $p = $fiche;
-
             include(locate_template('templates/partials/fiche-loop.php'));
-
             echo '<div class="xmedium-6 small-24 columns companies"></div>';
             echo '<div class="xmedium-12 small-24 columns graph"></div>';
             echo '</div>';
         }
     }
-
-    //var_dump($used_fiches);
 
     echo '</section>';
     echo '</div></div>';
-
 }
 
 get_footer();

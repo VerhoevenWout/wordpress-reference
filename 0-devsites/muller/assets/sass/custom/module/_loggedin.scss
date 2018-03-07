@@ -1,0 +1,29 @@
+body.logged-in{
+	header.main{
+		.column{
+			.fa{
+
+				&.fa-shopping-cart{
+					@include xl{
+						right: 27rem;
+					}	
+				}
+			}
+
+			form.search{
+				@include xl{
+					width: 17rem;
+					right: 33rem;
+				}
+			}
+		}
+	}
+	nav .hoofd-menu{
+		@include xl{
+			right: 51rem;
+		}
+		@media (min-width: 70em) and (max-width: 75em){
+			right: 44rem;
+		}
+	}
+}

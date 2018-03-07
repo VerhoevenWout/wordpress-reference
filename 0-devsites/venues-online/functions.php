@@ -1,16 +1,23 @@
-<?php 
+<?php
 include 'php/cpt.php';
 //Functions to build the searchtable
 include 'php/searchtable.php';
+//Functions to export userdata
+include 'php/export-users.php';
 // Functions to build SEO-metabox
 include 'php/general.php';
 global $translations;
 global $translations_json;
 global $lang;
 
+add_filter('flush_rewrite_rules_hard','__return_false');
+
 // IMPORTANT!!
 // Disable url autocomplete to make sure it goes to 404
 remove_filter('template_redirect', 'redirect_canonical');
+
+// Gravity forms tab
+add_filter( 'gform_tabindex', 'gform_tabindexer', 10, 2 ); function gform_tabindexer( $tab_index, $form = false ) { $starting_index = 1000; }
 
 function external_url($id) {
 	return get_site_url() . '/external/?id=' . $id;
@@ -35,6 +42,8 @@ add_filter( "gform_pre_submission_7", "add_venue_id", 9 ); // EN
 function add_venue_id( $form ){
     $venue_id = $_POST['input_15'];
     $venue_email = get_field('venue_email', $venue_id);
+    $venue_name = get_field('venue_short_name', $venue_id);
+
 	if ($venue_email == null || $venue_email == '') {
 		$_POST['input_17'] = bloginfo('admin_email');
 		// $_POST['input_17'] = 'wout@volta.be';
@@ -42,8 +51,9 @@ function add_venue_id( $form ){
 		// THIS IS THE CLIENTS EMAIL
 		$_POST['input_17'] = $venue_email;
 		// THIS IS A TEST EMAIL
-		// $_POST['input_17'] = 'support@volta.be';
+		// $_POST['input_17'] = 'wout@volta.be';
 	}
+	$_POST['input_19'] = $venue_name;
 }
 // ----------------------------------------------------------------------
 // GRAVITY FORMS REMEMBER ME
@@ -54,6 +64,7 @@ add_filter("gform_after_submission_7",'after_submission', 10, 2);
 function after_submission($entry, $form){
 	$_POST['input_17'] = '';
 	$remember_me = $entry['12.1'];
+	// var_dump($remember_me);
 	if ($remember_me != '') {
 		$remember_me_data = array(
 		    'would_like' 	=> $_POST['input_3'],
@@ -221,11 +232,46 @@ function generate_sitemap(){
 			echo "</pre>";
 		}
 	}
-
-	function addSubaccount($message) {
-	    $subaccount_id = 'staging.venues-online';
-	    $message['subaccount'] = $subaccount_id;
-	    return $message;
-	}
-	add_filter('mandrill_payload', 'addSubaccount');
 }
+
+// ----------------------------------------------------------------------
+// ADD SOCIAL SHARING DATA
+if ( class_exists( 'WPSEO_OpenGraph_Image' ) ) {
+	add_filter( 'wpseo_opengraph', function () {
+		$lang = ICL_LANGUAGE_CODE;
+
+		// Find the main id of the NL venue
+		$main_id = icl_object_id($post_id,'post',false,'nl');
+		if ($lang == 'nl' && $main_id == null){
+			$main_id = $post_id;
+		} elseif($lang == 'fr' && $main_id == null){
+			return;
+			error_log('main_id null');
+		} elseif($lang == 'en' && $main_id == null){
+			return;
+			error_log('main_id null');
+		}
+		$galleryArray 		= get_field('venue_gallery', $main_id);
+		// $thumbImage 		= $galleryArray[0]['sizes']['large'];
+		// $thumbImageWidth 	= $galleryArray[0]['sizes']['large-width'];
+		// $thumbImageHeight 	= $galleryArray[0]['sizes']['large-height'];
+		$thumbImage 		= $galleryArray[0]['url'];
+		$thumbImageWidth 	= $galleryArray[0]['width'];
+		$thumbImageHeight 	= $galleryArray[0]['height'];
+		$description 		= strip_tags(get_field('venue_description',$post_id));
+
+		global $wpseo_og;
+		$wpseo_og->og_tag( 'og:image', $thumbImage );
+		$wpseo_og->og_tag( 'og:image:width', $thumbImageWidth );
+		$wpseo_og->og_tag( 'og:image:height', $thumbImageHeight );
+		$wpseo_og->og_tag( 'og:description', $description );
+	}, 32);
+}
+
+
+
+
+
+
+
+

@@ -20,10 +20,10 @@
 
 	}
 	.tag.recommended{
-		background: $green;
+		background: $accent;
 		&:before {
-			border-top: 20px solid $green;
-			border-bottom: 20px solid $green;
+			border-top: 20px solid $accent;
+			border-bottom: 20px solid $accent;
 		}
 	}
 	.tag.new{

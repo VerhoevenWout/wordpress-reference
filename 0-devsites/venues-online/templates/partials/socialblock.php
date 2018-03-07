@@ -4,7 +4,10 @@
 	global $lang;
 ?>
 
-<?php $home = get_page_by_path( 'home' ); ?>
+<?php 
+	$home = get_page_by_path( 'home' ); 
+	$home = get_page(icl_object_id($home->ID, 'page', true, $lang));
+?>
 
 <div class="row expanded">
 	<div class="block social-block columns">

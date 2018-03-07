@@ -1,0 +1,90 @@
+form .um-field-error{
+	background: $red; 
+}
+
+form .um-field-arrow{
+	color: $red;
+}
+
+form .um-field-label label{
+	font-weight: 400;
+	font-size: 1.4rem;
+}
+
+.um-account-tab .um-field-user_login label{
+	display: none;
+}
+
+.um-login{
+		max-width: 40rem;
+
+		input[type='submit']{
+			background-color: $red;
+			color: $white;
+			float: right;
+		}
+
+		.um-field-checkbox{
+			width: 100%;
+		}
+
+		.um-right,
+		.um-link-alt,
+		.um-col-alt-b{
+			display: none;
+		}
+
+		.um-left{
+			float: left;
+		}
+
+		input[type='text'],
+		input[type='password']{
+			border: #f1f0f5 1px solid;
+			font-size: 1.4rem;
+		}
+
+		.um-field-label label{
+			color: #85878a;
+			font-size: 1.4rem;
+		}
+	}
+
+p.um-notice.success{
+	line-height: 1.8;
+	font-size: 1.4rem;
+}
+
+.cart p.um-notice.err{
+	background-color: $red;
+	font-size: 1.4rem;
+
+	strong{
+		font-weight: 400;
+	}
+
+	a{
+		text-decoration: underline;
+		color: $white;
+	}
+}
+
+.um-account-side .um-account-meta{
+	display: none;
+}
+
+div.um-59982.um,
+div.um-um_password_id.um{
+	margin-left: 0!important;
+}
+
+div.um-field.um-field-password_reset_text.um-field-block.um-field-type_block div div{
+	text-align: left!important;
+}
+.um-register.um-59982.um{
+	max-width: 900px;
+}
+
+.um-postmessage{
+	color: $black;
+}

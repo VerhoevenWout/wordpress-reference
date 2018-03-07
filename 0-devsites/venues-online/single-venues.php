@@ -19,13 +19,12 @@
 
 	global $translations;
 	global $translations_json;
-
 ?>
 	
 <div class="row expanded">
 	<div class="small-24 expanded go-back-container">
 		<div class="button-container">
-			<a class="btn request-offer semi-bold goBack">
+			<a class="btn go-back-external semi-bold goBack">
 				<span class="icon-arrow-left" ></span><?= $translations[45] ?>
 			</a>	
 		</div>

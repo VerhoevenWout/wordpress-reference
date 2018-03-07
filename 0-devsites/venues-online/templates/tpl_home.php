@@ -52,7 +52,7 @@ get_header(); ?>
 				<div class="row expanded">
 					<span v-if="fichescount == 0 && isactive && getAddressDataError == false" class="heading semi-bold no-venues-message"><?= $translations[52] ?></span>
 					<span v-if="fichescount == 0 && isactive && getAddressDataError == true" class="heading semi-bold no-venues-message"><?= $translations[63] ?></span>
-					<fiche v-for="fiche in fiches" v-on:mouseover="fichehover(fiche)" :fichedataprop="fiche" :translations='<?= jsonToProp($translations_json) ?>' :favarray="favarray" :ipaddressprop="ipaddress" :langprop="lang"></fiche>
+					<fiche :key="index" v-for="(fiche, index) in fiches" v-on:mouseover="fichehover(fiche)" :fichedataprop="fiche" :translations='<?= jsonToProp($translations_json) ?>' :favarray="favarray" :ipaddressprop="ipaddress" :langprop="lang"></fiche>
 					<?php get_template_part('templates/partials/pagination') ?>
 				</div>
 			</div>
@@ -62,13 +62,14 @@ get_header(); ?>
 					style="width: 100%; height: 100%; position: absolute; left:0; top:0"
 			        :center="{lat: mapcenter.lat, lng: mapcenter.lng}"
 			        :zoom="mapcenter.zoom"
-			        :options="mapoptions"
+			        :options="mapoptions1"
 			    >	
 			    	<gmap-marker v-for="(f, index) in fiches"
 						:key="index"
 						:position="getposition(f.lat, f.lng)"
 						:clickable="true"
 						:icon="f.markerurl"
+						:z-index="f.markerzindex"
 						v-on:click="openmarker(f)"
 					>
 				    	<gmap-info-window :opened="f.markeropen">
@@ -94,13 +95,14 @@ get_header(); ?>
 					style="width: 100%; height: 100%; position: absolute; left:0; top:0"
 			        :center="{lat: mapcenter.lat, lng: mapcenter.lng}"
 			        :zoom="mapcenter.zoom"
-			        :options="mapoptions"
+			        :options="mapoptions2"
 			    >	
 			    	<gmap-marker v-for="(f, index) in fiches"
 						:key="index"
 						:position="getposition(f.lat, f.lng)"
 						:clickable="true"
 						:icon="f.markerurl"
+						:z-index="f.markerzindex"
 						v-on:click="openmarker(f)"
 					>
 				    	<gmap-info-window :opened="f.markeropen">

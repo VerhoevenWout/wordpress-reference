@@ -1,0 +1,43 @@
+.share{
+	display: block;
+	width: 100%;
+	text-align: center;
+
+	li{
+		display: inline-block;
+		margin: auto 0.5rem; 
+
+		&:last-child{
+			clear: right;
+		}
+
+		a{
+			color: $darkest2-gray;
+			border: 1px solid $darkest2-gray;
+			border-radius: 50%;
+			width: 2.5rem;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 2.5rem;
+			text-decoration: none;
+			margin: auto 0.25rem;
+			transition: all .2s;
+			i{
+				font-size: 1.2rem;
+				transition: all .2s;
+			}
+
+			@include xl{
+				margin: 0;
+			}
+
+			&:hover{
+				border: 1px solid $red;
+				i{
+					color: $red!important;
+				}
+			}
+		}
+	}
+}

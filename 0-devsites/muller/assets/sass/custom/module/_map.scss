@@ -1,0 +1,43 @@
+.columns.map{
+	padding-left: 0;
+	padding-right: 0;
+
+
+	#map{
+		height: 100%;
+
+	}
+}
+
+.contact{
+	h2{
+		color: $black;
+	}
+
+	p{
+		color: #5b5d5f;
+
+		&.gform{
+			margin: 0;
+			padding: 0;
+		}
+	}
+
+	a{
+		color: #5b5d5f;
+	}
+
+	h3{
+		font-size: 1.8rem;
+		color: $black;
+		margin-bottom: 0;
+		margin-top: 4rem;
+	}
+
+	span{
+		margin: 0;
+		padding: 0;
+		font-size: 1rem;
+		color: #5b5d5f;
+	}
+}

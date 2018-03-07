@@ -19,11 +19,11 @@ $(document).ready(function() {
 
 	config.lang = globals.lang;
 
-	if ($("body").hasClass("user-edit-php") || $("body").hasClass("user-edit-php")) {
+	if ($("body").hasClass("user-edit-php") || $("body").hasClass("profile-php")) {
 		init_user_edit();
 	}
 
-	if ($("body").hasClass("post-type-fiche")) {
+	if ($("body").hasClass("post-type-venues")) {
 		init_fiche_edit();
 	}
 
@@ -111,9 +111,13 @@ function init_search_posts(id) {
 // Get posts
 function get_posts_exclude(query, id) {
 	$("table.meta-table").addClass("loading");
+	console.log('config.ajax_action');
 	console.log(config.ajax_action);
+	console.log('config.meta_key');
 	console.log(config.meta_key);
+	console.log('query');
 	console.log(query);
+	console.log('id');
 	console.log(id);
 	$.ajax({
 		type: 'POST',
@@ -142,37 +146,38 @@ function get_posts_exclude(query, id) {
 			return false;
 		},
 		error: function(response){
+			console.log('error');
 			console.log(response);
 		}
 	});
 }
 
-// function bulk_fiches(post_id, action)
-// {
-// 	var fiches = [];
+function bulk_fiches(post_id, action)
+{
+	var fiches = [];
 
-// 	if($('#data-fiches').val())
-// 	{
-// 		fiches = $('#data-fiches').val().split(',');
-// 	}
-// 	var index = fiches.indexOf(post_id.toString());
+	if($('#data-fiches').val())
+	{
+		fiches = $('#data-fiches').val().split(',');
+	}
+	var index = fiches.indexOf(post_id.toString());
 
-// 	if(action=='add')
-// 	{
-// 		if (index = -1) {
-// 			fiches.push(post_id);
-// 		}
-// 	}
+	if(action=='add')
+	{
+		if (index = -1) {
+			fiches.push(post_id);
+		}
+	}
 
-// 	if(action=='delete')
-// 	{
-// 		if (index > -1) {
-//     		fiches.splice(index, 1);
-// 		}
-// 	}
+	if(action=='delete')
+	{
+		if (index > -1) {
+    		fiches.splice(index, 1);
+		}
+	}
 
-// 	$('#data-fiches').val(fiches.join());
-// }
+	$('#data-fiches').val(fiches.join());
+}
 
 function init_add_owned_post(meta_value) {
 	$(".result-meta ul li").click(function() {

@@ -1,8 +1,8 @@
 <?php
 
 class FicheMeta {
-  const LANG = 'eventonline';
-  const POST_TYPE = 'fiche';
+  const LANG = 'venuesonline';
+  const POST_TYPE = 'venues';
 
   public function __construct() {
     add_action( 'add_meta_boxes', array( $this, 'add_seo_page_meta_box' ) );
@@ -22,7 +22,7 @@ class FicheMeta {
 
   public function save_fiche_meta_data( $post_id, $post_object ) {
 
-    //add_term_meta(3, "_featured_post", "save_init");
+    add_term_meta(3, "_featured_post", "save_init");
     // wp_die( 'Succes! <br><pre>'. print_r( $post_object, true) . '</pre>' );
 
 
@@ -139,7 +139,7 @@ class FicheMeta {
 
     $post_id = $_GET['post'];
     $seopages = get_seopages_by_fiche($post_id);
-    //$regions = get_regions();
+    $regions = get_regions();
 
     $regions_featured = get_regions($post_id, "_featured_post", ICL_LANGUAGE_CODE);
     $regions_recommended = get_regions($post_id, "_recommended_post", ICL_LANGUAGE_CODE);
@@ -170,7 +170,7 @@ class FicheMeta {
           </td>
         </tr>
         <tr>
-          <th>Uitgelicht op</th>
+          <!-- <th>Uitgelicht op</th>
           <td>
             <div class="featured-container regions-container">
               <ul class="categorychecklist">
@@ -188,7 +188,7 @@ class FicheMeta {
               <?php endforeach; ?>
               </ul>
             </div>
-          </td>
+          </td> -->
         </tr>
         <?php
           $fiche_user = get_post_meta($post_id, '_fiche_user', 1);
@@ -220,8 +220,6 @@ class FicheMeta {
                   {
                     if($fiche_fiche==$user_fiche->post_id) { echo ' checked="checked"'; }
                   }
-
-
                   echo "> " . $user_fiche->post_title . " (" . strtoupper($user_fiche->language_code) . ")</label></li>";
                 }
               }

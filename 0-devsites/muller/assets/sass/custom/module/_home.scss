@@ -1,0 +1,513 @@
+body.page-template-tpl-home main,
+body.page-template-tpl-blokken main,
+body.nieuws-template-default main{
+	padding-bottom: 2em;
+
+	.columns{
+		position: relative;
+
+		>a, picture img{
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+
+		picture img{
+			object-fit: cover;
+			font-family: 'object-fit: cover;';
+		}
+
+		a{
+			position: relative;
+		}
+
+	}
+
+	article{
+		max-width: 1000px;
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+
+		&.collapse{
+			max-width: inherit;
+		}
+	}
+
+	.html{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		padding: 5%;
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+
+		p, span, h2{
+			display: inline-block;
+			width: 100%;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		&:hover{
+			a, p, h2{
+				&.wit{
+					color: $red;
+				}
+
+				color: $red;
+			}
+		}
+	} 
+
+
+	.html, .wysiwyg{
+		font-size: 0.5rem;
+
+		@include md{
+			font-size: 1rem;
+		}
+
+		h1{
+			color: #464646;
+			font-size: 3.5em;
+			line-height: 1;
+			margin-bottom: 0.6rem;
+		}
+
+		h2{
+			font-size: 1.6em;
+			line-height: 1.1;
+			color: $black;
+			margin-bottom: 0.5em;
+
+			&.groot{
+				font-size: 4em;
+			}
+		}
+
+		p{
+			font-size: 1.6em;
+			color: $black;
+			margin: 1rem 0;
+
+			// &:after{
+			// 	content: '>';
+			// 	display: inline-block;
+			// 	margin-left: 1rem;
+			// 	position: relative;
+			// 	top: 0.1rem;
+			// }
+		}
+
+		h2, p{
+			&.rood{
+				color: $red;
+
+				a{
+					color: $red;
+					border-bottom: 1px solid $red;
+				}
+			}
+
+			&.wit{
+				color: $white;
+			}
+		}
+
+	}
+
+	.wysiwyg{
+		display: flex;
+		flex-direction: column;
+		font-size: 0.75rem;
+		justify-content: center;
+
+		@include md{
+			font-size: 1rem;
+		}
+
+		h2{
+			font-size: 2.8rem;
+			margin-bottom: 0.3rem;
+		}
+
+		p{
+			color: #5b5d5f;
+			font-size: 1.6em;
+
+			a{
+				color: #5b5d5f;
+				border-bottom: 1px solid #5b5d5f;
+
+				&:hover{
+					&:after{
+						bottom: -1px;
+					}
+				}
+
+				// &:after{
+				// 	content: '';
+				// 	width: 100%;
+				// 	position: absolute;
+				// 	left: 0;
+				// 	height: 1px;
+				// 	bottom: 0;
+				// 	background-color: #5b5d5f;
+				// }
+			}
+		}
+	}
+
+	.afbeelding_1{
+		// max-width: 1600px!important;
+		// margin: auto;
+		.columns{
+
+			img{
+				width: 100%;
+				margin: auto;
+				max-width: 100%;
+				object-fit: initial;
+				height: auto;
+
+				@include lg{
+					width: auto;
+				}
+			}
+
+			.html{
+				position: relative;
+				width: 90%;
+				margin: auto;
+				background-color: $white;
+				display: block;
+				margin-top: -5rem;
+				
+				@include lg{
+					display: none;
+				}
+			}
+
+		}
+
+	}
+
+	.afbeelding_2{
+
+		.columns{
+
+			&.htmlonder{
+
+				picture img{
+					height: auto;
+				}
+
+				.html{
+					position: relative;
+					height: auto;
+					padding-top: 1rem;
+					display: block;
+					padding-bottom: 0;
+
+					p{
+						margin-bottom: 0.25rem;
+					}
+				}
+
+			}
+
+			&.padding{
+
+				picture img,
+				.html{
+					padding: 8.5%;
+				}
+
+			}
+
+			.html.noimage{
+				position: relative;
+				display: block;
+
+				@include lg{
+					position: absolute;
+					display: flex;
+				}
+			}
+
+		}
+		
+		&.verhouding50 {
+
+			&.mirror{
+				flex-direction: row-reverse;
+
+				.columns{
+
+						&:first-child{
+							padding-right: 2.5rem;
+							padding-left: 1rem;
+						}
+
+						&:last-child{
+							padding-left: 2.5rem;
+							padding-right: 1rem;
+						}
+
+					@include xsm{
+						&:first-child{
+							padding-right: 5rem;
+							padding-left: 1rem;
+						}
+
+						&:last-child{
+							padding-left: 5rem;
+							padding-right: 1rem;
+						}
+					}
+
+					@include lg{
+						&:first-child{
+							padding-right: 5rem;
+							padding-left: 1rem;
+						}
+
+						&:last-child{
+							padding-left: 5rem;
+							padding-right: 1rem;
+						}
+					}
+				}
+				
+
+				&.collapse{
+					.columns{
+
+						&:first-child{
+							padding-right: 0rem;
+							padding-left: 1rem;
+						}
+
+						&:last-child{
+							padding-left: 0rem;
+							padding-right: 1rem;
+						}
+
+						@include lg{
+							&:first-child{
+								padding-right: 0rem;
+							}
+
+							&:last-child{
+								padding-left: 0rem;
+							}
+						}
+					}
+				}
+			}
+
+			.columns{
+
+				&:first-child{
+					padding-right: 1rem;
+				}
+
+				&:last-child{
+					padding-left: 1rem;
+				}
+
+			}
+
+		}
+
+		&.verhouding23 {
+
+		.columns{
+			
+
+			@include lg{
+				&:first-child{
+					padding-right: 0;
+				}
+
+				&:last-child{
+					padding-left: 0;
+				}
+
+				&.large-4{
+					flex: 0 0 37%;
+					max-width: 37%;
+				}
+
+				&.large-8{
+					flex: 0 0 63%;
+					max-width: 63%;
+				}
+			}
+		}
+
+			&.mirror{
+				flex-direction: row-reverse;
+
+				.columns{
+					@include lg{
+						&:first-child{
+							padding-right: 5rem;
+							padding-left: 0;
+						}
+
+						&:last-child{
+							padding-left: 5rem;
+							padding-right: 0;
+						}
+					}
+				}
+				
+			}
+
+		}
+
+
+
+	}
+
+
+	.afbeelding_3{
+
+		.columns{
+
+			&.large-4{
+
+				@include lg{
+				flex: 0 0 37%;
+				max-width: 37%;
+				}
+
+				.row{
+					height: 100%;
+
+					.columns{
+
+						@include minlg{
+
+							&:first-child{
+								padding-right: 0;
+							}
+
+							&:last-child{
+								padding-left: 0;
+							}	
+						
+						}
+
+						@include lg{
+
+							padding-left: 0;
+							height: 50%;
+
+						}
+					}
+				}
+			}
+			
+			&.large-8{
+				
+
+				@include lg{
+					padding-right: 0;
+					flex: 0 0 63%;
+					max-width: 63%;
+				}
+
+			}
+
+		}
+
+		&.mirror{
+			@include lg{
+				flex-direction: row-reverse;
+
+				.columns{
+					&.large-4{
+						padding-right: 0;
+						
+						.row .columns{
+							padding-left: 5rem;
+						} 	
+					}
+
+					&.large-8{
+						padding-left: 0;
+						padding-right: 5rem;
+					}
+
+				}
+			}
+		}
+
+
+	}
+
+
+	.tekst{
+		padding: 1.5rem 0;
+
+		&.mirror{
+			@include lg{
+				flex-direction: row-reverse;
+
+				.hasimg{
+					padding-right: 5rem;
+				}
+
+				.medium-4{
+					padding-left: 0;
+					padding-right: 5rem;
+				}
+			}
+		}
+
+		.hasimg{
+			@include lg{
+
+			}
+		}
+
+		.medium-9{
+			padding-left: 4rem;
+			padding-right: 4rem;
+		}
+
+		.medium-4{
+			display: flex;
+			justify-content: center;
+
+			@include md{
+				padding-right: 0;
+			}
+
+			img{
+				margin: auto auto 2rem auto;
+				object-fit: cover;
+				font-family: 'object-fit: cover;';
+
+				@include md{
+					margin: auto;
+				}
+
+				@include lg{
+					margin-bottom: auto;
+				}
+				
+
+				@include lg{
+					margin-bottom: auto;
+				}
+			}
+		}
+	}
+
+}

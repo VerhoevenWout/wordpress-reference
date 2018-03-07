@@ -43,9 +43,9 @@ get_header(); ?>
 											<a href='<?php echo the_field('contact_twitter_link', 'option') ?>' target="_blank"><i class="fa fa-twitter" aria-hidden="true"></i></a>
 										<?php endif; ?>
 
-										<?php if( get_field('contact_linkedin_link', 'option') ): ?>
+										<!-- <?php if( get_field('contact_linkedin_link', 'option') ): ?>
 											<a href='<?php echo the_field('contact_linkedin_link', 'option') ?>' target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-										<?php endif; ?>
+										<?php endif; ?> -->
 
 										<?php if( get_field('contact_instagram_link', 'option') ): ?>
 											<a href='<?php echo the_field('contact_instagram_link', 'option') ?>' target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>

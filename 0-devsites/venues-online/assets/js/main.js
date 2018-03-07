@@ -3,12 +3,18 @@ var $ = jQuery.noConflict();
 var post_id;
 var chartsLoaded = false;
 var post;
-var site_url;
+var site_url = globals.site_url;
 
 $('.btn.initStats').click(initStats);
 $('.btn.clearStats').click(clearStats);
+$("#selectedVenue").change(function(){
+	var value = $(this).find("option:selected").attr('value');
+	location.href = location.origin + location.pathname + '?venue_key='+value;
+});
+
 
 function initStats() {
+	console.log('%c' + 'initStats', 'color: white; font-size: 18px;');
 	
 	if (!chartsLoaded) {
 		google.charts.load('44', {'packages':['corechart']});
@@ -29,10 +35,8 @@ function initStats() {
 
 		// SCROLL TO FICHES
 		stats_graph($(this).find(".graph"), post_id, month, year);
-		// scroll to anchor
-		var offset = $('#fichesanchor').offset().top;
-		// console.log(offset);
-		$('body,html').animate({scrollTop: offset}, 500);
+		// var offset = $('#fichesanchor').offset().top;
+		// $('body,html').animate({scrollTop: offset}, 500);
 	});
 }
 
@@ -91,7 +95,7 @@ function stats_graph(element, post_id, month, year) {
 	if(periodStats().length<2)
 	{
 		html += '<h3>' + month + '/' + year + '</h3>';
-		// html += '<a href="' + site_url + '/ajax/api.php?action=ajax_get_csv&post_id=' + post_id + '&year=' + year + '&month=' + month + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
+		html += '<a href="/ajax/api.php?action=ajax_get_csv&post_id=' + post_id + '&year=' + year + '&month=' + month + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
 		html += '<a href="#" class="previous"><i class="s s-arrow-circle-left" aria-hidden="true"></i></a>';
 		html += '<a href="#" class="next"><i class="s s-arrow-circle-right" aria-hidden="true"></i></a>';
 
@@ -104,7 +108,7 @@ function stats_graph(element, post_id, month, year) {
 		datefrom = periodStats()[0];
 		dateto = periodStats()[1];
 		html += '<h3>' + datefrom.getDate() + '/' + (datefrom.getMonth()+1) + '/' + datefrom.getFullYear() + ' - ' + dateto.getDate() + '/' + (dateto.getMonth()+1) + '/' + dateto.getFullYear() + '</h3>';
-		// html += '<a href="' + site_url + '/ajax/api.php?action=ajax_get_csv&post_id=' + post_id + '&year=0&month=0&dayfrom=' + datefrom.getDate() + '&monthfrom=' + (datefrom.getMonth()+1) + '&yearfrom=' + datefrom.getFullYear() + '&dayto=' + dateto.getDate() + '&monthto=' + (dateto.getMonth()+1) + '&yearto=' + dateto.getFullYear() + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
+		html += '<a href="/ajax/api.php?action=ajax_get_csv&post_id=' + post_id + '&year=0&month=0&dayfrom=' + datefrom.getDate() + '&monthfrom=' + (datefrom.getMonth()+1) + '&yearfrom=' + datefrom.getFullYear() + '&dayto=' + dateto.getDate() + '&monthto=' + (dateto.getMonth()+1) + '&yearto=' + dateto.getFullYear() + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
 	}
 	html += '<div id="chart' + post_id + '"></div>';
 	element.html(html);
@@ -294,13 +298,11 @@ function stats_companies(element, post_id, month, year) {
 			var html = '';
 			html += '<h3>' + title + '</h3>';
 
-			if(periodStats().length<2)
-			{
-				// html += '<a href="' + site_url + '/ajax/api.php?action=ajax_get_csv&mode=companies&post_id=' + post_id + '&year=' + year + '&month=' + month + '&day=0" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
+			if(periodStats().length<2){
+				html += '<a href="/ajax/api.php?action=ajax_get_csv&mode=companies&post_id=' + post_id + '&year=' + year + '&month=' + month + '&day=0" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
 			}
-			else
-			{
-				// html += '<a href="' + site_url + '/ajax/api.php?action=ajax_get_csv&mode=companies&post_id=' + post_id + '&year=0&month=0&day=0&dayfrom=' + datefrom.getDate() + '&monthfrom=' + (datefrom.getMonth()+1) + '&yearfrom=' + datefrom.getFullYear() + '&dayto=' + dateto.getDate() + '&monthto=' + (dateto.getMonth()+1) + '&yearto=' + dateto.getFullYear() + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
+			else{
+				html += '<a href="/ajax/api.php?action=ajax_get_csv&mode=companies&post_id=' + post_id + '&year=0&month=0&day=0&dayfrom=' + datefrom.getDate() + '&monthfrom=' + (datefrom.getMonth()+1) + '&yearfrom=' + datefrom.getFullYear() + '&dayto=' + dateto.getDate() + '&monthto=' + (dateto.getMonth()+1) + '&yearto=' + dateto.getFullYear() + '" class="download no-smooth"><i class="fa fa-arrow-circle-o-down"></i></a>';
 			}
 			html += '<div class="table">';
 

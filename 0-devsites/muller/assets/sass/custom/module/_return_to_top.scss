@@ -1,0 +1,49 @@
+#return-to-top {
+    position: fixed;
+    bottom: 2.4rem;
+    right: 2.5rem;
+    background: $red;
+    width: 3rem;
+    height: 3rem;
+    text-align: center;
+    display: non;
+    text-decoration: none;
+    opacity: 0;
+    transition: all 0.2s;
+    z-index: 9999;
+    max-height: 0;
+    overflow:  hidden;
+
+    &:hover {
+        opacity: 1!important;
+        cursor: pointer;
+        i {
+            color: #fff;
+            transform: translateY(-5px);
+        }
+    }
+
+    svg{
+        width: 0.5rem;
+        height: 1rem;
+        transform: rotate(-90deg);
+        margin-top: 1.1rem;
+    }
+
+    @include xsm{
+        right: 1rem;
+    }
+}
+.return-to-top-show {
+    
+    #return-to-top{
+        opacity: 1!important;
+        max-height: none;
+    }
+
+    .pagination .slider-arrow.right{
+        @include only-sm{
+            right: 6.5rem;
+        }
+    }
+}

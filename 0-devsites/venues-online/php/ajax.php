@@ -202,14 +202,15 @@ function ajax_get_event_fiches() {
 	$filterdata = json_decode(stripcslashes($_POST['filterdata']));
 	$old_offset = $_POST['old_offset'];
 	$offset = $_POST['offset'];
+	$postsperpage = 24;
 
 	// if offset is higer than old offset + 1
 
 	if ($offset){
-		$page_offset = $offset * 6;
-		$pagination = 'LIMIT 24 OFFSET '.$page_offset.' ';
+		$page_offset = $offset * $postsperpage;
+		$pagination = 'LIMIT '.$postsperpage.' OFFSET '.$page_offset.' ';
 	} else{
-		$pagination = 'LIMIT 24 ';
+		$pagination = 'LIMIT '.$postsperpage.' ';
 	}
 
 	$sums = [];
@@ -273,8 +274,10 @@ function ajax_get_event_fiches() {
 		$sumsstring = ' GROUP BY '.$idselector.' ';
 	}
 
+	// Finally distance_unit should be 111.045 if you want to give your distances in kilometers and 69.0 if you want them in statute miles.
+
 	$query = '
-	SELECT '.$idselectorv2.' id_nl, json_nl, json_fr, json_en, persons_max, persons_min, halls, lat, lng, favourite, active, linkurl
+	SELECT '.$idselectorv2.' id_nl, json_nl, json_fr, json_en, persons_max, persons_min, halls, lat, lng, favourite, active, linkurl, pm.meta_key, pm.meta_value
 		FROM (
 		SELECT 	'.$idselectorv3.' st.id_nl,
 		        st.json_nl, st.json_fr, st.json_en,
@@ -310,16 +313,48 @@ function ajax_get_event_fiches() {
 		WHERE distance <= radius '.$personquery[$filterdata->persons].' '.$hallsquery[$filterdata->halls].' AND active = 1 
 		'.$sumsstring.'
 		ORDER BY 
-		(pm.meta_value = 1 AND distance < 10) DESC,
+		-- (pm.meta_value = 1 AND distance < 10) DESC,
+		-- distance <= 10 and pm.meta_value = 1 DESC,
+		-- (pm.meta_value = 1 AND halls = 10) DESC,
+		-- (pm.meta_value = 1 AND distance <= 1) DESC,
+		CASE WHEN pm.meta_value = 1 AND distance <= 5 THEN 1 ELSE 2 END,
 		distance '.$pagination.'
 	';
 
 	global $wpdb; 
 	error_log($query);
     $result = $wpdb->get_results($query);
+    
+    // ------------------------------
+    // log stats 'list'
+    $actionvalue = '"list"';
+    $site_id = '1';
+    $ipaddress = $_POST['ipaddress'];
+	foreach($result as $venue){
+		if ($lang == 'fr') {
+			$post_id = $venue->id_fr;
+		}
+		else if ($lang == 'en') {
+			$post_id = $venue->id_en;
+		}
+		else {
+			$post_id = $venue->id_nl;
+		}
+		error_log('post_id');
+		error_log($post_id);
+		error_log('ipaddress');
+		error_log($ipaddress);
+
+		$sqlinsert = "
+		    INSERT INTO actions (post_id, action, ipaddress, site_id ) 
+			values (".$post_id.",".$actionvalue.",'".$ipaddress."','".$site_id."')
+		";
+		error_log($sqlinsert);
+	    $instertresult = $wpdb->query($sqlinsert);
+	}
+    // ------------------------------
 
 	wp_send_json($result);
-
 	die();
 }
 add_action( 'wp_ajax_get_event_fiches', 'ajax_get_event_fiches' );
@@ -395,10 +430,9 @@ function ajax_get_event_fiches_count() {
 	}
 
 	$query = '
-	SELECT '.$idselectorv2.' id_nl, json_nl, json_fr, json_en, persons_max, persons_min, halls, lat, lng, favourite, active
+	SELECT '.$idselectorv2.' id_nl, persons_max, persons_min, halls, lat, lng, favourite, active
 		FROM (
 		SELECT 	'.$idselectorv3.' st.id_nl,
-		        st.json_nl, st.json_fr, st.json_en,
 		        st.persons_max,
 		        st.persons_min,
 		        st.halls,
@@ -430,8 +464,8 @@ function ajax_get_event_fiches_count() {
 		WHERE distance <= radius '.$personquery[$filterdata->persons].' '.$hallsquery[$filterdata->halls].' AND active = 1 
 		'.$sumsstring.'
 		ORDER BY 
-		(pm.meta_value = 0 AND distance < 2),
-		distance '.$pagination.'
+		-- (pm.meta_value = 0 AND distance < 2),
+		distance
 	';
 
 	global $wpdb;
@@ -441,8 +475,6 @@ function ajax_get_event_fiches_count() {
     error_log($result);
 
 	wp_send_json($result);
-
-	die();
 }
 add_action( 'wp_ajax_get_event_fiches_count', 'ajax_get_event_fiches_count' );
 add_action( 'wp_ajax_nopriv_get_event_fiches_count', 'ajax_get_event_fiches_count' );
@@ -507,8 +539,6 @@ function ajax_get_taxs() {
 			)
 		);
 
-
-
 		$taxs[$key] = [];	
 		foreach ($temparr as $term) {
 			$taxs[$key][$term->term_id] = $term;
@@ -516,7 +546,7 @@ function ajax_get_taxs() {
 			error_log($term->name);
 		}
 	}
-	error_log(json_encode($taxs));
+	// error_log(json_encode($taxs));
 	wp_send_json($taxs);
 }
 add_action( 'wp_ajax_get_taxs', 'ajax_get_taxs' );

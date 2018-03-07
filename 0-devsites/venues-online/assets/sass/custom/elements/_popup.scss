@@ -1,13 +1,19 @@
 .popup-container, .popup-container-confirmation{
-	position: fixed;
+	position: absolute;
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
 	background: rgba(0,0,0,.7);
 	z-index: 999999999999999;
+	height: 100vh;
+	padding-bottom:50px;
+    @include md{
+		position: fixed;
+		height: auto;
+    }
 	.popup{
-		height: 100%;
+		height: 100vh;
 		position: absolute;
 		left: 0;
 		right: 0;

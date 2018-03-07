@@ -1,3 +1,11 @@
+<?php
+	// if ( ! is_user_logged_in() ) {
+	// 	$currentUrl = $_SERVER['REQUEST_URI'];
+	// 	wp_redirect( wp_login_url($currentUrl) );
+	// 	exit;
+	// }
+?>
+
 <!DOCTYPE html>
 <!--[if IE 7]>
 <html class="ie ie7" <?php language_attributes(); ?>>
@@ -18,7 +26,6 @@
 <!-- expiration date -->
 <meta http-equiv="Expires" content="30" /> 
 
-
 <title>
 
 	<?php global $page_title; ?>
@@ -35,12 +42,6 @@
 <link rel="manifest" href="<?php bloginfo('template_url'); ?>/dist/img/favicons/manifest.json">
 <link rel="mask-icon" href="<?php bloginfo('template_url'); ?>/dist/img/favicons/safari-pinned-tab.svg" color="#5bbad5">
 <meta name="theme-color" content="#ffffff">
-
-<meta property="og:title" content="Venues Online" />
-<meta property="og:description" content="Venues Online, een overzicht van de beste locaties" />
-<meta property="og:type" content="Venues Online" />
-<meta property="og:url" content="https://venues-online.com" />
-<meta property="og:image" content="<?php bloginfo('template_url'); ?>/dist/img/vo-facebook.jpg"/>
 
 <!-- Analytics -->
 <!-- If staging or webhosting, don't index -->
@@ -103,8 +104,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	// echo "</pre>";
 ?>
 <?php gravity_form_enqueue_scripts(1,true) ?>
-
 <?php wp_head();?>
+
 </head>
 
 <body <?php if (!is_front_page()) body_class('not-frontpage'); ?> <?php body_class(); ?>>
@@ -130,15 +131,20 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 				</span>
 			</button>
 			<div class="full-main-menu-container">
-				<div class="venue-search" v-if="isactive == false">
+				<div class="venue-search">
 					<form v-on:submit.prevent="submitSearchName()">
 						<input v-model="search" v-bind:value="search" type="text" name="search" autocomplete="off" >
-						<span class="icon-magnify"></span>
+						<span class="icon-magnify" v-on:click="submitSearchName()"></span>
 					</form>
 				</div>
 
 				<div class="menu-main-menu-container">
-					<?php wp_nav_menu( array('menu_class' => 'light') ); ?>
+					<?php 
+						wp_nav_menu( array(
+							'menu_class'	=> 'light',
+							'menu'       	=> 'MenuNl'
+						) ); 
+					?>
 				</div>
 				
 				<div class="language-menu">

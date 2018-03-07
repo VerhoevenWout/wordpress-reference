@@ -31,10 +31,9 @@
 
 .button-container{
 	margin-top: auto;
-	.favourite{
-		display: block;
-		
-		padding: .2em .7em .2em .5em;
+
+	.favourite, .share{
+		padding: .15em .7em 0.15em .5em;
 		color: $light-gray;
 		border: 1px solid $light-gray;
 		margin: 0 1em 0 0;
@@ -55,8 +54,12 @@
 			@include transition(.2s);
 		}
 	}
-	.request-offer{
-		padding: .2em 0.9em .4em 1.1em;
+	.btn.share{
+		padding: .2em 0.4em;
+		margin: 0 1em 0 0;
+	}
+	.request-offer, .go-back-external, .request-website, .request-fb{
+		padding: .2em 0.9em .3em 1.1em;
 		background: $light-blue;
 		color: $white;
 		.icon-arrow-right, .icon-arrow-left{
@@ -79,12 +82,24 @@
 		}
 	}
 }
+.go-back-container{
+	background: $dark-blue;
+	color: $white;
+	width: 100%;
+	.go-back-external{
+		background: none;
+	}
+	.request-offer{
+		float: right;
+	}
+	.go-back-external, .request-offer{
+		z-index: 999999;
+		position: relative;
+	}
+}
 
 
 .clear-selection{
-	// position: absolute;
-    // bottom: 0;
-    // right: 0;
     padding: 0 1.5rem;
 
     background: none;

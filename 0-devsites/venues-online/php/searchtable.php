@@ -13,7 +13,7 @@ function loopvenues(){
 	foreach ($venues as $key => $venue) {
 		$post_id = $venue->ID;
 		$data = [];
-		$json = loop_json($post_id, $post_id);
+		$json = loop_json($post_id, $post_id, 'nl');
 		
 		$data['json_nl'] = json_encode($json);
 
@@ -21,7 +21,7 @@ function loopvenues(){
 		if ($fr_id == null){
 			$json_fr = null;
 		} else{
-			$json_fr = loop_json($fr_id, $post_id);
+			$json_fr = loop_json($fr_id, $post_id, 'fr');
 		}
 		$data['json_fr'] = json_encode($json_fr);
 		$data['id_fr'] = $fr_id;
@@ -30,7 +30,7 @@ function loopvenues(){
 		if ($en_id == null){
 			$json_fr = null;
 		} else{
-			$json_en = loop_json($en_id, $post_id);
+			$json_en = loop_json($en_id, $post_id, 'en');
 		}
 		$data['json_en'] = json_encode($json_en);
 		$data['id_en'] = $en_id;
@@ -63,8 +63,13 @@ function loopvenues(){
 	}
 }
 
-function loop_json( $post_id, $parent_post_id ){
+function loop_json( $post_id, $parent_post_id, $lang ){
 	$json = [];
+
+	global $sitepress;
+	$sitepress->switch_lang($lang);
+
+	// error_log($post_id);
 
 	$json['title'] = get_the_title($post_id);
 	$json['short_title'] = get_field('venue_short_name', $post_id);
@@ -77,6 +82,9 @@ function loop_json( $post_id, $parent_post_id ){
 	$json['type_location'] = get_field('venue_type_location', $post_id);
 	$json['facilities'] = get_field('venue_facilities', $post_id);
 	$json['location'] = get_field('venue_location', $post_id);
+
+	// error_log( "get_field('venue_activities', ".$post_id.")" );
+	// error_log( json_encode(get_field('venue_activities', $post_id)) );
 
 	$json['persons_min'] = get_field('venue_number_of_persons_min', $parent_post_id);
 	$json['persons_max'] = get_field('venue_number_of_persons_max', $parent_post_id);
@@ -114,87 +122,97 @@ function loop_json( $post_id, $parent_post_id ){
 	$imageThumbArray = array();
 	
 	$galleryArray = get_field('venue_gallery', $parent_post_id);
+	$galleryArray = array_reverse($galleryArray);
 	foreach ($galleryArray as $galleryItem) {
 		array_push($imageArray, $galleryItem['url']);
 
 		if ($galleryItem['sizes']['large']) {
 			array_push($imageThumbArray, $galleryItem['sizes']['large']);
-		} else{
+		}else if ($galleryItem['sizes']['medium']) {
+			array_push($imageThumbArray, $galleryItem['sizes']['medium']);
+		}else{
 			array_push($imageThumbArray, $galleryItem['url']);
 		}
 	}
 
-	$json['imageArray'] = $imageArray;
-	$json['imageThumbArray'] = $imageThumbArray;
+	$json['imageArray'] = $imageThumbArray;
+	// $json['imageThumbArray'] = $imageThumbArray;
 	return $json;
 }
 
 function updatevenue($post_id){
-	error_log('updatevenue');
-	$main_id = icl_object_id($post_id,'post',false,'nl');
-	if ($main_id == null){
-		$main_id = $post_id;
-	}
+	$lang = ICL_LANGUAGE_CODE;
 	$data = [];
+	error_log('updatevenue');
+	error_log($lang);
+	error_log($post_id);
+
+	// en
+	// 1658611
 
 	$address = get_field('venue_address', $main_id);
 	if ($address == null){
-		error_log('address field empty');
 		return;
 	}
 
-	error_log('address field not empty');
+	// Find the main id of the NL venue
+	$main_id = icl_object_id($post_id,'post',false,'nl');
+	if ($lang == 'nl' && $main_id == null){
+		$main_id = $post_id;
+	} elseif($lang == 'fr' && $main_id == null){
+		return;
+		error_log('main_id null');
+	} elseif($lang == 'en' && $main_id == null){
+		return;
+		error_log('main_id null');
+	}
+
+	// SET IDS
+	$nl_id = $main_id;
+	$fr_id = icl_object_id($post_id,'post',false,'fr');
+	$en_id = icl_object_id($post_id,'post',false,'en');
+
+	if ($lang == 'nl'){
+		$nl_id = $post_id;
+	}
+	if ($lang == 'fr'){
+		$fr_id = $post_id;
+	}
+	if ($lang == 'en'){
+		$en_id = $post_id;
+	}
+
+	// LOOP JSON
+	$json_nl = loop_json($nl_id, $main_id, 'nl');
+	if ($fr_id != null) {
+		$json_fr = loop_json($fr_id, $main_id, 'fr');
+	}
+	if ($en_id != null) {
+		$json_en = loop_json($en_id, $main_id, 'en');
+	}
+
+	// SET DATA
+	$data['id'] = $main_id;
+	$data['json_nl'] = json_encode($json_nl);
+	$data['json_fr'] = json_encode($json_fr);
+	$data['json_en'] = json_encode($json_en);
+	$data['id_nl'] = $nl_id;
+	$data['id_fr'] = $fr_id;
+	$data['id_en'] = $en_id;
+	$data['persons_min'] = get_field('venue_number_of_persons_min', $main_id);
+	$data['persons_max'] = get_field('venue_number_of_persons_max', $main_id);
+	$data['halls'] = get_field('venue_number_of_halls', $main_id);
+	$address = get_field('venue_address', $main_id);
 	$data['lat'] = $address['lat'];
 	$data['lng'] = $address['lng'];
-
-	$json = loop_json($post_id, $post_id);
-
-	$nl_id = $main_id;
-	error_log('nl_id');
-	error_log($nl_id);
-
-	if ($nl_id == null){
-		$json_nl = null;
-	} else{
-		$json_nl = loop_json($nl_id, $post_id);
-	}
-	$data['json_nl'] = json_encode($json_nl);
-	$data['id_nl'] = $nl_id;
-
-	$fr_id = icl_object_id($post_id,'post',false,'fr');
-	if ($fr_id == null){
-		$json_fr = null;
-	} else{
-		$json_fr = loop_json($fr_id, $post_id);
-	}
-	$data['json_fr'] = json_encode($json_fr);
-	$data['id_fr'] = $fr_id;
-
-	$en_id = icl_object_id($post_id,'post',false,'en');
-	if ($en_id == null){
-		$json_fr = null;
-	} else{
-		$json_en = loop_json($en_id, $post_id);
-	}
-	$data['json_en'] = json_encode($json_en);
-	$data['id_en'] = $en_id;
-
-	$data['id'] = $main_id;
-	$data['id_nl'] = $main_id;
-	$data['persons_min'] = get_field('venue_number_of_persons_min', $post_id);
-	$data['persons_max'] = get_field('venue_number_of_persons_max', $post_id);
-	$data['halls'] = get_field('venue_number_of_halls', $post_id);
-
 	$post = get_post($post_id); 
     $post_slug = $post->post_name;
 	$data['linkurl'] = '/venues/' . $post_slug;
-
 	if (get_post_status($post_id) == 'publish') {
 		$data['active'] = 1;
 	} else{
 		$data['active'] = 0;
 	}
-
 	if ($data['id_nl'] == null && $data['id_fr'] == null && $data['id_en'] == null) {
 		return;
 	}

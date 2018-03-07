@@ -39,6 +39,11 @@ li{
 	.address, .phonenumber{
 		font-size: 1.6rem;
 	}
+	.social-container{
+		i{
+			font-size: 1.8rem;
+		}
+	}
 }
 
 .btn{
@@ -80,7 +85,8 @@ a.myFavourites{
 		font-size: 1.5rem;
 	}
 }
-input, select, button, a.popup-button{
+input, select, button, a.popup-button, .algolia-places, .ap-dropdown-menu, .ap-dataset-places{
+	font-weight: 300;
 	font-size: 1.8rem;
 	@include xmd{
 		font-size: 1.8rem;
@@ -120,6 +126,11 @@ footer{
 		}
 		.odd{
 			background: $lightest-gray;
+		}
+	}
+	.button-container{
+		span{
+			font-size: 1.2rem;
 		}
 	}
 }
