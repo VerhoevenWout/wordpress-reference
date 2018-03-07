@@ -1,4 +1,4 @@
-<?php $home = get_page_by_path( 'home' ); ?>
+<?php $home = get_page_by_path('home'); ?>
 
 		</div> <!-- END DIV MAIN CONTENT -->
 
