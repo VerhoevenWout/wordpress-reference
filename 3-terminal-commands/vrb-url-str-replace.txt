@@ -1,0 +1,25 @@
+VRB database str replace
+This replaces url structure from production to local and visa versa
+
+TO LOCAL
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s www.vanbreda.be -r vrb.loc && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s www.vanbreda.com -r vrb.loc/international && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s www.artsecure.be -r vrb.loc/artsecure && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s www.jobsatvanbreda.be -r vrb.loc/jobsatvanbreda && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s www.justitia.be -r vrb.loc/justitia
+
+
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s vrb.loc -r staging.vanbreda.be && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s vrb.loc/international -r staging.vanbreda.be/international && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s vrb.loc/artsecure -r staging.vanbreda.be/artsecure && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s vrb.loc/jobsatvanbreda -r staging.vanbreda.be/jobsatvanbreda && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s vrb.loc/justitia -r staging.vanbreda.be/justitia
+
+
+
+TO PRODUCTION
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s staging.vanbreda.be -r vrb.loc && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s staging.vanbreda.be/international -r vrb.loc/international && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s staging.vanbreda.be/artsecure -r vrb.loc/artsecure && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s staging.vanbreda.be/jobsatvanbreda -r vrb.loc/jobsatvanbreda && 
+Documents/code/sr2/srdb.cli.php -h localhost -n vrb -u root -p root -s staging.vanbreda.be/justitia -r vrb.loc/justitia

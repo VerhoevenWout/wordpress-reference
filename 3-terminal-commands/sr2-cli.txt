@@ -22,5 +22,8 @@ Documents/code/sr2/srdb.cli.php -h localhost -n venues-online-live -u root -p ro
 
 
 
+Documents/code/sr2/srdb.cli.php -h localhost -n vo-temp -u root -p root -s venues-online.com -r venues.lancering.be
+
+
 
 
