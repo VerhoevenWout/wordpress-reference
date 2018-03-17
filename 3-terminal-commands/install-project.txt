@@ -10,7 +10,10 @@ Fresh Install
 * Change gulpfile proxy (in gulp.js change url)
 * If "gulp Cannot find where you keep your Bower packages." bower install jquery --save
 
-
+* EACCES: permission denied, open '/Users/Wout/.config/configstore/update-notifier-bower.json'
+* You don't have access to this file.
+sudo chown -R $USER:$GROUP ~/.npm
+sudo chown -R $USER:$GROUP ~/.config
 
 Transfer Https
 * Find/Replace Database urls, without http:// and then http:// -> https://
