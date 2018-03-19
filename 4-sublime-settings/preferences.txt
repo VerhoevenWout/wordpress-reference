@@ -1,0 +1,11 @@
+{
+	"color_scheme": "Packages/User/Color Highlighter/themes/Monokai++.tmTheme",
+	"font_size": 14,
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"scroll_past_end": true,
+	"theme": "Adaptive.sublime-theme",
+	"word_wrap": "false"
+}
