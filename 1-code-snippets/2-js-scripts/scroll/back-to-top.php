@@ -49,9 +49,9 @@
 	        $('#return-to-top').removeClass('return-to-top-show');   // Else fade out the arrow
 	    }
 	});
-	$('#return-to-top').click(function() {      // When arrow is clicked
+	$('#return-to-top').click(function() {
 	    $('body,html').animate({
-	        scrollTop : 0                       // Scroll to top of body
+	        scrollTop : 0
 	    }, 500);
 	});
 </script>
