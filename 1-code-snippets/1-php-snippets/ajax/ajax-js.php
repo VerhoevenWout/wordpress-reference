@@ -43,3 +43,22 @@
     },
 </script>
 
+<!-- OR -->
+
+<script type="text/javascript">
+    jQuery('#passwordChecker').submit(ajaxSubmit);
+
+    function ajaxSubmit(){
+        var passwordChecker = jQuery(this).serialize();
+        jQuery.ajax({
+            action : 'update_favourite',
+            type   : "POST",
+            url    : "/wp-admin/admin-ajax.php",
+            data   : passwordChecker,
+            success: function(data){
+                jQuery("#feedback").html(data);
+            }
+        });
+        return false;
+    }
+</script>
